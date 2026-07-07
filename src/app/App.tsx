@@ -80,7 +80,7 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     id: "chefmai",
-    index: "00",
+    index: "01",
     name: "Chef MAI",
     github: "https://github.com/aesrch/chefMAI",
     subtitle: "AI-Driven Recipe Matching Web Application",
@@ -99,7 +99,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "camarinasnorte",
-    index: "01",
+    index: "02",
     name: "Camarines Norte Tourism Portal",
     github: "https://github.com/ethanidk04/CamarinesNorteWebsite",
     subtitle: "Comprehensive UI Layouts & Custom Trip Planning",
@@ -118,7 +118,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "sentinet",
-    index: "02",
+    index: "03",
     name: "SentiNet",
     github: "https://github.com/andreistvn/senti",
     subtitle: "Decentralized Intrusion Detection & Prevention System",
@@ -137,7 +137,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "cashcatalyst",
-    index: "03",
+    index: "04",
     name: "Cash Catalyst",
     github: "https://github.com/Sky1sBloo/cash-catalysts",
     subtitle: "Gamified Finance Tracker",
@@ -154,7 +154,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "lumenid",
-    index: "04",
+    index: "05",
     name: "LumenID",
     github: "https://github.com/Oumazshin/LumenID",
     subtitle: "Decentralized Identity & Verifiable Credential Platform",
@@ -174,7 +174,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "carpaylater",
-    index: "05",
+    index: "06",
     name: "CarPayLater",
     github: "https://github.com/controlbackspace/Auto-Loan-Team-5",
     subtitle: "BPI Auto Loan-Inspired UI & MySQL Database Integration",
@@ -203,7 +203,7 @@ type StaticProject = {
 
 const STATIC_PROJECTS: StaticProject[] = [
   {
-    index: "06",
+    index: "07",
     name: "WattWise",
     subtitle: "Household Energy Optimization",
     note: null,
@@ -215,7 +215,7 @@ const STATIC_PROJECTS: StaticProject[] = [
     flip: false,
   },
   {
-    index: "07",
+    index: "08",
     name: "MarikinAlert",
     subtitle: "Hyper-Localized Disaster Reporting & Response Application",
     note: null,
@@ -227,7 +227,7 @@ const STATIC_PROJECTS: StaticProject[] = [
     flip: true,
   },
   {
-    index: "08",
+    index: "09",
     name: "Lex-C",
     subtitle: "Custom Programming Language Architecture",
     note: null,
@@ -781,7 +781,7 @@ export default function App() {
             className="text-[9px] tracking-[0.5em] uppercase text-white"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
-            {MARGIELA_NUMBERS.join("  ")} — Six Projects, Six Modules
+            {MARGIELA_NUMBERS.join("  ")} — Nine Projects, Nine Modules
           </p>
         </div>
 
