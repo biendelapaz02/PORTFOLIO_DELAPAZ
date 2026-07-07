@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import portrait from "../imports/2BY2PIC.JPG";
+import resume from "../imports/DELA_PAZ_RESUME-1.pdf";
 import lumenAdminIssuer from "../imports/ADMIN_ISSUER.PNG";
 import lumenHome from "../imports/lumenhome.PNG";
 import lumenUserDash from "../imports/USER_DASH.PNG";
@@ -22,6 +23,9 @@ import camPlanTrip from "../imports/plantrip.PNG";
 import camContact from "../imports/contactkaya.PNG";
 import chefKitchen from "../imports/KITCHEN_MAIN_BUTTOM.PNG";
 import chefHome from "../imports/CHEFMAIMAI.PNG";
+import chefCook from "../imports/COOKN.PNG";
+import chefDiscover from "../imports/homeche.PNG";
+import chefPopup from "../imports/POPUP.PNG";
 import cashCatalyst1 from "../imports/CASH_CATALYST_2.png";
 import cashCatalyst2 from "../imports/CASH_CATALYST_SS_1.png";
 import cashCatalyst3 from "../imports/MONEYCASH.png";
@@ -85,8 +89,11 @@ const PROJECTS: Project[] = [
       "Designed and built the user interface for an AI-driven recipe matching web application using Figma and VS Code, establishing interactive user flows that track ingredient cataloging via text inputs and camera-based image capture. Furthermore, designed clean interface layouts displaying recipe outputs, constraints, difficulties, and dynamic substitutes.",
     tags: ["Figma","Interactive User Flows","AI Recommendation","VS Code","Web UI"],
     images: [
-      { url: chefHome,    caption: "Landing — 01/02" },
-      { url: chefKitchen, caption: "Kitchen — 02/02" },
+      { url: chefHome,    caption: "Landing — 01/05" },
+      { url: chefDiscover,caption: "Discover — 02/05" },
+      { url: chefKitchen, caption: "Kitchen — 03/05" },
+      { url: chefPopup,   caption: "Recipe Detail — 04/05" },
+      { url: chefCook,    caption: "Cooking Mode — 05/05" },
     ],
     flip: false,
   },
@@ -168,7 +175,7 @@ const PROJECTS: Project[] = [
   {
     id: "carpaylater",
     index: "05",
-    name: "CarPayLater Loan System",
+    name: "CarPayLater",
     github: "https://github.com/controlbackspace/Auto-Loan-Team-5",
     subtitle: "BPI Auto Loan-Inspired UI & MySQL Database Integration",
     note: null,
@@ -176,10 +183,7 @@ const PROJECTS: Project[] = [
       "BPI Auto Loan-inspired interface design for a vehicle financing platform. Mapped complex amortization logic and MySQL relational schemas onto clean application screens — loan calculator flows, repayment dashboards, and approval status trackers built for clarity under financial complexity.",
     tags: ["BPI Auto Loan UI","MySQL Integration","Loan Calculator","Database Design","Finance"],
     images: [
-      { url: bpiHome,    caption: "Landing Page — 01/04" },
-      { url: bpiAdmin,   caption: "Admin Dashboard — 02/04" },
-      { url: bpiProfile, caption: "User Profile — 03/04" },
-      { url: bpiForm,    caption: "Loan Application — 04/04" },
+      { url: bpiHome, caption: "Landing Page — 01/01" },
     ],
     flip: true,
   },
@@ -275,7 +279,7 @@ function StaticProjectModule({ project }: { project: StaticProject }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[8px] tracking-[0.2em] uppercase px-2 py-0.5 border border-black/25 text-black/50"
+              className="text-[11px] tracking-[0.15em] uppercase px-3 py-1 border border-black/25 text-black/50"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               {tag}
@@ -389,15 +393,17 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
           }}
           draggable={false}
         />
-        {/* Swipe hint overlay on first load */}
-        <div className="absolute bottom-3 left-3 pointer-events-none">
-          <span
-            className="text-[8px] tracking-[0.3em] uppercase text-white/60 bg-black/30 px-2 py-0.5"
-            style={{ fontFamily: "'Courier Prime', monospace" }}
-          >
-            ← DRAG →
-          </span>
-        </div>
+        {/* Swipe hint — hidden when single image */}
+        {total > 1 && (
+          <div className="absolute bottom-3 left-3 pointer-events-none">
+            <span
+              className="text-[8px] tracking-[0.3em] uppercase text-white/60 bg-black/30 px-2 py-0.5"
+              style={{ fontFamily: "'Courier Prime', monospace" }}
+            >
+              ← DRAG →
+            </span>
+          </div>
+        )}
         {/* Caption */}
         <div className="absolute top-3 right-3">
           <span
@@ -409,8 +415,8 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
         </div>
       </div>
 
-      {/* Brutalist nav bar */}
-      <div className="border border-t-0 border-black flex items-center justify-between px-3 py-2 bg-white">
+      {/* Brutalist nav bar — hidden when single image */}
+      <div className={`border border-t-0 border-black flex items-center justify-between px-3 py-2 bg-white ${total === 1 ? "hidden" : ""}`}>
         <button
           onClick={prev}
           className="text-[9px] tracking-[0.3em] uppercase hover:line-through transition-all"
@@ -519,7 +525,7 @@ function ProjectModule({ project }: { project: Project }) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[8px] tracking-[0.2em] uppercase px-2 py-0.5 border border-black/30 text-black/60"
+                  className="text-[11px] tracking-[0.15em] uppercase px-3 py-1 border border-black/30 text-black/60"
                   style={{ fontFamily: "'Courier Prime', monospace" }}
                 >
                   {tag}
@@ -671,7 +677,7 @@ export default function App() {
             className="text-sm md:text-lg leading-tight"
             style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
           >
-            "Bridging the gap between complex backend logic and intuitive frontend design."
+            "Digging through the static of the system to find the soul of the interface."
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-black" />
@@ -711,6 +717,25 @@ export default function App() {
                 <span className="text-black/40">Status</span>
                 <span>BSCS 3-1N — Class President</span>
               </div>
+            </div>
+
+            <div className="mt-10">
+              <a
+                href="https://drive.google.com/file/d/1OeK4X57PS-5mnKD6tcEifWfNucasMUvw/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-3 border border-black px-6 py-3 text-[10px] tracking-[0.35em] uppercase hover:bg-black hover:text-white transition-all"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+                See CV
+              </a>
             </div>
           </div>
 
