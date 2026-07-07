@@ -982,13 +982,6 @@ export default function App() {
           >
             bienjericdelapaz9@gmail.com
           </a>
-          <a
-            href="mailto:bienjericdelapaz@iskolarngbayan.pup.edu.ph"
-            className="block text-[4vw] sm:text-[3vw] md:text-[2.2vw] font-black uppercase leading-tight tracking-tight hover:text-white/60 transition-colors break-all"
-            style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-          >
-            bienjericdelapaz@iskolarngbayan.pup.edu.ph
-          </a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 border-t border-white/20 pt-8 md:pt-12">
