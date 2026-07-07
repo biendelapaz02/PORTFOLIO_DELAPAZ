@@ -589,9 +589,106 @@ function ProjectModule({ project }: { project: Project }) {
   );
 }
 
+const DARK_CSS = `
+  html.dark body { background:#000; color:#fff; }
+  html.dark .bg-white { background-color:#000 !important; }
+  html.dark .bg-neutral-100, html.dark .bg-neutral-200 { background-color:#1a1a1a !important; }
+  html.dark .bg-black\\/5 { background-color:rgba(255,255,255,0.05) !important; }
+  html.dark .bg-black\\/30 { background-color:rgba(255,255,255,0.15) !important; }
+  html.dark .bg-black\\/40 { background-color:rgba(255,255,255,0.2) !important; }
+  html.dark .bg-black\\/60 { background-color:rgba(255,255,255,0.35) !important; }
+  html.dark .bg-black\\/70 { background-color:rgba(255,255,255,0.4) !important; }
+  html.dark .text-black { color:#fff !important; }
+  html.dark .text-black\\/30 { color:rgba(255,255,255,0.3) !important; }
+  html.dark .text-black\\/40 { color:rgba(255,255,255,0.4) !important; }
+  html.dark .text-black\\/50 { color:rgba(255,255,255,0.5) !important; }
+  html.dark .text-black\\/60 { color:rgba(255,255,255,0.6) !important; }
+  html.dark .text-black\\/80 { color:rgba(255,255,255,0.8) !important; }
+  html.dark .border-black { border-color:rgba(255,255,255,0.75) !important; }
+  html.dark .border-black\\/10 { border-color:rgba(255,255,255,0.1) !important; }
+  html.dark .border-black\\/20 { border-color:rgba(255,255,255,0.2) !important; }
+  html.dark .border-black\\/25 { border-color:rgba(255,255,255,0.25) !important; }
+  html.dark .border-black\\/30 { border-color:rgba(255,255,255,0.3) !important; }
+  html.dark .border-dashed { border-color:rgba(255,255,255,0.25) !important; }
+  html.dark .bg-black:not([data-keep-dark]) { background-color:#fff !important; }
+  html.dark .text-white { color:#000 !important; }
+  html.dark .text-white\\/20 { color:rgba(0,0,0,0.2) !important; }
+  html.dark .text-white\\/30 { color:rgba(0,0,0,0.3) !important; }
+  html.dark .text-white\\/40 { color:rgba(0,0,0,0.4) !important; }
+  html.dark .text-white\\/50 { color:rgba(0,0,0,0.5) !important; }
+  html.dark .text-white\\/60 { color:rgba(0,0,0,0.6) !important; }
+  html.dark .text-white\\/70 { color:rgba(0,0,0,0.7) !important; }
+  html.dark .border-white\\/10 { border-color:rgba(0,0,0,0.1) !important; }
+  html.dark .border-white\\/20 { border-color:rgba(0,0,0,0.2) !important; }
+  html.dark .border-white\\/40 { border-color:rgba(0,0,0,0.4) !important; }
+  html.dark .bg-white\\/5 { background-color:rgba(0,0,0,0.05) !important; }
+  html.dark .bg-white\\/20 { background-color:rgba(0,0,0,0.15) !important; }
+  html.dark .hover\\:bg-black:hover { background-color:#fff !important; color:#000 !important; }
+  html.dark .hover\\:text-white:hover { color:#000 !important; }
+  html.dark .hover\\:text-white\\/60:hover { color:rgba(0,0,0,0.6) !important; }
+  html.dark [data-keep-dark] { background-color:#000 !important; color:#fff !important; }
+  html.dark [data-keep-dark] .text-white { color:#fff !important; }
+  html.dark [data-keep-dark] .text-white\\/20 { color:rgba(255,255,255,0.2) !important; }
+  html.dark [data-keep-dark] .text-white\\/30 { color:rgba(255,255,255,0.3) !important; }
+  html.dark [data-keep-dark] .text-white\\/40 { color:rgba(255,255,255,0.4) !important; }
+  html.dark [data-keep-dark] .text-white\\/50 { color:rgba(255,255,255,0.5) !important; }
+  html.dark [data-keep-dark] .text-white\\/60 { color:rgba(255,255,255,0.6) !important; }
+  html.dark [data-keep-dark] .text-white\\/70 { color:rgba(255,255,255,0.7) !important; }
+  html.dark [data-keep-dark] .border-white\\/20 { border-color:rgba(255,255,255,0.2) !important; }
+  html.dark [data-keep-dark] .hover\\:text-white\\/60:hover { color:rgba(255,255,255,0.6) !important; }
+`;
+
+function ToolLogos() {
+  return (
+    <div className="mt-8 pt-6 border-t border-black/20">
+      <div className="text-[9px] tracking-[0.4em] uppercase text-black/40 mb-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
+        Tools Used
+      </div>
+      <div className="flex flex-wrap gap-5 items-center">
+        {/* Figma */}
+        <div className="flex flex-col items-center gap-1.5 group">
+          <svg width="28" height="40" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 28.5C19 24.91 21.91 22 25.5 22C29.09 22 32 24.91 32 28.5C32 32.09 29.09 35 25.5 35C21.91 35 19 32.09 19 28.5Z" fill="#1ABCFE"/>
+            <path d="M6 42C6 38.41 8.91 35.5 12.5 35.5H19V42C19 45.59 16.09 48.5 12.5 48.5C8.91 48.5 6 45.59 6 42Z" fill="#0ACF83"/>
+            <path d="M19 7V21.5H25.5C29.09 21.5 32 18.59 32 15C32 11.41 29.09 8.5 25.5 8.5L19 7Z" fill="#FF7262"/>
+            <path d="M6 15C6 18.59 8.91 21.5 12.5 21.5H19V8.5H12.5C8.91 8.5 6 11.41 6 15Z" fill="#F24E1E"/>
+            <path d="M6 28.5C6 32.09 8.91 35 12.5 35H19V22H12.5C8.91 22 6 24.91 6 28.5Z" fill="#A259FF"/>
+          </svg>
+          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Figma</span>
+        </div>
+        {/* Adobe Photoshop */}
+        <div className="flex flex-col items-center gap-1.5 group">
+          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="15" fill="#001E36"/>
+            <text x="50" y="68" textAnchor="middle" fill="#31A8FF" fontSize="46" fontWeight="bold" fontFamily="Arial">Ps</text>
+          </svg>
+          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Photoshop</span>
+        </div>
+        {/* Premiere Pro */}
+        <div className="flex flex-col items-center gap-1.5 group">
+          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="15" fill="#00005B"/>
+            <text x="50" y="68" textAnchor="middle" fill="#9999FF" fontSize="46" fontWeight="bold" fontFamily="Arial">Pr</text>
+          </svg>
+          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Premiere Pro</span>
+        </div>
+        {/* Canva */}
+        <div className="flex flex-col items-center gap-1.5 group">
+          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="50" fill="#7D2AE7"/>
+            <text x="50" y="68" textAnchor="middle" fill="white" fontSize="52" fontWeight="bold" fontFamily="Arial">C</text>
+          </svg>
+          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Canva</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -599,11 +696,16 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+  }, [isDark]);
+
   return (
     <div
       className="bg-white text-black min-h-screen overflow-x-hidden"
       style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
     >
+      <style>{DARK_CSS}</style>
       <NoiseOverlay />
 
       {/* NAV */}
@@ -621,7 +723,7 @@ export default function App() {
           </div>
 
           {/* Desktop links */}
-          <div className="hidden md:flex gap-8">
+          <div className="hidden md:flex items-center gap-8">
             {["About","Projects","Skills","Contact"].map((item) => (
               <a
                 key={item}
@@ -632,6 +734,14 @@ export default function App() {
                 {item}
               </a>
             ))}
+            <button
+              onClick={() => setIsDark((d) => !d)}
+              className="text-[10px] tracking-[0.25em] uppercase border border-current px-3 py-1 hover:bg-black hover:text-white transition-all"
+              style={{ fontFamily: "'Courier Prime', monospace" }}
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? "LIGHT" : "DARK"}
+            </button>
           </div>
 
           {/* Hamburger */}
@@ -660,6 +770,13 @@ export default function App() {
                 {item}
               </a>
             ))}
+            <button
+              onClick={() => { setIsDark((d) => !d); setMenuOpen(false); }}
+              className="text-left text-[11px] tracking-[0.3em] uppercase"
+              style={{ fontFamily: "'Courier Prime', monospace" }}
+            >
+              {isDark ? "☀ LIGHT MODE" : "☾ DARK MODE"}
+            </button>
           </div>
         )}
       </nav>
@@ -882,6 +999,7 @@ export default function App() {
             <div className="border-t border-dashed border-black mt-4 pt-4 text-center text-[9px] tracking-widest uppercase text-black/40">
               TOTAL: {CERTS.length} CREDENTIALS
             </div>
+            <ToolLogos />
           </div>
         </div>
       </section>
@@ -958,6 +1076,7 @@ export default function App() {
       {/* CONTACT */}
       <section
         id="contact"
+        data-keep-dark=""
         className="relative px-6 md:px-16 pt-16 md:pt-24 pb-12 md:pb-16 bg-black text-white overflow-hidden"
       >
         <div
