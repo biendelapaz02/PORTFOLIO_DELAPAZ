@@ -825,7 +825,7 @@ export default function App() {
               </div>
               <div className="flex gap-4 text-[11px] tracking-widest uppercase">
                 <span className="text-black/40">Status</span>
-                <span>BSCS 3-1N — Class President</span>
+                <span>BSCS 4-1N — Class President</span>
               </div>
             </div>
 
