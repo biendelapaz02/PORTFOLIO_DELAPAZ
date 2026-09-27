@@ -750,13 +750,6 @@ export default function App() {
         <div className="absolute top-24 right-8 md:right-16">
           <MargieleNumbers />
         </div>
-        <div
-          className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] tracking-[0.4em] uppercase text-black/40"
-          style={{ fontFamily: "'Courier Prime', monospace" }}
-        >
-          00 — INTRODUCTION
-        </div>
-
         <div className="relative z-10">
           <span
             className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase"
