@@ -1,30 +1,44 @@
 import { useEffect, useRef, useState } from "react";
-import portrait from "../imports/2BY2PIC.JPG";
-import lumenAdminIssuer from "../imports/ADMIN_ISSUER.PNG";
-import lumenHome from "../imports/lumenhome.PNG";
-import lumenUserDash from "../imports/USER_DASH.PNG";
-import lumenUserVault from "../imports/USER_VAULT.PNG";
-import lumenUser from "../imports/USER.PNG";
-import lumenVerify from "../imports/verify.PNG";
-import sentiAdminDashboard from "../imports/admindashboard.PNG";
-import sentiAgentDashboard from "../imports/AGENT_DASHBOARD.PNG";
-import sentiAgentRegister from "../imports/AGENTregister.PNG";
-import sentiAnalytics from "../imports/analytics.PNG";
-import sentiAdmin from "../imports/admin.PNG";
-import bpiHome from "../imports/homebpi.PNG";
-import camHome from "../imports/HOMEE.PNG";
-import camTop from "../imports/top.PNG";
-import camFesti from "../imports/festi.PNG";
-import camPlanTrip from "../imports/plantrip.PNG";
-import camContact from "../imports/contactkaya.PNG";
-import chefKitchen from "../imports/KITCHEN_MAIN_BUTTOM.PNG";
-import chefHome from "../imports/CHEFMAIMAI.PNG";
-import chefCook from "../imports/COOKN.PNG";
-import chefDiscover from "../imports/homeche.PNG";
-import chefPopup from "../imports/POPUP.PNG";
-import cashCatalyst1 from "../imports/CASH_CATALYST_2.png";
-import cashCatalyst2 from "../imports/CASH_CATALYST_SS_1.png";
-import cashCatalyst3 from "../imports/MONEYCASH.png";
+
+// — Portrait
+import portrait from "@/assets/2BY2PIC.JPG";
+
+// — LumenID screenshots
+import lumenAdminIssuer from "@/assets/ADMIN_ISSUER.PNG";
+import lumenHome        from "@/assets/lumenhome.PNG";
+import lumenUserDash    from "@/assets/USER_DASH.PNG";
+import lumenUserVault   from "@/assets/USER_VAULT.PNG";
+import lumenUser        from "@/assets/USER.PNG";
+import lumenVerify      from "@/assets/verify.PNG";
+
+// — SentiNet screenshots
+import sentiAdminDashboard from "@/assets/admindashboard.PNG";
+import sentiAgentDashboard from "@/assets/AGENT_DASHBOARD.PNG";
+import sentiAgentRegister  from "@/assets/AGENTregister.PNG";
+import sentiAnalytics      from "@/assets/analytics.PNG";
+import sentiAdmin          from "@/assets/admin.PNG";
+
+// — CarPayLater screenshots
+import bpiHome from "@/assets/homebpi.PNG";
+
+// — Camarines Norte screenshots
+import camHome    from "@/assets/HOMEE.PNG";
+import camTop     from "@/assets/top.PNG";
+import camFesti   from "@/assets/festi.PNG";
+import camPlanTrip from "@/assets/plantrip.PNG";
+import camContact  from "@/assets/contactkaya.PNG";
+
+// — Chef MAI screenshots
+import chefKitchen  from "@/assets/KITCHEN_MAIN_BUTTOM.PNG";
+import chefHome     from "@/assets/CHEFMAIMAI.PNG";
+import chefCook     from "@/assets/COOKN.PNG";
+import chefDiscover from "@/assets/homeche.PNG";
+import chefPopup    from "@/assets/POPUP.PNG";
+
+// — Cash Catalyst screenshots
+import cashCatalyst1 from "@/assets/CASH_CATALYST_2.png";
+import cashCatalyst2 from "@/assets/CASH_CATALYST_SS_1.png";
+import cashCatalyst3 from "@/assets/MONEYCASH.png";
 
 const MARGIELA_NUMBERS = [
   "0","1","2","3","4","5","6","7","8","9",
