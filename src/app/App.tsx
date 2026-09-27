@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import portrait from "../imports/2BY2PIC.JPG";
-import resume from "../imports/DELA_PAZ_RESUME-1.pdf";
 import lumenAdminIssuer from "../imports/ADMIN_ISSUER.PNG";
 import lumenHome from "../imports/lumenhome.PNG";
 import lumenUserDash from "../imports/USER_DASH.PNG";
@@ -13,9 +12,6 @@ import sentiAgentRegister from "../imports/AGENTregister.PNG";
 import sentiAnalytics from "../imports/analytics.PNG";
 import sentiAdmin from "../imports/admin.PNG";
 import bpiHome from "../imports/homebpi.PNG";
-import bpiProfile from "../imports/YES.PNG";
-import bpiAdmin from "../imports/WELCOMEBACK.PNG";
-import bpiForm from "../imports/anodaw.PNG";
 import camHome from "../imports/HOMEE.PNG";
 import camTop from "../imports/top.PNG";
 import camFesti from "../imports/festi.PNG";
