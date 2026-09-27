@@ -194,7 +194,7 @@ type StaticProject = {
   links?: { label: string; url: string }[];
   description: string;
   tags: string[];
-  image: string;
+  image: string | null;
   flip: boolean;
 };
 
@@ -212,7 +212,7 @@ const STATIC_PROJECTS: StaticProject[] = [
     description:
       "Designed the UI/UX architecture and interactive prototypes in Figma for a decision-support mobile application assisting students with managing fixed daily allowances. The interface employs a \"Transport First\" design logic and background optimization algorithms to reduce cognitive load and decision fatigue during budget allocation. Authored the comprehensive HCI report and developed low-fidelity to high-fidelity wireframes featuring real-time feedforward mechanisms, satisfaction slider interactions, and strict error prevention controls.",
     tags: ["Figma","UI/UX Architecture","HCI Report","Wireframing","Prototyping","Feedforward Mechanisms","Mobile UX"],
-    image: "",
+    image: null,
     flip: false,
   },
   {
@@ -634,52 +634,6 @@ const DARK_CSS = `
   html.dark [data-keep-dark] .hover\\:text-white\\/60:hover { color:rgba(255,255,255,0.6) !important; }
 `;
 
-function ToolLogos() {
-  return (
-    <div className="mt-8 pt-6 border-t border-black/20">
-      <div className="text-[9px] tracking-[0.4em] uppercase text-black/40 mb-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-        Tools Used
-      </div>
-      <div className="flex flex-wrap gap-5 items-center">
-        {/* Figma */}
-        <div className="flex flex-col items-center gap-1.5 group">
-          <svg width="28" height="40" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 28.5C19 24.91 21.91 22 25.5 22C29.09 22 32 24.91 32 28.5C32 32.09 29.09 35 25.5 35C21.91 35 19 32.09 19 28.5Z" fill="#1ABCFE"/>
-            <path d="M6 42C6 38.41 8.91 35.5 12.5 35.5H19V42C19 45.59 16.09 48.5 12.5 48.5C8.91 48.5 6 45.59 6 42Z" fill="#0ACF83"/>
-            <path d="M19 7V21.5H25.5C29.09 21.5 32 18.59 32 15C32 11.41 29.09 8.5 25.5 8.5L19 7Z" fill="#FF7262"/>
-            <path d="M6 15C6 18.59 8.91 21.5 12.5 21.5H19V8.5H12.5C8.91 8.5 6 11.41 6 15Z" fill="#F24E1E"/>
-            <path d="M6 28.5C6 32.09 8.91 35 12.5 35H19V22H12.5C8.91 22 6 24.91 6 28.5Z" fill="#A259FF"/>
-          </svg>
-          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Figma</span>
-        </div>
-        {/* Adobe Photoshop */}
-        <div className="flex flex-col items-center gap-1.5 group">
-          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="100" rx="15" fill="#001E36"/>
-            <text x="50" y="68" textAnchor="middle" fill="#31A8FF" fontSize="46" fontWeight="bold" fontFamily="Arial">Ps</text>
-          </svg>
-          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Photoshop</span>
-        </div>
-        {/* Premiere Pro */}
-        <div className="flex flex-col items-center gap-1.5 group">
-          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="100" rx="15" fill="#00005B"/>
-            <text x="50" y="68" textAnchor="middle" fill="#9999FF" fontSize="46" fontWeight="bold" fontFamily="Arial">Pr</text>
-          </svg>
-          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Premiere Pro</span>
-        </div>
-        {/* Canva */}
-        <div className="flex flex-col items-center gap-1.5 group">
-          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="100" rx="50" fill="#7D2AE7"/>
-            <text x="50" y="68" textAnchor="middle" fill="white" fontSize="52" fontWeight="bold" fontFamily="Arial">C</text>
-          </svg>
-          <span className="text-[8px] tracking-widest uppercase text-black/40" style={{ fontFamily: "'Courier Prime', monospace" }}>Canva</span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -995,7 +949,6 @@ export default function App() {
             <div className="border-t border-dashed border-black mt-4 pt-4 text-center text-[9px] tracking-widest uppercase text-black/40">
               TOTAL: {CERTS.length} CREDENTIALS
             </div>
-            <ToolLogos />
           </div>
         </div>
       </section>
