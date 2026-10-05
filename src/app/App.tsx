@@ -1109,25 +1109,38 @@ export default function App() {
               linkedin.com/in/bien-jeric-dela-paz
             </a>
           </div>
-          <div>
-            <div
-              className="text-[9px] tracking-[0.4em] uppercase text-white/30 mb-2"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              Credly
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <div
+                className="text-[9px] tracking-[0.4em] uppercase text-white/30 mb-2"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                Credly
+              </div>
+              <a
+                href="https://www.credly.com/users/bien-jeric-dela-paz"
+                target="_blank"
+                rel="noreferrer"
+                className="text-lg hover:text-white/60 transition-colors flex items-center gap-2"
+                style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0 opacity-60">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4a8 8 0 1 1 0 16A8 8 0 0 1 12 4zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 12 6zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+                </svg>
+                credly.com/bien-jeric-dela-paz
+              </a>
             </div>
-            <a
-              href="https://www.credly.com/users/bien-jeric-dela-paz"
-              target="_blank"
-              rel="noreferrer"
-              className="text-lg hover:text-white/60 transition-colors flex items-center gap-2"
-              style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="shrink-0 w-10 h-10 flex items-center justify-center border border-[#fff] bg-[#fff] text-[#000] hover:bg-transparent hover:text-[#fff] transition-all"
+              aria-label="Back to top"
+              title="Back to top"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0 opacity-60">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4a8 8 0 1 1 0 16A8 8 0 0 1 12 4zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 12 6zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5" />
+                <polyline points="5 12 12 5 19 12" />
               </svg>
-              credly.com/bien-jeric-dela-paz
-            </a>
+            </button>
           </div>
         </div>
 
