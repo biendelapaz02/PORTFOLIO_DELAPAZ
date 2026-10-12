@@ -46,6 +46,8 @@ const MARGIELA_NUMBERS = [
   "18","19","20","21","22","23",
 ];
 
+const HERO_ROLES = ["UI/UX", "Database", "Cybersecurity", "Web3"];
+
 const TICKER_ITEMS = [
   "JBECP PUP MANILA — MEDIA HEAD",
   "ASCII — DOCUMENTATION & SECRETARIAT",
@@ -425,9 +427,10 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
     <div className="flex flex-col gap-0 select-none">
       {/* Image box */}
       <div
-        className="relative overflow-hidden bg-neutral-200 aspect-[4/3] cursor-grab active:cursor-grabbing border border-black"
+        className="relative overflow-hidden bg-neutral-200 aspect-[4/3] cursor-grab active:cursor-grabbing border border-black touch-pan-y"
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
+        onPointerCancel={() => setDragging(false)}
       >
         <img
           key={current}
@@ -477,8 +480,11 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-1.5 h-1.5 transition-all ${i === current ? "bg-black scale-125" : "bg-black/25"}`}
-            />
+              aria-label={`Go to image ${i + 1}`}
+              className="p-1.5 -m-1"
+            >
+              <span className={`block w-1.5 h-1.5 transition-all ${i === current ? "bg-black scale-125" : "bg-black/25"}`} />
+            </button>
           ))}
         </div>
 
@@ -513,14 +519,14 @@ function ProjectModule({ project }: { project: Project }) {
     <div className="border-b border-black">
       {/* Project index label */}
       <div
-        className="border-b border-black/20 px-8 md:px-16 py-3 flex items-center gap-4"
+        className="border-b border-black/20 px-6 md:px-16 py-3 flex flex-wrap items-center gap-x-4 gap-y-2"
         style={{ fontFamily: "'Courier Prime', monospace" }}
       >
         <span className="text-[9px] tracking-[0.4em] uppercase text-black/40">{project.index}</span>
         <span className="text-[9px] tracking-[0.4em] uppercase">{project.name.toUpperCase()}</span>
         {project.note && (
           <>
-            <div className="flex-1 h-px bg-black/10" />
+            <div className="hidden sm:block flex-1 h-px bg-black/10" />
             <span className="text-[8px] tracking-widest uppercase border border-black/30 px-2 py-0.5 text-black/50">
               {project.note}
             </span>
@@ -533,15 +539,15 @@ function ProjectModule({ project }: { project: Project }) {
         className={`grid grid-cols-1 md:grid-cols-2 ${project.flip ? "md:[&>*:first-child]:order-last" : ""}`}
       >
         {/* Carousel side */}
-        <div className={`p-6 md:p-10 ${project.flip ? "md:border-l border-black" : "md:border-r border-black"} border-b md:border-b-0`}>
+        <div className={`min-w-0 p-6 md:p-8 lg:p-10 ${project.flip ? "md:border-l border-black" : "md:border-r border-black"} border-b md:border-b-0`}>
           <ProjectCarousel images={project.images} />
         </div>
 
         {/* Text side */}
-        <div className="p-6 md:p-12 flex flex-col justify-between">
+        <div className="min-w-0 p-6 md:p-8 lg:p-12 flex flex-col justify-between">
           <div>
             <h3
-              className="text-3xl md:text-5xl font-black uppercase leading-tight tracking-tight mb-3"
+              className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight tracking-tight mb-3 break-words"
               style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
             >
               {project.name}
@@ -746,8 +752,8 @@ export default function App() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex flex-col justify-end px-8 md:px-16 pb-16 pt-32 overflow-hidden">
-        <div className="absolute top-24 right-8 md:right-16">
+      <section className="relative min-h-screen supports-[min-height:100svh]:min-h-[100svh] flex flex-col justify-end px-6 md:px-16 pb-12 md:pb-16 pt-32 overflow-hidden">
+        <div className="absolute top-24 right-6 md:right-16">
           <MargieleNumbers />
         </div>
         <div className="relative z-10">
@@ -757,29 +763,38 @@ export default function App() {
           >
             BIEN
           </span>
-          <div className="flex items-end gap-6 flex-wrap">
+          <div className="flex items-end gap-6">
             <span
               className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase"
               style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
             >
               JERIC
             </span>
+            {/* Desktop roles — beside the name */}
             <div
-              className="mb-4 flex flex-col gap-[2px] text-[10px] tracking-[0.25em] uppercase"
+              className="hidden md:flex mb-2 lg:mb-4 flex-col gap-[2px] text-[10px] tracking-[0.25em] uppercase"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
-              <span>UI/UX</span>
-              <span>Database</span>
-              <span>Cybersecurity</span>
-              <span>Web3</span>
+              {HERO_ROLES.map((role) => (
+                <span key={role}>{role}</span>
+              ))}
             </div>
           </div>
           <span
-            className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase"
+            className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase whitespace-nowrap"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
           >
             DELA PAZ
           </span>
+          {/* Mobile roles — below the name so they don't push the lines apart */}
+          <div
+            className="md:hidden mt-5 flex flex-wrap gap-x-4 gap-y-1 text-[10px] tracking-[0.25em] uppercase"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
+          >
+            {HERO_ROLES.map((role) => (
+              <span key={role}>{role}</span>
+            ))}
+          </div>
         </div>
 
         <div className="relative z-10 mt-8 md:mt-12 md:ml-auto max-w-md md:text-right">
@@ -801,8 +816,8 @@ export default function App() {
           <span className="text-[10px] tracking-[0.4em] uppercase">About</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-16 items-start">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] lg:grid-cols-[1fr_280px] gap-12 md:gap-16 items-start">
+          <div className="min-w-0">
             <h2
               className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight mb-8"
               style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
@@ -820,11 +835,11 @@ export default function App() {
             </p>
             <div className="mt-12 flex flex-col gap-1" style={{ fontFamily: "'Courier Prime', monospace" }}>
               <div className="flex gap-4 text-[11px] tracking-widest uppercase">
-                <span className="text-black/40">Location</span>
+                <span className="text-black/40 shrink-0 w-20">Location</span>
                 <span>Marikina City</span>
               </div>
               <div className="flex gap-4 text-[11px] tracking-widest uppercase">
-                <span className="text-black/40">Status</span>
+                <span className="text-black/40 shrink-0 w-20">Status</span>
                 <span>BSCS 4-1N — Class President</span>
               </div>
             </div>
@@ -849,7 +864,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative w-full max-w-[260px] md:max-w-none">
             <div className="border border-black overflow-hidden aspect-[3/4] bg-neutral-200">
               <img
                 src={portrait}
@@ -859,7 +874,7 @@ export default function App() {
               />
             </div>
             <div
-              className="absolute -bottom-6 -left-2 text-[9px] tracking-[0.3em] uppercase"
+              className="absolute -bottom-6 left-0 md:-left-2 text-[9px] tracking-[0.3em] uppercase"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               Fig. 01 — Subject
@@ -877,18 +892,18 @@ export default function App() {
       {/* PROJECTS */}
       <section id="projects" className="border-b border-black">
         <div
-          className="px-8 md:px-16 py-8 flex items-center gap-4"
+          className="px-6 md:px-16 py-8 flex items-center gap-4"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">02</span>
-          <div className="flex-1 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase">Lookbook — Selected Works</span>
+          <div className="flex-1 min-w-4 h-px bg-black/20" />
+          <span className="text-[10px] tracking-[0.2em] sm:tracking-[0.4em] uppercase text-right">Lookbook — Selected Works</span>
         </div>
 
         {/* Editorial label strip */}
-        <div className="border-t border-b border-black px-8 md:px-16 py-2 bg-black">
+        <div className="border-t border-b border-black px-6 md:px-16 py-2 bg-black">
           <p
-            className="text-[9px] tracking-[0.5em] uppercase text-white"
+            className="text-[9px] tracking-[0.3em] sm:tracking-[0.5em] leading-relaxed uppercase text-white"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             {MARGIELA_NUMBERS.join("  ")} — Ten Projects, Ten Modules
@@ -913,7 +928,7 @@ export default function App() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          <div className="border border-black p-8 md:p-12" style={{ fontFamily: "'Courier Prime', monospace" }}>
+          <div className="min-w-0 border border-black p-6 md:p-8 lg:p-12" style={{ fontFamily: "'Courier Prime', monospace" }}>
             <div className="text-[10px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
               *** SKILL MANIFEST ***
             </div>
@@ -926,9 +941,9 @@ export default function App() {
                   {String(i).padStart(2, "0")} — {skill.category}
                 </div>
                 {skill.items.map((item) => (
-                  <div key={item} className="flex justify-between text-[13px] py-0.5">
-                    <span>· {item}</span>
-                    <span className="text-black/30">✓</span>
+                  <div key={item} className="flex justify-between gap-3 text-[13px] py-0.5">
+                    <span className="min-w-0 break-words">· {item}</span>
+                    <span className="text-black/30 shrink-0">✓</span>
                   </div>
                 ))}
               </div>
@@ -938,7 +953,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="border border-black md:border-l-0 border-t-0 md:border-t p-6 md:p-12 flex flex-col" style={{ fontFamily: "'Courier Prime', monospace" }}>
+          <div className="min-w-0 border border-black md:border-l-0 border-t-0 md:border-t p-6 md:p-8 lg:p-12 flex flex-col" style={{ fontFamily: "'Courier Prime', monospace" }}>
             <div className="text-[10px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
               *** CERTIFICATIONS ***
             </div>
@@ -968,7 +983,7 @@ export default function App() {
           <span className="text-[10px] tracking-[0.4em] uppercase">Education & Credentials</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 [&>*]:min-w-0">
           <div>
             <div
               className="text-[9px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
@@ -1036,7 +1051,7 @@ export default function App() {
         className="relative px-6 md:px-16 pt-16 md:pt-24 pb-12 md:pb-16 bg-black text-white overflow-hidden"
       >
         <div
-          className="absolute top-8 right-8 text-white/5 text-[120px] font-black leading-none select-none pointer-events-none"
+          className="absolute top-8 right-6 md:right-8 text-white/5 text-[72px] md:text-[120px] font-black leading-none select-none pointer-events-none"
           style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
         >
           05
@@ -1052,14 +1067,14 @@ export default function App() {
         <div className="mb-12 overflow-hidden flex flex-col gap-2">
           <a
             href="mailto:bienjericdelapaz9@gmail.com"
-            className="block text-[4vw] sm:text-[3vw] md:text-[2.2vw] font-black uppercase leading-tight tracking-tight hover:text-white/60 transition-colors break-all"
+            className="block text-[4.4vw] sm:text-[3vw] md:text-[2.2vw] font-black uppercase leading-tight tracking-tight hover:text-white/60 transition-colors break-all"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
           >
             bienjericdelapaz9@gmail.com
           </a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 border-t border-white/20 pt-8 md:pt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 border-t border-white/20 pt-8 md:pt-12 [&>*]:min-w-0 [&_a]:break-all">
           <div>
             <div
               className="text-[9px] tracking-[0.4em] uppercase text-white/30 mb-2"
@@ -1144,9 +1159,9 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-24 flex items-end justify-between">
+        <div className="mt-12 md:mt-24 flex items-end justify-between gap-6">
           <div
-            className="hidden md:block text-[9px] tracking-[0.4em] uppercase text-white/20"
+            className="hidden lg:block text-[9px] tracking-[0.4em] uppercase text-white/20"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             {MARGIELA_NUMBERS.join("  ")}
