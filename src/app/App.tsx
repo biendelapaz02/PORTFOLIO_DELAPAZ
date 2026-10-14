@@ -270,6 +270,91 @@ const STATIC_PROJECTS: StaticProject[] = [
   },
 ];
 
+// Frames for the main-page film strip, mixed from all three shoots ("v:" = a video still)
+const FILMSTRIP = [
+  "photo-03", "lookbook-04", "v:BOWUpSQEzxQ", "photo-09", "lookbook-01", "photo-08",
+  "v:R5vNwzwlkvI", "lookbook-07", "photo-12", "photo-10", "v:V0Xyr9BykLk", "lookbook-02",
+  "photo-06", "lookbook-03", "v:Bxt_4MRqYbM", "photo-14", "lookbook-10", "v:Z8rJT9ooEYg",
+];
+
+function FilmStrip() {
+  const frames = FILMSTRIP.map((key) => {
+    if (key.startsWith("v:")) {
+      const video = VIDEOS.find((v) => v.id === key.slice(2))!;
+      return {
+        key,
+        src: `https://i.ytimg.com/vi/${video.id}/${video.thumb}.jpg`,
+        alt: `Still from ${video.title}`,
+        ratio: video.ratio,
+        href: "/creative#video",
+        isVideo: true,
+      };
+    }
+    const photo = [...PHOTOGRAPHY, ...LOOKBOOK].find((p) => p.name === key)!;
+    return {
+      key,
+      src: photoUrl(key, "sm"),
+      alt: photo.alt,
+      ratio: photo.w / photo.h,
+      href: key.startsWith("photo") ? "/creative#photography" : "/creative#modeling",
+      isVideo: false,
+    };
+  });
+
+  return (
+    <div className="filmstrip -mx-6 md:-mx-16 overflow-hidden bg-[#111]">
+      {/* The frames run twice in a row so the loop is seamless; the copy is hidden from screen readers */}
+      <div className="filmstrip-track flex w-max gap-2 pr-2 py-5">
+        {[...frames, ...frames].map((frame, i) => {
+          const copy = i >= frames.length;
+          return (
+            <a
+              key={`${frame.key}-${i}`}
+              href={frame.href}
+              aria-hidden={copy || undefined}
+              tabIndex={copy ? -1 : undefined}
+              className="group relative block shrink-0 h-[120px] md:h-[180px] overflow-hidden bg-[#222]"
+              style={{ aspectRatio: frame.ratio }}
+            >
+              <img
+                src={frame.src}
+                alt={copy ? "" : frame.alt}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.04] transition-[opacity,transform] duration-500"
+              />
+              {frame.isVideo && (
+                <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-[#fff] text-[#000]">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="6 4 20 12 6 20 6 4" />
+                    </svg>
+                  </span>
+                </span>
+              )}
+            </a>
+          );
+        })}
+      </div>
+      <style>{`
+        .filmstrip-track {
+          animation: filmstrip 80s linear infinite;
+          /* sprocket holes along the top and bottom edges, moving with the frames */
+          background:
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.28) 0 12px, transparent 12px 28px) left 6px top 6px / 100% 8px repeat-x,
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.28) 0 12px, transparent 12px 28px) left 6px bottom 6px / 100% 8px repeat-x;
+        }
+        .filmstrip:hover .filmstrip-track { animation-play-state: paused; }
+        @keyframes filmstrip { to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) {
+          .filmstrip { overflow-x: auto; }
+          .filmstrip-track { animation: none; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 function StaticProjectModule({ project }: { project: StaticProject }) {
   return (
     <div className="border-b border-black/30 px-6 md:px-16 py-8 md:py-10 grid grid-cols-1 md:grid-cols-[80px_1fr] gap-3 md:gap-6">
@@ -860,88 +945,57 @@ export default function App() {
         ))}
       </section>
 
-      {/* BEHIND THE CAMERA */}
-      <section id="camera" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
-        <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">03</span>
-          <div className="flex-1 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase">Behind the Camera</span>
+      {/* BEHIND THE CAMERA — a preview; the full work lives on the /creative page */}
+      <section
+        id="camera"
+        data-keep-dark=""
+        className="relative px-6 md:px-16 pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
+      >
+        <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">03</span>
+          <div className="flex-1 h-px bg-white/20" />
+          <span className="text-[10px] tracking-[0.4em] uppercase text-white">Behind the Camera</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 md:gap-16 mb-10 md:mb-14 items-end">
-          <h2
-            className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
-            style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-12 mb-10 md:mb-12">
+          <div className="max-w-2xl">
+            <h2
+              className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
+              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+            >
+              Photo, Film & Lookbook
+            </h2>
+            <p
+              className="mt-2 text-lg md:text-xl text-white/60"
+              style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
+            >
+              {PHOTOGRAPHY.length} photos · {VIDEOS.length} videos · {LOOKBOOK.length} lookbook shots
+            </p>
+            <p
+              className="mt-4 text-base md:text-lg leading-relaxed text-white/80"
+              style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+            >
+              Photography taught me composition and light, video taught me pacing, and modeling taught me how a
+              brand presents itself. I bring that same eye to every interface I design.
+            </p>
+          </div>
+          <a
+            href="/creative"
+            className="shrink-0 self-start md:self-auto inline-flex items-center gap-3 border border-white px-6 py-3 text-[10px] tracking-[0.35em] uppercase hover:bg-[#fff] hover:text-[#000] transition-colors"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
           >
-            Photo, Film & Lookbook
-          </h2>
-          <p
-            className="text-base md:text-lg leading-relaxed max-w-xl"
-            style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
-          >
-            Photography taught me composition and light, video taught me pacing, and modeling taught me how a
-            brand presents itself. I bring that same eye to every interface I design.
-          </p>
+            View all creative work →
+          </a>
         </div>
 
-        {/* Preview cards; the full work lives on the /creative page */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 md:gap-6">
-          {[
-            {
-              title: "Photography",
-              note: `${PHOTOGRAPHY.length} photos · ASCII merch campaign`,
-              href: "/creative#photography",
-              image: photoUrl("photo-03", "sm"),
-              alt: "Model in a navy Teknolohista shirt adjusting her glasses",
-            },
-            {
-              title: "Video & Film",
-              note: `${VIDEOS.length} videos · Shot & edited in Premiere Pro`,
-              href: "/creative#video",
-              image: `https://i.ytimg.com/vi/${VIDEOS[0].id}/${VIDEOS[0].thumb}.jpg`,
-              alt: `Still from ${VIDEOS[0].title}`,
-            },
-            {
-              title: "Modeling",
-              note: `${LOOKBOOK.length} photos · SIPAT Merchandise by UP GEOP`,
-              href: "/creative#modeling",
-              image: photoUrl("lookbook-01", "sm"),
-              alt: "Back view in a Fighting Maroons 00 jersey and bandana",
-            },
-          ].map((card) => (
-            <a key={card.title} href={card.href} className="group block min-w-0">
-              <div className="aspect-[4/5] overflow-hidden bg-neutral-200">
-                <img
-                  src={card.image}
-                  alt={card.alt}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                />
-              </div>
-              <h3
-                className="mt-4 text-xl md:text-2xl font-black uppercase leading-tight tracking-tight group-hover:line-through"
-                style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-              >
-                {card.title} →
-              </h3>
-              <p
-                className="text-base text-black/60"
-                style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-              >
-                {card.note}
-              </p>
-            </a>
-          ))}
-        </div>
+        <FilmStrip />
 
-        <a
-          href="/creative"
-          className="mt-10 md:mt-12 inline-flex items-center gap-3 border border-black bg-black text-white px-6 py-3 text-[10px] tracking-[0.35em] uppercase hover:bg-white hover:text-black transition-colors"
+        <p
+          className="mt-4 text-[9px] tracking-[0.3em] uppercase text-white/40"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
-          View all creative work →
-        </a>
+          Tap a frame to open it
+        </p>
       </section>
 
       {/* SKILLS */}

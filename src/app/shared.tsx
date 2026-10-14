@@ -45,6 +45,8 @@ export type Video = {
   gear: string;
   // maxresdefault doesn't exist for every upload; fall back to hqdefault
   thumb: "maxresdefault" | "hqdefault";
+  // Shape of the footage; 4:3 videos are pillarboxed inside YouTube's 16:9 thumbnails
+  ratio: number;
   links?: { label: string; url: string }[];
 };
 
@@ -57,6 +59,7 @@ export const VIDEOS: Video[] = [
     role: "Shot",
     gear: "Sony Handycam",
     thumb: "maxresdefault",
+    ratio: 4 / 3,
   },
   {
     id: "R5vNwzwlkvI",
@@ -66,6 +69,7 @@ export const VIDEOS: Video[] = [
     role: "Shot",
     gear: "Sony Handycam · Fisheye lens",
     thumb: "maxresdefault",
+    ratio: 16 / 9,
     links: [{ label: "Published by ASCII on Facebook", url: "https://www.facebook.com/reel/25862433400065628" }],
   },
   {
@@ -76,6 +80,7 @@ export const VIDEOS: Video[] = [
     role: "Shot & Edited",
     gear: "Sony Handycam · Adobe Premiere Pro",
     thumb: "hqdefault",
+    ratio: 4 / 3,
   },
   {
     id: "Bxt_4MRqYbM",
@@ -85,6 +90,7 @@ export const VIDEOS: Video[] = [
     role: "Shot & Edited",
     gear: "Samsung digicam · Adobe Premiere Pro",
     thumb: "maxresdefault",
+    ratio: 4 / 3,
   },
   {
     id: "Z8rJT9ooEYg",
@@ -94,6 +100,7 @@ export const VIDEOS: Video[] = [
     role: "Shot & Edited",
     gear: "Samsung digicam · Adobe Premiere Pro",
     thumb: "maxresdefault",
+    ratio: 4 / 3,
   },
 ];
 
