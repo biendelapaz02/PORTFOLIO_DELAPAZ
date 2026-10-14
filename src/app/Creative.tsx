@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   DARK_CSS,
   DarkToggleIcon,
+  LINK_BUTTON,
   LOOKBOOK,
   LOOKBOOK_LINKS,
   Lightbox,
@@ -106,12 +107,12 @@ function VideoCard({ video, featured = false }: { video: Video; featured?: boole
         >
           {video.role} · {video.gear}
         </p>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
           <a
             href={`https://youtu.be/${video.id}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
+            className={`${LINK_BUTTON} border-black`}
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             Watch on YouTube
@@ -122,7 +123,7 @@ function VideoCard({ video, featured = false }: { video: Video; featured?: boole
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-black/30 px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase text-black/60 hover:bg-black hover:text-white transition-all"
+              className={`${LINK_BUTTON} border-black/30 text-black/60`}
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               {link.label} ↗
@@ -253,10 +254,11 @@ export default function Creative() {
       <NoiseOverlay />
 
       {/* NAV */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-black">
+      {/* The ::before backing fills any gap above the bar so photos never show through while scrolling */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-black before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit">
         {/* Phones: logo and toggle on top, the three links in a row below */}
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4">
-          <a href="/" className="text-[12px] tracking-[0.3em] uppercase whitespace-nowrap" style={{ fontFamily: "'Courier Prime', monospace" }}>
+          <a href="/" className="py-2 -my-2 text-[12px] tracking-[0.3em] uppercase whitespace-nowrap" style={{ fontFamily: "'Courier Prime', monospace" }}>
             ← BJDP
           </a>
           <div className="order-last md:order-none w-full md:w-auto flex items-center justify-between md:justify-start md:gap-8">
@@ -264,7 +266,7 @@ export default function Creative() {
               <a
                 key={part.id}
                 href={`#${part.id}`}
-                className="text-[12px] tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase hover:line-through"
+                className="py-2 -my-2 text-[12px] tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase hover:line-through"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 {part.label}

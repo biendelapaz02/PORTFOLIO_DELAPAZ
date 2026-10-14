@@ -724,7 +724,7 @@ export default function App() {
 
       {/* NAV */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit ${
           scrolled || menuOpen ? "bg-white border-b border-black" : "bg-transparent"
         }`}
       >

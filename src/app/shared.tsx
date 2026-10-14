@@ -70,7 +70,7 @@ export const VIDEOS: Video[] = [
     gear: "Sony Handycam · Fisheye lens",
     thumb: "maxresdefault",
     ratio: 16 / 9,
-    links: [{ label: "Published by ASCII on Facebook", url: "https://www.facebook.com/reel/25862433400065628" }],
+    links: [{ label: "Facebook reel by ASCII", url: "https://www.facebook.com/reel/25862433400065628" }],
   },
   {
     id: "V0Xyr9BykLk",
@@ -213,16 +213,20 @@ export const LOOKBOOK_LINKS = [
   { label: "SIPAT lookbook, part 2", url: "https://www.facebook.com/share/p/19Y42KeuaQ/" },
 ];
 
+// Outline link button: full width and thumb-sized on phones, compact from sm up
+export const LINK_BUTTON =
+  "flex sm:inline-flex w-full sm:w-auto items-center justify-center gap-2 min-h-[44px] sm:min-h-0 border px-4 py-1.5 text-[12px] tracking-[0.2em] lg:tracking-[0.3em] uppercase text-center whitespace-nowrap hover:bg-black hover:text-white transition-all";
+
 export function SourceLinks({ links }: { links: { label: string; url: string }[] }) {
   return (
-    <div className="flex flex-wrap gap-3 mb-6 md:mb-8">
+    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mb-6 md:mb-8">
       {links.map((link) => (
         <a
           key={link.url}
           href={link.url}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
+          className={`${LINK_BUTTON} border-black`}
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           {link.label} ↗
