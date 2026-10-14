@@ -68,7 +68,7 @@ function VideoCard({ video, featured = false }: { video: Video; featured?: boole
               </span>
             </span>
             <span
-              className="absolute top-3 right-3 text-[8px] tracking-[0.3em] uppercase text-[#fff] bg-[#000]/70 px-2 py-0.5"
+              className="absolute top-3 right-3 text-[11px] tracking-[0.3em] uppercase text-[#fff] bg-[#000]/70 px-2 py-0.5"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               {video.role}
@@ -80,7 +80,7 @@ function VideoCard({ video, featured = false }: { video: Video; featured?: boole
       <div className="pt-4">
         <div className="flex items-baseline gap-3 mb-1">
           <span
-            className="text-[9px] tracking-[0.4em] uppercase text-black/40 shrink-0"
+            className="text-[11px] tracking-[0.4em] uppercase text-black/40 shrink-0"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             {video.index}
@@ -109,7 +109,7 @@ function VideoCard({ video, featured = false }: { video: Video; featured?: boole
             href={`https://youtu.be/${video.id}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
+            className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             Watch on YouTube
@@ -120,7 +120,7 @@ function VideoCard({ video, featured = false }: { video: Video; featured?: boole
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-black/30 px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase text-black/60 hover:bg-black hover:text-white transition-all"
+              className="inline-flex items-center gap-2 border border-black/30 px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase text-black/60 hover:bg-black hover:text-white transition-all"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               {link.label} ↗
@@ -245,7 +245,7 @@ export default function Creative() {
   }, [isDark]);
 
   useEffect(() => {
-    document.title = "Photo, Film & Lookbook — Bien Jeric Dela Paz";
+    document.title = "Behind & In Front of the Camera — Bien Jeric Dela Paz";
     if (window.location.hash) document.querySelector(window.location.hash)?.scrollIntoView();
   }, []);
 
@@ -257,7 +257,7 @@ export default function Creative() {
       {/* NAV */}
       <nav className="sticky top-0 z-50 bg-white border-b border-black">
         <div className="flex items-center justify-between gap-4 px-6 md:px-8 py-4">
-          <a href="/" className="text-[10px] tracking-[0.3em] uppercase" style={{ fontFamily: "'Courier Prime', monospace" }}>
+          <a href="/" className="text-[12px] tracking-[0.3em] uppercase" style={{ fontFamily: "'Courier Prime', monospace" }}>
             ← BJDP
           </a>
           <div className="flex items-center gap-4 md:gap-8">
@@ -265,7 +265,7 @@ export default function Creative() {
               <a
                 key={part.id}
                 href={`#${part.id}`}
-                className="text-[10px] tracking-[0.2em] md:tracking-[0.25em] uppercase hover:line-through"
+                className="text-[12px] tracking-[0.2em] md:tracking-[0.25em] uppercase hover:line-through"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 {part.label}
@@ -273,7 +273,7 @@ export default function Creative() {
             ))}
             <button
               onClick={() => setIsDark((d) => !d)}
-              className="hidden sm:block text-[10px] tracking-[0.25em] uppercase border border-current px-3 py-1 hover:bg-black hover:text-white transition-all"
+              className="hidden sm:block text-[12px] tracking-[0.25em] uppercase border border-current px-3 py-1 hover:bg-black hover:text-white transition-all"
               style={{ fontFamily: "'Courier Prime', monospace" }}
               aria-label="Toggle dark mode"
             >
@@ -286,16 +286,16 @@ export default function Creative() {
       {/* HEADER */}
       <header className="px-6 md:px-16 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-black">
         <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">04</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">04</span>
           <div className="flex-1 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase">Behind the Camera</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase">Creative</span>
         </div>
         <h1
           className="text-[11vw] md:text-[8vw] font-black leading-[0.9] tracking-[-0.04em] uppercase"
           style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
         >
-          Photo, Film
-          <br />& Lookbook
+          Behind &<br className="md:hidden" /> In Front{" "}
+          <br />of the Camera
         </h1>
         <p
           className="mt-8 md:mt-10 text-base md:text-lg leading-relaxed max-w-xl"
@@ -344,7 +344,7 @@ export default function Creative() {
         >
           ← Back to portfolio
         </a>
-        <div className="text-[9px] tracking-[0.3em] text-white/40" style={{ fontFamily: "'Courier Prime', monospace" }}>
+        <div className="text-[11px] tracking-[0.3em] text-white/40" style={{ fontFamily: "'Courier Prime', monospace" }}>
           © 2026 Bien Jeric Dela Paz
         </div>
       </footer>

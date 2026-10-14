@@ -60,13 +60,14 @@ const TICKER_ITEMS = [
 ];
 
 const SKILLS = [
-  { category: "PROGRAMMING & SCRIPTING", items: ["Java","JavaFX","C","Python","JavaScript","TypeScript","PHP","HTML/CSS","SQL","JSON"] },
-  { category: "TOOLS & PLATFORMS", items: ["Git","GitHub","Figma","React","Tailwind CSS","Canva","Adobe Photoshop"] },
+  { category: "DESIGN & FRONT-END", items: ["Figma","UI/UX Design","React","Tailwind CSS","HTML/CSS","JavaScript","TypeScript","Adobe Photoshop","Canva"] },
+  { category: "PROGRAMMING", items: ["Java","JavaFX","C","Python","PHP","SQL","JSON"] },
+  { category: "TOOLS", items: ["Git","GitHub"] },
   { category: "DATABASE & BACKEND", items: ["MySQL","SQLite","Data Modeling","ERD","Normalization","Python Flask"] },
   { category: "CYBERSECURITY & NETWORKING", items: ["Intrusion Detection & Prevention Systems (IDPS)","Scapy Packet Analysis","Network Simulation (Cisco Packet Tracer)","Security Protocol Implementation","Data Privacy Compliance"] },
   { category: "AI & MACHINE LEARNING", items: ["Bayesian Learning","Naive Bayes Classification","Random Forest Classifier","Feature Engineering","Image Recognition Integration"] },
   { category: "WEB3 & BLOCKCHAIN", items: ["Decentralized Identity (DID)","Verifiable Credentials (VC)","IPFS","MultiChain","Smart Contract Integration"] },
-  { category: "SOFT SKILLS", items: ["UI/UX Design","Team Collaboration","Public Speaking","Problem-Solving"] },
+  { category: "SOFT SKILLS", items: ["Team Collaboration","Public Speaking","Problem-Solving"] },
 ];
 
 const CERTS = [
@@ -430,7 +431,7 @@ function StaticProjectModule({ project }: { project: StaticProject }) {
               href={project.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
+              className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
@@ -445,7 +446,7 @@ function StaticProjectModule({ project }: { project: StaticProject }) {
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
+              className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -466,7 +467,7 @@ function MargieleNumbers() {
   return (
     <div
       style={{ fontFamily: "'Courier Prime', monospace" }}
-      className="text-[10px] tracking-widest text-black leading-[1.6] select-none"
+      className="text-[12px] tracking-widest text-black leading-[1.6] select-none"
     >
       {["0 1 2 3 4 5 6 7 8 9", "10 11 12 13 14 15 16 17", "18 19 20 21 22 23"].map((row, i) => (
         <div key={i}>{row}</div>
@@ -539,7 +540,7 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
         {total > 1 && (
           <div className="absolute bottom-3 left-3 pointer-events-none">
             <span
-              className="text-[8px] tracking-[0.3em] uppercase text-white/60 bg-black/30 px-2 py-0.5"
+              className="text-[11px] tracking-[0.3em] uppercase text-white/60 bg-black/30 px-2 py-0.5"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               ← DRAG →
@@ -549,7 +550,7 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
         {/* Caption */}
         <div className="absolute top-3 right-3">
           <span
-            className="text-[8px] tracking-[0.3em] uppercase text-white bg-black/70 px-2 py-0.5"
+            className="text-[11px] tracking-[0.3em] uppercase text-white bg-black/70 px-2 py-0.5"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             {images[current].caption}
@@ -561,7 +562,7 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
       <div className={`border border-t-0 border-black flex items-center justify-between px-3 py-2 bg-white ${total === 1 ? "hidden" : ""}`}>
         <button
           onClick={prev}
-          className="text-[9px] tracking-[0.3em] uppercase hover:line-through transition-all"
+          className="text-[11px] tracking-[0.3em] uppercase hover:line-through transition-all"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           ← PREV
@@ -582,7 +583,7 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
         </div>
 
         <div
-          className="text-[9px] tracking-[0.3em] text-black/40"
+          className="text-[11px] tracking-[0.3em] text-black/40"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           {String(current + 1)}/{total}
@@ -590,7 +591,7 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
 
         <button
           onClick={next}
-          className="text-[9px] tracking-[0.3em] uppercase hover:line-through transition-all"
+          className="text-[11px] tracking-[0.3em] uppercase hover:line-through transition-all"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           NEXT →
@@ -615,12 +616,12 @@ function ProjectModule({ project }: { project: Project }) {
         className="border-b border-black/20 px-6 md:px-16 py-3 flex flex-wrap items-center gap-x-4 gap-y-2"
         style={{ fontFamily: "'Courier Prime', monospace" }}
       >
-        <span className="text-[9px] tracking-[0.4em] uppercase text-black/40">{project.index}</span>
-        <span className="text-[9px] tracking-[0.4em] uppercase">{project.name.toUpperCase()}</span>
+        <span className="text-[11px] tracking-[0.4em] uppercase text-black/40">{project.index}</span>
+        <span className="text-[11px] tracking-[0.4em] uppercase">{project.name.toUpperCase()}</span>
         {project.note && (
           <>
             <div className="hidden sm:block flex-1 h-px bg-black/10" />
-            <span className="text-[8px] tracking-widest uppercase border border-black/30 px-2 py-0.5 text-black/50">
+            <span className="text-[11px] tracking-widest uppercase border border-black/30 px-2 py-0.5 text-black/50">
               {project.note}
             </span>
           </>
@@ -661,7 +662,7 @@ function ProjectModule({ project }: { project: Project }) {
 
           <div className="mt-8">
             <div
-              className="text-[8px] tracking-[0.4em] uppercase text-black/40 mb-2"
+              className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-2"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               Competencies
@@ -682,7 +683,7 @@ function ProjectModule({ project }: { project: Project }) {
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-black px-4 py-2 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
+                className="inline-flex items-center gap-2 border border-black px-4 py-2 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
@@ -720,7 +721,7 @@ export default function App() {
 
   return (
     <div
-      className="bg-white text-black min-h-screen overflow-x-hidden"
+      className="bg-white text-black min-h-screen overflow-x-clip"
       style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
     >
       <style>{DARK_CSS}</style>
@@ -733,7 +734,7 @@ export default function App() {
         }`}
       >
         <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4">
-          <div style={{ fontFamily: "'Courier Prime', monospace" }} className="shrink-0 whitespace-nowrap text-[10px] tracking-[0.3em] uppercase">
+          <div style={{ fontFamily: "'Courier Prime', monospace" }} className="shrink-0 whitespace-nowrap text-[12px] tracking-[0.3em] uppercase">
             BJDP —{" "}
             <span style={{ textDecoration: "line-through", textDecorationThickness: "2px" }}>
               Portfolio
@@ -746,7 +747,7 @@ export default function App() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[10px] tracking-[0.25em] uppercase hover:line-through transition-all"
+                className="text-[12px] tracking-[0.25em] uppercase hover:line-through transition-all"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 {item}
@@ -754,7 +755,7 @@ export default function App() {
             ))}
             <button
               onClick={() => setIsDark((d) => !d)}
-              className="text-[10px] tracking-[0.25em] uppercase border border-current px-3 py-1 hover:bg-black hover:text-white transition-all"
+              className="text-[12px] tracking-[0.25em] uppercase border border-current px-3 py-1 hover:bg-black hover:text-white transition-all"
               style={{ fontFamily: "'Courier Prime', monospace" }}
               aria-label="Toggle dark mode"
             >
@@ -820,7 +821,7 @@ export default function App() {
             </span>
             {/* Desktop roles — beside the name */}
             <div
-              className="hidden md:flex mb-2 lg:mb-4 flex-col gap-[2px] text-[10px] tracking-[0.25em] uppercase"
+              className="hidden md:flex mb-2 lg:mb-4 flex-col gap-[2px] text-[12px] tracking-[0.25em] uppercase"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               {HERO_ROLES.map((role) => (
@@ -836,7 +837,7 @@ export default function App() {
           </span>
           {/* Mobile roles — below the name so they don't push the lines apart */}
           <div
-            className="md:hidden mt-5 flex flex-wrap gap-x-4 gap-y-1 text-[10px] tracking-[0.25em] uppercase"
+            className="md:hidden mt-5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] tracking-[0.15em] uppercase"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             {HERO_ROLES.map((role) => (
@@ -861,11 +862,11 @@ export default function App() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="#projects"
+                href="#experience"
                 className="inline-flex items-center min-h-[44px] border border-black bg-black text-white px-6 text-[11px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-colors"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
-                View projects →
+                View my work →
               </a>
               <a
                 href={CV_FILE}
@@ -890,9 +891,9 @@ export default function App() {
       {/* ABOUT */}
       <section id="about" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">01</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">01</span>
           <div className="flex-1 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase">About</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase">About</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] lg:grid-cols-[1fr_280px] gap-12 md:gap-16 items-start">
@@ -934,13 +935,13 @@ export default function App() {
               />
             </div>
             <div
-              className="absolute -bottom-6 left-0 md:-left-2 text-[9px] tracking-[0.3em] uppercase"
+              className="absolute -bottom-6 left-0 md:-left-2 text-[11px] tracking-[0.3em] uppercase"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               Fig. 01 — Subject
             </div>
             <div
-              className="absolute top-3 right-3 text-[8px] tracking-widest text-white mix-blend-difference"
+              className="absolute top-3 right-3 text-[11px] tracking-widest text-[#fff] mix-blend-difference"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               {MARGIELA_NUMBERS.slice(0, 6).join(" ")}
@@ -952,9 +953,9 @@ export default function App() {
       {/* EXPERIENCE */}
       <section id="experience" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">02</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">02</span>
           <div className="flex-1 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase">Experience</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase">Experience</span>
         </div>
 
         {EXPERIENCE.map((job) => (
@@ -989,7 +990,7 @@ export default function App() {
               </p>
 
               <ul
-                className="mt-6 max-w-3xl flex flex-col gap-3 text-base md:text-lg leading-relaxed list-disc pl-5 marker:text-black/40"
+                className="mt-6 max-w-3xl flex flex-col gap-3 text-base md:text-lg leading-relaxed list-disc pl-5 marker:text-[#888]"
                 style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
               >
                 {job.points.map((point) => (
@@ -1016,7 +1017,7 @@ export default function App() {
                     href={link.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 border border-black px-4 py-2 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 border border-black px-4 py-2 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-colors"
                     style={{ fontFamily: "'Courier Prime', monospace" }}
                   >
                     {link.label} ↗
@@ -1034,9 +1035,9 @@ export default function App() {
           className="px-6 md:px-16 py-8 flex items-center gap-4"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">03</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">03</span>
           <div className="flex-1 min-w-4 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.2em] sm:tracking-[0.4em] uppercase text-right">Lookbook — Selected Works</span>
+          <span className="text-[12px] tracking-[0.2em] sm:tracking-[0.4em] uppercase text-right">Projects — Selected Works</span>
         </div>
 
         {/* Editorial label strip */}
@@ -1065,9 +1066,9 @@ export default function App() {
         className="relative px-6 md:px-16 pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
       >
         <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">04</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-white/30">04</span>
           <div className="flex-1 h-px bg-white/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase text-white">Behind the Camera</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-white">Creative</span>
         </div>
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-12 mb-10 md:mb-12">
@@ -1076,13 +1077,13 @@ export default function App() {
               className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
               style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
             >
-              Photo, Film & Lookbook
+              Behind &{" "}<br className="sm:hidden" />In Front <span className="sm:hidden">of<br /></span><br className="hidden sm:inline" /><span className="hidden sm:inline">of </span>the Camera
             </h2>
             <p
               className="mt-2 text-lg md:text-xl text-white/60"
               style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
             >
-              {PHOTOGRAPHY.length} photos · {VIDEOS.length} videos · {LOOKBOOK.length} lookbook shots
+              {PHOTOGRAPHY.length} photos · {VIDEOS.length} videos · {LOOKBOOK.length} modeling shots
             </p>
             <p
               className="mt-4 text-base md:text-lg leading-relaxed text-white/80"
@@ -1094,7 +1095,7 @@ export default function App() {
           </div>
           <a
             href="/creative"
-            className="shrink-0 self-start md:self-auto inline-flex items-center gap-3 border border-white px-6 py-3 text-[10px] tracking-[0.35em] uppercase hover:bg-[#fff] hover:text-[#000] transition-colors"
+            className="shrink-0 self-start md:self-auto inline-flex items-center gap-3 border border-white px-6 py-3 text-[12px] tracking-[0.35em] uppercase hover:bg-[#fff] hover:text-[#000] transition-colors"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             View all creative work →
@@ -1104,7 +1105,7 @@ export default function App() {
         <FilmStrip />
 
         <p
-          className="mt-4 text-[9px] tracking-[0.3em] uppercase text-white/40"
+          className="mt-4 text-[11px] tracking-[0.3em] uppercase text-white/40"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           Tap a frame to open it
@@ -1114,17 +1115,17 @@ export default function App() {
       {/* SKILLS */}
       <section id="skills" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">05</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">05</span>
           <div className="flex-1 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase">Competencies</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase">Competencies</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
           <div className="min-w-0 border border-black p-6 md:p-8 lg:p-12" style={{ fontFamily: "'Courier Prime', monospace" }}>
-            <div className="text-[10px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
-              *** SKILL MANIFEST ***
+            <div className="text-[12px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
+              *** SKILLS ***
             </div>
-            <div className="text-[10px] tracking-widest text-center mb-8 text-black/40">
+            <div className="text-[12px] tracking-widest text-center mb-8 text-black/40">
               {new Date().toISOString().split("T")[0]}
             </div>
             {SKILLS.map((skill, i) => (
@@ -1133,35 +1134,37 @@ export default function App() {
                   {String(i).padStart(2, "0")} — {skill.category}
                 </div>
                 {skill.items.map((item) => (
-                  <div key={item} className="flex justify-between gap-3 text-[13px] py-0.5">
-                    <span className="min-w-0 break-words">· {item}</span>
-                    <span className="text-black/30 shrink-0">✓</span>
+                  <div key={item} className="text-[13px] py-0.5 break-words">
+                    · {item}
                   </div>
                 ))}
               </div>
             ))}
-            <div className="border-t border-dashed border-black pt-4 text-center text-[9px] tracking-widest uppercase text-black/40">
+            <div className="border-t border-dashed border-black pt-4 text-center text-[11px] tracking-widest uppercase text-black/40">
               COMPETENCY TOTAL: {SKILLS.reduce((acc, s) => acc + s.items.length, 0)} ITEMS
             </div>
           </div>
 
-          <div className="min-w-0 border border-black md:border-l-0 border-t-0 md:border-t p-6 md:p-8 lg:p-12 flex flex-col" style={{ fontFamily: "'Courier Prime', monospace" }}>
-            <div className="text-[10px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
-              *** CERTIFICATIONS ***
-            </div>
-            <div className="text-[10px] tracking-widest text-center mb-6 text-black/40">
-              {new Date().toISOString().split("T")[0]}
-            </div>
-            {CERTS.map((cert, i) => (
-              <div key={cert} className="flex items-start gap-3 border-b border-black/20 py-3">
-                <span className="text-[9px] tracking-widest text-black/40 shrink-0 mt-0.5">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="text-[13px] tracking-[0.1em] uppercase">{cert}</p>
+          <div className="min-w-0 border border-black md:border-l-0 border-t-0 md:border-t p-6 md:p-8 lg:p-12" style={{ fontFamily: "'Courier Prime', monospace" }}>
+            {/* Stays in view while the longer skills list scrolls past */}
+            <div className="md:sticky md:top-24">
+              <div className="text-[12px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
+                *** CERTIFICATIONS ***
               </div>
-            ))}
-            <div className="border-t border-dashed border-black mt-4 pt-4 text-center text-[9px] tracking-widest uppercase text-black/40">
-              TOTAL: {CERTS.length} CREDENTIALS
+              <div className="text-[12px] tracking-widest text-center mb-6 text-black/40">
+                {new Date().toISOString().split("T")[0]}
+              </div>
+              {CERTS.map((cert, i) => (
+                <div key={cert} className="flex items-start gap-3 border-b border-black/20 py-3">
+                  <span className="text-[11px] tracking-widest text-black/40 shrink-0 mt-0.5">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-[13px] tracking-[0.1em] uppercase">{cert}</p>
+                </div>
+              ))}
+              <div className="border-t border-dashed border-black mt-4 pt-4 text-center text-[11px] tracking-widest uppercase text-black/40">
+                TOTAL: {CERTS.length} CREDENTIALS
+              </div>
             </div>
           </div>
         </div>
@@ -1170,15 +1173,15 @@ export default function App() {
       {/* EDUCATION & CERTIFICATIONS */}
       <section id="education" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">06</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">06</span>
           <div className="flex-1 h-px bg-black/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase">Education & Credentials</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase">Education & Credentials</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 [&>*]:min-w-0">
           <div>
             <div
-              className="text-[9px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
+              className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               Academic Record
@@ -1196,15 +1199,15 @@ export default function App() {
               Polytechnic University of the Philippines, Manila
             </p>
             <div className="mt-6 border border-black p-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-              <div className="text-[9px] tracking-widest uppercase text-black/40 mb-1">GPA</div>
+              <div className="text-[11px] tracking-widest uppercase text-black/40 mb-1">GPA</div>
               <div className="text-3xl font-black">1.29</div>
-              <div className="text-[9px] tracking-widest uppercase text-black/40 mt-1">Graduation Honors Track</div>
+              <div className="text-[11px] tracking-widest uppercase text-black/40 mt-1">Graduation Honors Track</div>
             </div>
           </div>
 
           <div>
             <div
-              className="text-[9px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
+              className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               Organizations
@@ -1217,7 +1220,7 @@ export default function App() {
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 border-b border-black/20 py-4">
                 <span
-                  className="text-[9px] tracking-widest text-black/40 mt-1 shrink-0"
+                  className="text-[11px] tracking-widest text-black/40 mt-1 shrink-0"
                   style={{ fontFamily: "'Courier Prime', monospace" }}
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -1250,9 +1253,9 @@ export default function App() {
         </div>
 
         <div className="mb-16 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">07</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-white/30">07</span>
           <div className="flex-1 h-px bg-white/20" />
-          <span className="text-[10px] tracking-[0.4em] uppercase text-white">Contact</span>
+          <span className="text-[12px] tracking-[0.4em] uppercase text-white">Contact</span>
         </div>
 
         {/* Primary emails */}
@@ -1269,7 +1272,7 @@ export default function App() {
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 border-t border-white/20 pt-8 md:pt-12 [&>*]:min-w-0 [&_a]:break-all">
           <div>
             <div
-              className="text-[9px] tracking-[0.4em] uppercase text-white/30 mb-2"
+              className="text-[11px] tracking-[0.4em] uppercase text-white/30 mb-2"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               Phone
@@ -1284,7 +1287,7 @@ export default function App() {
           </div>
           <div>
             <div
-              className="text-[9px] tracking-[0.4em] uppercase text-white/30 mb-2"
+              className="text-[11px] tracking-[0.4em] uppercase text-white/30 mb-2"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               GitHub
@@ -1301,7 +1304,7 @@ export default function App() {
           </div>
           <div>
             <div
-              className="text-[9px] tracking-[0.4em] uppercase text-white/30 mb-2"
+              className="text-[11px] tracking-[0.4em] uppercase text-white/30 mb-2"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               LinkedIn
@@ -1319,7 +1322,7 @@ export default function App() {
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
               <div
-                className="text-[9px] tracking-[0.4em] uppercase text-white/30 mb-2"
+                className="text-[11px] tracking-[0.4em] uppercase text-white/30 mb-2"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 Credly
@@ -1359,7 +1362,7 @@ export default function App() {
             {MARGIELA_NUMBERS.join("  ")}
           </div>
           <div
-            className="text-[9px] tracking-[0.3em] text-white/20"
+            className="text-[11px] tracking-[0.3em] text-white/20"
             style={{ fontFamily: "'Courier Prime', monospace" }}
           >
             © 2026 Bien Jeric Dela Paz. All rights reserved.

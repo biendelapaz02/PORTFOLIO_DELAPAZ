@@ -25,8 +25,8 @@ test.describe("Main page", () => {
     const download = page.waitForEvent("download");
     await cv.click();
     expect((await download).suggestedFilename()).toBe("Dela-Paz-Resume.pdf");
-    await page.getByRole("link", { name: "View projects →" }).click();
-    await expect(page.locator("#projects")).toBeInViewport();
+    await page.getByRole("link", { name: "View my work →" }).click();
+    await expect(page.locator("#experience")).toBeInViewport();
   });
 
   test("can be found and shared: title, preview image, no noindex", async ({ page, request }) => {
@@ -68,7 +68,7 @@ test.describe("Main page", () => {
     await page.goto("/#creative");
     await page.getByRole("link", { name: "View all creative work" }).click();
     await expect(page).toHaveURL(/\/creative$/);
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Photo, Film");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("In Front of the Camera");
   });
 
   test("nothing sticks out sideways", async ({ page }) => {

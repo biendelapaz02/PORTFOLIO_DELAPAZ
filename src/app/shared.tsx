@@ -159,7 +159,7 @@ export function Lightbox({
       onClick={onClose}
     >
       <div
-        className="flex items-center justify-between px-6 md:px-8 py-4 text-[10px] tracking-[0.3em] uppercase"
+        className="flex items-center justify-between px-6 md:px-8 py-4 text-[12px] tracking-[0.3em] uppercase"
         style={{ fontFamily: "'Courier Prime', monospace" }}
       >
         <span className="text-white/60">
@@ -222,7 +222,7 @@ export function SourceLinks({ links }: { links: { label: string; url: string }[]
           href={link.url}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
+          className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           {link.label} ↗
