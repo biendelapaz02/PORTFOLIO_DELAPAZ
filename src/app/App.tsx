@@ -741,7 +741,7 @@ export default function App() {
           </div>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-5 lg:gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {["About","Experience","Projects","Creative","Skills","Contact"].map((item) => (
               <a
                 key={item}
@@ -764,7 +764,7 @@ export default function App() {
 
           {/* Hamburger */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-1"
+            className="lg:hidden flex flex-col gap-1.5 p-1"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Toggle menu"
           >
@@ -776,7 +776,7 @@ export default function App() {
 
         {/* Mobile drawer */}
         {menuOpen && (
-          <div className="md:hidden border-t border-black bg-white px-6 py-4 flex flex-col gap-4">
+          <div className="lg:hidden border-t border-black bg-white px-6 py-4 flex flex-col gap-4">
             {["About","Experience","Projects","Creative","Skills","Contact"].map((item) => (
               <a
                 key={item}
@@ -801,7 +801,7 @@ export default function App() {
 
       {/* HERO */}
       <section className="relative min-h-screen supports-[min-height:100svh]:min-h-[100svh] flex flex-col justify-end px-6 md:px-16 pb-12 md:pb-16 pt-32 overflow-hidden">
-        <div className="absolute top-24 right-6 md:right-16">
+        <div className="hidden md:block absolute top-24 right-16">
           <MargieleNumbers />
         </div>
         <div className="relative z-10">
@@ -839,10 +839,10 @@ export default function App() {
             >
               Computer Science student at PUP Manila, based in Marikina City. Open to web design and development roles.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-3">
               <a
                 href="#experience"
-                className="inline-flex items-center min-h-[44px] border border-black bg-black text-white px-6 text-[11px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-colors"
+                className="inline-flex items-center justify-center min-h-[44px] border border-black bg-black text-white px-6 text-[11px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-colors"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 View my work →
@@ -850,7 +850,7 @@ export default function App() {
               <a
                 href={CV_FILE}
                 download="Dela-Paz-Resume.pdf"
-                className="inline-flex items-center min-h-[44px] border border-black px-6 text-[11px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-colors"
+                className="inline-flex items-center justify-center min-h-[44px] border border-black px-6 text-[11px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-colors"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 Download CV ↓
