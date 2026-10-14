@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { DARK_CSS, LOOKBOOK, NoiseOverlay, PHOTOGRAPHY, photoUrl, VIDEOS } from "./shared";
 
 // — Portrait
 import portrait from "@/assets/2BY2PIC.JPG";
@@ -269,392 +270,6 @@ const STATIC_PROJECTS: StaticProject[] = [
   },
 ];
 
-type Video = {
-  id: string;
-  index: string;
-  title: string;
-  description: string;
-  role: string;
-  gear: string;
-  // maxresdefault doesn't exist for every upload; fall back to hqdefault
-  thumb: "maxresdefault" | "hqdefault";
-  links?: { label: string; url: string }[];
-};
-
-const VIDEOS: Video[] = [
-  {
-    id: "Bxt_4MRqYbM",
-    index: "01",
-    title: "Our De$tiny",
-    description: "Lifestyle vlog with a VHS look.",
-    role: "Shot & Edited",
-    gear: "Adobe Premiere Pro",
-    thumb: "maxresdefault",
-  },
-  {
-    id: "R5vNwzwlkvI",
-    index: "02",
-    title: "ASCII — Balik Sinta (Teaser)",
-    description: "Teaser for ASCII, a PUP student organization.",
-    role: "Shot",
-    gear: "Sony Handycam · Fisheye lens",
-    thumb: "maxresdefault",
-    links: [{ label: "Published by ASCII on Facebook", url: "https://www.facebook.com/reel/25862433400065628" }],
-  },
-  {
-    id: "BOWUpSQEzxQ",
-    index: "03",
-    title: "Alfie @ 21",
-    description: "21st birthday shoot in a vintage VHS style.",
-    role: "Shot",
-    gear: "Sony Handycam",
-    thumb: "maxresdefault",
-  },
-  {
-    id: "V0Xyr9BykLk",
-    index: "04",
-    title: "Gallardo & BMW",
-    description: "Car edit featuring a Lamborghini Gallardo and a BMW.",
-    role: "Shot & Edited",
-    gear: "Sony Handycam · Adobe Premiere Pro",
-    thumb: "hqdefault",
-  },
-  {
-    id: "Z8rJT9ooEYg",
-    index: "05",
-    title: "Ye feat. Everyone",
-    description: "Lifestyle video with a VHS look.",
-    role: "Shot & Edited",
-    gear: "Adobe Premiere Pro",
-    thumb: "maxresdefault",
-  },
-];
-
-function VideoCard({ video, featured = false }: { video: Video; featured?: boolean }) {
-  // Only the thumbnail loads up front; the YouTube player loads when clicked
-  const [playing, setPlaying] = useState(false);
-
-  return (
-    <div
-      className={`min-w-0 flex flex-col ${
-        featured ? "md:col-span-2 md:grid md:grid-cols-[2fr_1fr] md:gap-x-8 lg:gap-x-12 md:items-end" : ""
-      }`}
-    >
-      <div data-keep-dark="" className="relative aspect-video bg-black border border-black overflow-hidden">
-        {playing ? (
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0`}
-            title={video.title}
-            className="absolute inset-0 w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        ) : (
-          <button
-            onClick={() => setPlaying(true)}
-            className="group absolute inset-0 w-full h-full"
-            aria-label={`Play ${video.title}`}
-          >
-            <img
-              src={`https://i.ytimg.com/vi/${video.id}/${video.thumb}.jpg`}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-contain group-hover:opacity-80 transition-opacity"
-            />
-            <span className="absolute inset-0 flex items-center justify-center">
-              <span className="w-14 h-14 flex items-center justify-center bg-white text-[#000] group-hover:scale-110 transition-transform">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4" />
-                </svg>
-              </span>
-            </span>
-            <span
-              className="absolute top-3 right-3 text-[8px] tracking-[0.3em] uppercase text-white bg-black/70 px-2 py-0.5"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              {video.role}
-            </span>
-          </button>
-        )}
-      </div>
-
-      <div className="pt-4">
-        <div className="flex items-baseline gap-3 mb-1">
-          <span
-            className="text-[9px] tracking-[0.4em] uppercase text-black/40 shrink-0"
-            style={{ fontFamily: "'Courier Prime', monospace" }}
-          >
-            {video.index}
-          </span>
-          <h3
-            className="text-xl md:text-2xl font-black uppercase leading-tight tracking-tight break-words"
-            style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-          >
-            {video.title}
-          </h3>
-        </div>
-        <p
-          className="text-base text-black/80"
-          style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
-        >
-          {video.description}
-        </p>
-        <p
-          className="text-base text-black/50 mb-4"
-          style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-        >
-          {video.role} · {video.gear}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href={`https://youtu.be/${video.id}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
-            style={{ fontFamily: "'Courier Prime', monospace" }}
-          >
-            Watch on YouTube
-          </a>
-          {video.links?.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-black/30 px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase text-black/60 hover:bg-black hover:text-white transition-all"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              {link.label} ↗
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// WebP versions of the shoot photos: name.webp (full, for the viewer) and name-sm.webp (grid)
-const PHOTO_FILES = {
-  ...import.meta.glob("../assets/photography/web/*.webp", { eager: true, import: "default" }),
-  ...import.meta.glob("../assets/modeling/web/*.webp", { eager: true, import: "default" }),
-} as Record<string, string>;
-
-const photoUrl = (name: string, size: "full" | "sm") => {
-  const folder = name.startsWith("photo") ? "photography" : "modeling";
-  return PHOTO_FILES[`../assets/${folder}/web/${name}${size === "sm" ? "-sm" : ""}.webp`];
-};
-
-type Photo = { name: string; alt: string; w: number; h: number };
-
-const PHOTOGRAPHY: Photo[] = [
-  { name: "photo-03", alt: "Model in a navy Teknolohista shirt adjusting her glasses", w: 1080, h: 1350 },
-  { name: "photo-09", alt: "\"ICT for the People!\" back print beside a white Teknolohista shirt", w: 1440, h: 1080 },
-  { name: "photo-02", alt: "Student in a black blazer holding a sticker-covered laptop", w: 1080, h: 1440 },
-  { name: "photo-08", alt: "Model in a white Teknolohista shirt against a white wall", w: 1080, h: 1350 },
-  { name: "photo-05", alt: "asciiSKOLAR shirt with a Teknolohista ng Bayan tote bag", w: 1080, h: 1350 },
-  { name: "photo-12", alt: "Back of a navy \"ICT for the People!\" shirt", w: 1080, h: 1350 },
-  { name: "photo-10", alt: "Two students at a computer, one in a Teknolohista shirt", w: 1440, h: 1080 },
-  { name: "photo-04", alt: "Student at a desk with a clipboard and an ASCII-stickered laptop", w: 1080, h: 1440 },
-  { name: "photo-06", alt: "Model in a Teknolohista shirt pointing to an ASCII sketchbook", w: 1080, h: 1350 },
-  { name: "photo-14", alt: "Model stretching the collar of an asciiSKOLAR shirt", w: 1080, h: 1350 },
-  { name: "photo-11", alt: "Three students posing in sunglasses with a Teknolohista tote bag", w: 1350, h: 1080 },
-  { name: "photo-01", alt: "Student in a grey blazer typing at a keyboard", w: 960, h: 1440 },
-  { name: "photo-13", alt: "Close crop of a white Teknolohista shirt and ASCII lanyard", w: 1080, h: 1350 },
-  { name: "photo-07", alt: "Student in a black suit leaning back in an office chair", w: 960, h: 1440 },
-];
-
-const LOOKBOOK: Photo[] = [
-  { name: "lookbook-04", alt: "Portrait in a maroon and white 00 jersey under a cloudy sky", w: 1800, h: 1192 },
-  { name: "lookbook-01", alt: "Back view in a Fighting Maroons 00 jersey and bandana", w: 1192, h: 1800 },
-  { name: "lookbook-07", alt: "Two models in white and red 00 jerseys", w: 1800, h: 1192 },
-  { name: "lookbook-02", alt: "White 00 jersey with an Iskolar ng Bayan cap in hand", w: 1192, h: 1800 },
-  { name: "lookbook-03", alt: "Two models in 00 jerseys by a fence", w: 1800, h: 1192 },
-  { name: "lookbook-10", alt: "Iskolar ng Bayan tote bag carried over a 00 jersey", w: 1192, h: 1800 },
-  { name: "lookbook-06", alt: "Standing in a green and white 00 jersey beside parked motorbikes", w: 1800, h: 1192 },
-  { name: "lookbook-05", alt: "Two models in jerseys, one crouching, one standing", w: 1192, h: 1800 },
-  { name: "lookbook-08", alt: "Two models in white and red jerseys, adjusting their collars", w: 1800, h: 1192 },
-  { name: "lookbook-09", alt: "Two models in caps and jerseys seen from above", w: 1800, h: 1192 },
-];
-
-function Lightbox({
-  photos,
-  index,
-  onClose,
-  onChange,
-}: {
-  photos: Photo[];
-  index: number;
-  onClose: () => void;
-  onChange: (i: number) => void;
-}) {
-  const total = photos.length;
-  const prev = () => onChange((index - 1 + total) % total);
-  const next = () => onChange((index + 1) % total);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      else if (e.key === "ArrowLeft") prev();
-      else if (e.key === "ArrowRight") next();
-    };
-    window.addEventListener("keydown", onKey);
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = overflow;
-    };
-  });
-
-  const photo = photos[index];
-
-  return (
-    <div
-      data-keep-dark=""
-      role="dialog"
-      aria-modal="true"
-      aria-label={photo.alt}
-      className="fixed inset-0 z-[100] bg-black text-white flex flex-col"
-      onClick={onClose}
-    >
-      <div
-        className="flex items-center justify-between px-6 md:px-8 py-4 text-[10px] tracking-[0.3em] uppercase"
-        style={{ fontFamily: "'Courier Prime', monospace" }}
-      >
-        <span className="text-white/60">
-          {index + 1}/{total}
-        </span>
-        <button onClick={onClose} className="hover:line-through" aria-label="Close">
-          Close ✕
-        </button>
-      </div>
-
-      <div className="relative flex-1 min-h-0 px-4 md:px-20">
-        <img
-          key={photo.name}
-          src={photoUrl(photo.name, "full")}
-          alt={photo.alt}
-          className="w-full h-full object-contain"
-          style={{ animation: "fadeSlide 0.3s ease forwards" }}
-          onClick={(e) => e.stopPropagation()}
-        />
-        <button
-          onClick={(e) => { e.stopPropagation(); prev(); }}
-          className="absolute left-0 top-0 bottom-0 w-1/4 md:w-20 flex items-center justify-start md:justify-center pl-4 md:pl-0 text-2xl md:text-3xl text-white/60 hover:text-white"
-          style={{ fontFamily: "'Courier Prime', monospace" }}
-          aria-label="Previous photo"
-        >
-          ←
-        </button>
-        <button
-          onClick={(e) => { e.stopPropagation(); next(); }}
-          className="absolute right-0 top-0 bottom-0 w-1/4 md:w-20 flex items-center justify-end md:justify-center pr-4 md:pr-0 text-2xl md:text-3xl text-white/60 hover:text-white"
-          style={{ fontFamily: "'Courier Prime', monospace" }}
-          aria-label="Next photo"
-        >
-          →
-        </button>
-      </div>
-
-      <p
-        className="px-6 md:px-8 py-4 text-sm md:text-base text-white/70 text-center"
-        style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-      >
-        {photo.alt}
-      </p>
-    </div>
-  );
-}
-
-const PHOTOGRAPHY_LINKS = [
-  { label: "ASCII merch post", url: "https://www.facebook.com/share/p/1E9K26jZBu/" },
-  { label: "Published photos, part 1", url: "https://www.facebook.com/share/p/1FXjx4g85J/" },
-  { label: "Published photos, part 2", url: "https://www.facebook.com/share/p/1C1q9Meo93/" },
-];
-
-const LOOKBOOK_LINKS = [
-  { label: "SIPAT lookbook, part 1", url: "https://www.facebook.com/share/p/1Caryrf6J3/" },
-  { label: "SIPAT lookbook, part 2", url: "https://www.facebook.com/share/p/19Y42KeuaQ/" },
-];
-
-function SourceLinks({ links }: { links: { label: string; url: string }[] }) {
-  return (
-    <div className="flex flex-wrap gap-3 mb-6 md:mb-8">
-      {links.map((link) => (
-        <a
-          key={link.url}
-          href={link.url}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 border border-black px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all"
-          style={{ fontFamily: "'Courier Prime', monospace" }}
-        >
-          {link.label} ↗
-        </a>
-      ))}
-    </div>
-  );
-}
-
-// Grid or strip of photos that open in the full-screen viewer
-function PhotoSet({ photos, layout }: { photos: Photo[]; layout: "wall" | "strip" }) {
-  const [open, setOpen] = useState<number | null>(null);
-
-  return (
-    <>
-      {layout === "wall" ? (
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4">
-          {photos.map((photo, i) => (
-            <button
-              key={photo.name}
-              onClick={() => setOpen(i)}
-              className="group block w-full mb-3 md:mb-4 break-inside-avoid overflow-hidden bg-neutral-200"
-              aria-label={`Open photo: ${photo.alt}`}
-            >
-              <img
-                src={photoUrl(photo.name, "sm")}
-                alt={photo.alt}
-                width={photo.w}
-                height={photo.h}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto group-hover:scale-[1.03] transition-transform duration-500"
-              />
-            </button>
-          ))}
-        </div>
-      ) : (
-        <div className="-mx-6 md:-mx-16 px-6 md:px-16 flex gap-3 md:gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-6 md:scroll-px-16 pb-4">
-          {photos.map((photo, i) => (
-            <button
-              key={photo.name}
-              onClick={() => setOpen(i)}
-              className="group shrink-0 snap-start h-[300px] md:h-[440px] overflow-hidden bg-neutral-200"
-              style={{ aspectRatio: `${photo.w} / ${photo.h}` }}
-              aria-label={`Open photo: ${photo.alt}`}
-            >
-              <img
-                src={photoUrl(photo.name, "sm")}
-                srcSet={`${photoUrl(photo.name, "sm")} 720w, ${photoUrl(photo.name, "full")} 1800w`}
-                sizes={photo.w > photo.h ? "(min-width: 768px) 664px, 453px" : "(min-width: 768px) 291px, 199px"}
-                alt={photo.alt}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              />
-            </button>
-          ))}
-        </div>
-      )}
-
-      {open !== null && (
-        <Lightbox photos={photos} index={open} onClose={() => setOpen(null)} onChange={setOpen} />
-      )}
-    </>
-  );
-}
-
 function StaticProjectModule({ project }: { project: StaticProject }) {
   return (
     <div className="border-b border-black/30 px-6 md:px-16 py-8 md:py-10 grid grid-cols-1 md:grid-cols-[80px_1fr] gap-3 md:gap-6">
@@ -737,21 +352,6 @@ function StaticProjectModule({ project }: { project: StaticProject }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function NoiseOverlay() {
-  return (
-    <svg
-      className="pointer-events-none fixed inset-0 z-0 opacity-[0.032] w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <filter id="noise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#noise)" />
-    </svg>
   );
 }
 
@@ -991,56 +591,6 @@ function ProjectModule({ project }: { project: Project }) {
   );
 }
 
-const DARK_CSS = `
-  html.dark body { background:#000; color:#fff; }
-  html.dark .bg-white { background-color:#000 !important; }
-  html.dark .bg-neutral-100, html.dark .bg-neutral-200 { background-color:#1a1a1a !important; }
-  html.dark .bg-black\\/5 { background-color:rgba(255,255,255,0.05) !important; }
-  html.dark .bg-black\\/30 { background-color:rgba(255,255,255,0.15) !important; }
-  html.dark .bg-black\\/40 { background-color:rgba(255,255,255,0.2) !important; }
-  html.dark .bg-black\\/60 { background-color:rgba(255,255,255,0.35) !important; }
-  html.dark .bg-black\\/70 { background-color:rgba(255,255,255,0.4) !important; }
-  html.dark .text-black { color:#fff !important; }
-  html.dark .text-black\\/30 { color:rgba(255,255,255,0.3) !important; }
-  html.dark .text-black\\/40 { color:rgba(255,255,255,0.4) !important; }
-  html.dark .text-black\\/50 { color:rgba(255,255,255,0.5) !important; }
-  html.dark .text-black\\/60 { color:rgba(255,255,255,0.6) !important; }
-  html.dark .text-black\\/80 { color:rgba(255,255,255,0.8) !important; }
-  html.dark .border-black { border-color:rgba(255,255,255,0.75) !important; }
-  html.dark .border-black\\/10 { border-color:rgba(255,255,255,0.1) !important; }
-  html.dark .border-black\\/20 { border-color:rgba(255,255,255,0.2) !important; }
-  html.dark .border-black\\/25 { border-color:rgba(255,255,255,0.25) !important; }
-  html.dark .border-black\\/30 { border-color:rgba(255,255,255,0.3) !important; }
-  html.dark .border-dashed { border-color:rgba(255,255,255,0.25) !important; }
-  html.dark .bg-black:not([data-keep-dark]) { background-color:#fff !important; }
-  html.dark .text-white { color:#000 !important; }
-  html.dark .text-white\\/20 { color:rgba(0,0,0,0.2) !important; }
-  html.dark .text-white\\/30 { color:rgba(0,0,0,0.3) !important; }
-  html.dark .text-white\\/40 { color:rgba(0,0,0,0.4) !important; }
-  html.dark .text-white\\/50 { color:rgba(0,0,0,0.5) !important; }
-  html.dark .text-white\\/60 { color:rgba(0,0,0,0.6) !important; }
-  html.dark .text-white\\/70 { color:rgba(0,0,0,0.7) !important; }
-  html.dark .border-white\\/10 { border-color:rgba(0,0,0,0.1) !important; }
-  html.dark .border-white\\/20 { border-color:rgba(0,0,0,0.2) !important; }
-  html.dark .border-white\\/40 { border-color:rgba(0,0,0,0.4) !important; }
-  html.dark .bg-white\\/5 { background-color:rgba(0,0,0,0.05) !important; }
-  html.dark .bg-white\\/20 { background-color:rgba(0,0,0,0.15) !important; }
-  html.dark .hover\\:bg-black:hover { background-color:#fff !important; color:#000 !important; }
-  html.dark .hover\\:text-white:hover { color:#000 !important; }
-  html.dark .hover\\:text-white\\/60:hover { color:rgba(0,0,0,0.6) !important; }
-  html.dark [data-keep-dark] { background-color:#000 !important; color:#fff !important; }
-  html.dark [data-keep-dark] .text-white { color:#fff !important; }
-  html.dark [data-keep-dark] .text-white\\/20 { color:rgba(255,255,255,0.2) !important; }
-  html.dark [data-keep-dark] .text-white\\/30 { color:rgba(255,255,255,0.3) !important; }
-  html.dark [data-keep-dark] .text-white\\/40 { color:rgba(255,255,255,0.4) !important; }
-  html.dark [data-keep-dark] .text-white\\/50 { color:rgba(255,255,255,0.5) !important; }
-  html.dark [data-keep-dark] .text-white\\/60 { color:rgba(255,255,255,0.6) !important; }
-  html.dark [data-keep-dark] .text-white\\/70 { color:rgba(255,255,255,0.7) !important; }
-  html.dark [data-keep-dark] .border-white\\/20 { border-color:rgba(255,255,255,0.2) !important; }
-  html.dark [data-keep-dark] .hover\\:text-white\\/60:hover { color:rgba(255,255,255,0.6) !important; }
-`;
-
-
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -1055,6 +605,11 @@ export default function App() {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
   }, [isDark]);
+
+  // Coming back from the lookbook page (/#camera): jump to that section once it has rendered
+  useEffect(() => {
+    if (window.location.hash) document.querySelector(window.location.hash)?.scrollIntoView();
+  }, []);
 
   return (
     <div
@@ -1313,7 +868,7 @@ export default function App() {
           <span className="text-[10px] tracking-[0.4em] uppercase">Behind the Camera</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 md:gap-16 mb-16 md:mb-24 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 md:gap-16 mb-10 md:mb-14 items-end">
           <h2
             className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
@@ -1329,74 +884,64 @@ export default function App() {
           </p>
         </div>
 
-        {/* Photography */}
-        <div className="mb-20 md:mb-28">
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
-            <h3
-              className="text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight"
-              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-            >
-              Photography
-            </h3>
-            <p
-              className="text-base md:text-lg text-black/60"
-              style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-            >
-              Shot by me · Teknolohista ng Bayan merch campaign for ASCII, PUP Manila
-            </p>
-          </div>
-          <SourceLinks links={PHOTOGRAPHY_LINKS} />
-          <PhotoSet photos={PHOTOGRAPHY} layout="wall" />
+        {/* Preview cards; the full work lives on the /creative page */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 md:gap-6">
+          {[
+            {
+              title: "Photography",
+              note: `${PHOTOGRAPHY.length} photos · ASCII merch campaign`,
+              href: "/creative#photography",
+              image: photoUrl("photo-03", "sm"),
+              alt: "Model in a navy Teknolohista shirt adjusting her glasses",
+            },
+            {
+              title: "Video & Film",
+              note: `${VIDEOS.length} videos · Shot & edited in Premiere Pro`,
+              href: "/creative#video",
+              image: `https://i.ytimg.com/vi/${VIDEOS[0].id}/${VIDEOS[0].thumb}.jpg`,
+              alt: `Still from ${VIDEOS[0].title}`,
+            },
+            {
+              title: "Modeling",
+              note: `${LOOKBOOK.length} photos · SIPAT Merchandise by UP GEOP`,
+              href: "/creative#modeling",
+              image: photoUrl("lookbook-01", "sm"),
+              alt: "Back view in a Fighting Maroons 00 jersey and bandana",
+            },
+          ].map((card) => (
+            <a key={card.title} href={card.href} className="group block min-w-0">
+              <div className="aspect-[4/5] overflow-hidden bg-neutral-200">
+                <img
+                  src={card.image}
+                  alt={card.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                />
+              </div>
+              <h3
+                className="mt-4 text-xl md:text-2xl font-black uppercase leading-tight tracking-tight group-hover:line-through"
+                style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+              >
+                {card.title} →
+              </h3>
+              <p
+                className="text-base text-black/60"
+                style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
+              >
+                {card.note}
+              </p>
+            </a>
+          ))}
         </div>
 
-        {/* Video */}
-        <div className="mb-20 md:mb-28">
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-6 md:mb-8">
-            <h3
-              className="text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight"
-              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-            >
-              Video & Film
-            </h3>
-            <p
-              className="text-base md:text-lg text-black/60"
-              style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-            >
-              Fisheye and VHS camcorder work, shot and edited in Premiere Pro
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-14">
-            {VIDEOS.map((video, i) => (
-              <VideoCard key={video.id} video={video} featured={i === 0} />
-            ))}
-          </div>
-        </div>
-
-        {/* Modeling */}
-        <div>
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
-            <h3
-              className="text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight"
-              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-            >
-              Modeling
-            </h3>
-            <p
-              className="text-base md:text-lg text-black/60"
-              style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-            >
-              Modeled for SIPAT Merchandise by UP GEOP
-            </p>
-          </div>
-          <SourceLinks links={LOOKBOOK_LINKS} />
-          <PhotoSet photos={LOOKBOOK} layout="strip" />
-          <p
-            className="mt-2 text-[9px] tracking-[0.3em] uppercase text-black/40"
-            style={{ fontFamily: "'Courier Prime', monospace" }}
-          >
-            Scroll →
-          </p>
-        </div>
+        <a
+          href="/creative"
+          className="mt-10 md:mt-12 inline-flex items-center gap-3 border border-black bg-black text-white px-6 py-3 text-[10px] tracking-[0.35em] uppercase hover:bg-white hover:text-black transition-colors"
+          style={{ fontFamily: "'Courier Prime', monospace" }}
+        >
+          View all creative work →
+        </a>
       </section>
 
       {/* SKILLS */}
