@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { DARK_CSS, LOOKBOOK, NoiseOverlay, PHOTOGRAPHY, photoUrl, VIDEOS } from "./shared";
+import { DARK_CSS, DarkToggleIcon, LOOKBOOK, NoiseOverlay, PHOTOGRAPHY, photoUrl, useDarkMode, VIDEOS } from "./shared";
 
 // — Portrait
 import portrait from "@/assets/2BY2PIC.webp";
@@ -701,17 +701,13 @@ function ProjectModule({ project }: { project: Project }) {
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useDarkMode();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
-  }, [isDark]);
 
   // Coming back from the creative page (/#creative): jump to that section once it has rendered
   useEffect(() => {
@@ -762,16 +758,19 @@ export default function App() {
             </button>
           </div>
 
-          {/* Hamburger */}
-          <button
-            className="lg:hidden flex flex-col gap-1.5 p-1"
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Toggle menu"
-          >
-            <span className={`block w-5 h-px bg-black transition-all ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-            <span className={`block w-5 h-px bg-black transition-all ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-px bg-black transition-all ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
-          </button>
+          {/* Phone and tablet: dark mode toggle + hamburger */}
+          <div className="lg:hidden flex items-center gap-3">
+            <DarkToggleIcon isDark={isDark} onToggle={() => setIsDark((d) => !d)} />
+            <button
+              className="flex flex-col gap-1.5 p-1"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label="Toggle menu"
+            >
+              <span className={`block w-5 h-px bg-black transition-all ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+              <span className={`block w-5 h-px bg-black transition-all ${menuOpen ? "opacity-0" : ""}`} />
+              <span className={`block w-5 h-px bg-black transition-all ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+            </button>
+          </div>
         </div>
 
         {/* Mobile drawer */}
@@ -788,13 +787,6 @@ export default function App() {
                 {item}
               </a>
             ))}
-            <button
-              onClick={() => { setIsDark((d) => !d); setMenuOpen(false); }}
-              className="text-left text-[11px] tracking-[0.3em] uppercase"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              {isDark ? "☀ LIGHT MODE" : "☾ DARK MODE"}
-            </button>
           </div>
         )}
       </nav>

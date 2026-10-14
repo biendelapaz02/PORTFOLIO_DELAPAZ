@@ -75,6 +75,16 @@ test.describe("Main page", () => {
     await page.goto("/");
     await expectNoSidewaysScroll(page);
   });
+
+  test("dark mode has a visible toggle and stays on across pages", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: /Switch to dark mode|Toggle dark mode/ }).locator("visible=true").click();
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await page.goto("/creative");
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await page.getByRole("button", { name: /Switch to light mode|Toggle dark mode/ }).locator("visible=true").click();
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+  });
 });
 
 test.describe("Creative page", () => {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   DARK_CSS,
+  DarkToggleIcon,
   LOOKBOOK,
   LOOKBOOK_LINKS,
   Lightbox,
@@ -9,6 +10,7 @@ import {
   PHOTOGRAPHY_LINKS,
   photoUrl,
   SourceLinks,
+  useDarkMode,
   VIDEOS,
   type Photo,
   type Video,
@@ -238,11 +240,7 @@ const PARTS = [
 ];
 
 export default function Creative() {
-  const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains("dark"));
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
-  }, [isDark]);
+  const [isDark, setIsDark] = useDarkMode();
 
   useEffect(() => {
     document.title = "Behind & In Front of the Camera — Bien Jeric Dela Paz";
@@ -250,22 +248,23 @@ export default function Creative() {
   }, []);
 
   return (
-    <div className="bg-white text-black min-h-screen overflow-x-hidden" style={{ fontFamily: "'Archivo', Arial, sans-serif" }}>
+    <div className="bg-white text-black min-h-screen overflow-x-clip" style={{ fontFamily: "'Archivo', Arial, sans-serif" }}>
       <style>{DARK_CSS}</style>
       <NoiseOverlay />
 
       {/* NAV */}
       <nav className="sticky top-0 z-50 bg-white border-b border-black">
-        <div className="flex items-center justify-between gap-4 px-6 md:px-8 py-4">
-          <a href="/" className="text-[12px] tracking-[0.3em] uppercase" style={{ fontFamily: "'Courier Prime', monospace" }}>
+        {/* Phones: logo and toggle on top, the three links in a row below */}
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4">
+          <a href="/" className="text-[12px] tracking-[0.3em] uppercase whitespace-nowrap" style={{ fontFamily: "'Courier Prime', monospace" }}>
             ← BJDP
           </a>
-          <div className="flex items-center gap-4 md:gap-8">
+          <div className="order-last md:order-none w-full md:w-auto flex items-center justify-between md:justify-start md:gap-8">
             {PARTS.map((part) => (
               <a
                 key={part.id}
                 href={`#${part.id}`}
-                className="text-[12px] tracking-[0.2em] md:tracking-[0.25em] uppercase hover:line-through"
+                className="text-[12px] tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase hover:line-through"
                 style={{ fontFamily: "'Courier Prime', monospace" }}
               >
                 {part.label}
@@ -273,13 +272,14 @@ export default function Creative() {
             ))}
             <button
               onClick={() => setIsDark((d) => !d)}
-              className="hidden sm:block text-[12px] tracking-[0.25em] uppercase border border-current px-3 py-1 hover:bg-black hover:text-white transition-all"
+              className="hidden md:block text-[12px] tracking-[0.25em] uppercase border border-current px-3 py-1 hover:bg-black hover:text-white transition-all"
               style={{ fontFamily: "'Courier Prime', monospace" }}
               aria-label="Toggle dark mode"
             >
               {isDark ? "LIGHT" : "DARK"}
             </button>
           </div>
+          <DarkToggleIcon isDark={isDark} onToggle={() => setIsDark((d) => !d)} className="md:hidden" />
         </div>
       </nav>
 
@@ -307,14 +307,14 @@ export default function Creative() {
       </header>
 
       {/* PHOTOGRAPHY */}
-      <section id="photography" className="scroll-mt-16 px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="photography" className="scroll-mt-28 md:scroll-mt-16 px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <PartHeading title="Photography" note="Shot and edited in Adobe Photoshop · Teknolohista ng Bayan merch campaign for ASCII, PUP Manila" />
         <SourceLinks links={PHOTOGRAPHY_LINKS} />
         <PhotoWall photos={PHOTOGRAPHY} />
       </section>
 
       {/* VIDEO */}
-      <section id="video" className="scroll-mt-16 px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="video" className="scroll-mt-28 md:scroll-mt-16 px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <div className="mb-6 md:mb-8">
           <PartHeading title="Video & Film" note="Sony Handycam and Samsung digicam work, shot and edited in Premiere Pro" />
         </div>
@@ -326,7 +326,7 @@ export default function Creative() {
       </section>
 
       {/* MODELING */}
-      <section id="modeling" className="scroll-mt-16 px-6 md:px-16 py-16 md:py-24">
+      <section id="modeling" className="scroll-mt-28 md:scroll-mt-16 px-6 md:px-16 py-16 md:py-24">
         <PartHeading title="Modeling" note="Modeled for SIPAT Merchandise by UP GEOP" />
         <SourceLinks links={LOOKBOOK_LINKS} />
         <LookbookSpread />

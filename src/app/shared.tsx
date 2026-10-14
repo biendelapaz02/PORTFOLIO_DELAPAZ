@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // WebP versions of the shoot photos: name.webp (full, for the viewer) and name-sm.webp (grid)
 const PHOTO_FILES = {
@@ -244,6 +244,41 @@ export function NoiseOverlay() {
       </filter>
       <rect width="100%" height="100%" filter="url(#noise)" />
     </svg>
+  );
+}
+
+// Dark mode, remembered between pages and visits (storage can be blocked, so it is optional)
+export function useDarkMode() {
+  const [isDark, setIsDark] = useState(() => {
+    try {
+      return localStorage.getItem("theme") === "dark";
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+    try {
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch {
+      // Not saved; the toggle still works for this page
+    }
+  }, [isDark]);
+
+  return [isDark, setIsDark] as const;
+}
+
+// Small square toggle for phones, where the word button doesn't fit
+export function DarkToggleIcon({ isDark, onToggle, className = "" }: { isDark: boolean; onToggle: () => void; className?: string }) {
+  return (
+    <button
+      onClick={onToggle}
+      className={`w-9 h-9 shrink-0 flex items-center justify-center border border-current text-[15px] leading-none active:opacity-50 transition-opacity ${className}`}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      {isDark ? "☀" : "☾"}
+    </button>
   );
 }
 

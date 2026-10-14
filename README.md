@@ -82,3 +82,5 @@ tests/                   Playwright tests
 ## Deployment
 
 Every push to `main` deploys automatically on Vercel. Vercel installs with pnpm, so `pnpm-lock.yaml` must stay in sync when dependencies change.
+
+`vercel.json` also sets security headers. The Content-Security-Policy only allows images, fonts and embeds from the sites the page uses today (Google Fonts, YouTube). If you add an image, video or script from a new site, add that site to the policy, or the browser will block it.
