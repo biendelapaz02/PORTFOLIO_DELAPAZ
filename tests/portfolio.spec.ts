@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const SECTIONS = ["About", "Projects", "Creative", "Skills", "Contact"];
+const SECTIONS = ["About", "Experience", "Projects", "Creative", "Skills", "Contact"];
 
 const isMobile = (page: Page) => (page.viewportSize()?.width ?? 0) < 768;
 
@@ -14,6 +14,29 @@ test.describe("Main page", () => {
     await page.goto("/");
     await expect(page.getByText("BIEN", { exact: true })).toBeVisible();
     await expect(page.getByText("DELA PAZ", { exact: true })).toBeVisible();
+  });
+
+  test("first screen says the role and has both buttons", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByText("Web Designer & Developer", { exact: true })).toBeInViewport();
+    const cv = page.getByRole("link", { name: "Download CV ↓" });
+    await expect(cv).toBeInViewport();
+    await expect(cv).toHaveAttribute("download", "Dela-Paz-Resume.pdf");
+    const download = page.waitForEvent("download");
+    await cv.click();
+    expect((await download).suggestedFilename()).toBe("Dela-Paz-Resume.pdf");
+    await page.getByRole("link", { name: "View projects →" }).click();
+    await expect(page.locator("#projects")).toBeInViewport();
+  });
+
+  test("can be found and shared: title, preview image, no noindex", async ({ page, request }) => {
+    await page.goto("/");
+    await expect(page).toHaveTitle(/Bien Jeric Dela Paz/);
+    await expect(page.locator('meta[name="robots"][content*="noindex"]')).toHaveCount(0);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /web designer/i);
+    for (const path of ["/og-image.jpg", "/favicon.svg", "/Dela-Paz-Resume.pdf"]) {
+      expect((await request.get(path)).status(), path).toBe(200);
+    }
   });
 
   test("every nav link jumps to its section", async ({ page }) => {

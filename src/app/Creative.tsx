@@ -286,7 +286,7 @@ export default function Creative() {
       {/* HEADER */}
       <header className="px-6 md:px-16 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-black">
         <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">03</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">04</span>
           <div className="flex-1 h-px bg-black/20" />
           <span className="text-[10px] tracking-[0.4em] uppercase">Behind the Camera</span>
         </div>

@@ -2,44 +2,44 @@ import { useEffect, useRef, useState } from "react";
 import { DARK_CSS, LOOKBOOK, NoiseOverlay, PHOTOGRAPHY, photoUrl, VIDEOS } from "./shared";
 
 // — Portrait
-import portrait from "@/assets/2BY2PIC.JPG";
+import portrait from "@/assets/2BY2PIC.webp";
 
 // — LumenID screenshots
-import lumenAdminIssuer from "@/assets/ADMIN_ISSUER.PNG";
-import lumenHome        from "@/assets/lumenhome.PNG";
-import lumenUserDash    from "@/assets/USER_DASH.PNG";
-import lumenUserVault   from "@/assets/USER_VAULT.PNG";
-import lumenUser        from "@/assets/USER.PNG";
-import lumenVerify      from "@/assets/verify.PNG";
+import lumenAdminIssuer from "@/assets/ADMIN_ISSUER.webp";
+import lumenHome        from "@/assets/lumenhome.webp";
+import lumenUserDash    from "@/assets/USER_DASH.webp";
+import lumenUserVault   from "@/assets/USER_VAULT.webp";
+import lumenUser        from "@/assets/USER.webp";
+import lumenVerify      from "@/assets/verify.webp";
 
 // — SentiNet screenshots
-import sentiAdminDashboard from "@/assets/admindashboard.PNG";
-import sentiAgentDashboard from "@/assets/AGENT_DASHBOARD.PNG";
-import sentiAgentRegister  from "@/assets/AGENTregister.PNG";
-import sentiAnalytics      from "@/assets/analytics.PNG";
-import sentiAdmin          from "@/assets/admin.PNG";
+import sentiAdminDashboard from "@/assets/admindashboard.webp";
+import sentiAgentDashboard from "@/assets/AGENT_DASHBOARD.webp";
+import sentiAgentRegister  from "@/assets/AGENTregister.webp";
+import sentiAnalytics      from "@/assets/analytics.webp";
+import sentiAdmin          from "@/assets/admin.webp";
 
 // — CarPayLater screenshots
-import bpiHome from "@/assets/homebpi.PNG";
+import bpiHome from "@/assets/homebpi.webp";
 
 // — Camarines Norte screenshots
-import camHome    from "@/assets/HOMEE.PNG";
-import camTop     from "@/assets/top.PNG";
-import camFesti   from "@/assets/festi.PNG";
-import camPlanTrip from "@/assets/plantrip.PNG";
-import camContact  from "@/assets/contactkaya.PNG";
+import camHome    from "@/assets/HOMEE.webp";
+import camTop     from "@/assets/top.webp";
+import camFesti   from "@/assets/festi.webp";
+import camPlanTrip from "@/assets/plantrip.webp";
+import camContact  from "@/assets/contactkaya.webp";
 
 // — Chef MAI screenshots
-import chefKitchen  from "@/assets/KITCHEN_MAIN_BUTTOM.PNG";
-import chefHome     from "@/assets/CHEFMAIMAI.PNG";
-import chefCook     from "@/assets/COOKN.PNG";
-import chefDiscover from "@/assets/homeche.PNG";
-import chefPopup    from "@/assets/POPUP.PNG";
+import chefKitchen  from "@/assets/KITCHEN_MAIN_BUTTOM.webp";
+import chefHome     from "@/assets/CHEFMAIMAI.webp";
+import chefCook     from "@/assets/COOKN.webp";
+import chefDiscover from "@/assets/homeche.webp";
+import chefPopup    from "@/assets/POPUP.webp";
 
 // — Cash Catalyst screenshots
-import cashCatalyst1 from "@/assets/CASH_CATALYST_2.png";
-import cashCatalyst2 from "@/assets/CASH_CATALYST_SS_1.png";
-import cashCatalyst3 from "@/assets/MONEYCASH.png";
+import cashCatalyst1 from "@/assets/CASH_CATALYST_2.webp";
+import cashCatalyst2 from "@/assets/CASH_CATALYST_SS_1.webp";
+import cashCatalyst3 from "@/assets/MONEYCASH.webp";
 
 const MARGIELA_NUMBERS = [
   "0","1","2","3","4","5","6","7","8","9",
@@ -48,6 +48,9 @@ const MARGIELA_NUMBERS = [
 ];
 
 const HERO_ROLES = ["UI/UX", "Database", "Cybersecurity", "Web3"];
+
+// Served from public/; the download attribute saves it instead of opening a new tab
+const CV_FILE = "/Dela-Paz-Resume.pdf";
 
 const TICKER_ITEMS = [
   "JBECP PUP MANILA — MEDIA HEAD",
@@ -75,6 +78,25 @@ const CERTS = [
   "Introduction to Machine Learning — AWS",
   "Introduction to Technical Support — IBM",
   "Introduction to Microsoft Azure Cloud Services — Microsoft",
+];
+
+const EXPERIENCE = [
+  {
+    company: "NSJ Technologies Inc.",
+    companyNote: "New San Jose Builders, Inc.",
+    role: "Web Designer Intern",
+    year: "2026",
+    points: [
+      "Conducted a UX/QA audit of the existing NSJBI website, identifying navigation, branding, and usability gaps that directly shaped the requirements for the site redesign.",
+      "Redesigned the NSJBI corporate website in Figma, benchmarking against competitor sites to modernize the UI and improve overall user experience.",
+      "Collaborated with developers to implement approved designs, incorporating 40th Anniversary branding and new CMS features (Super Admin, Audit Logs).",
+      "Presented design progress and QA findings to the Marketing Department, VP for Operations, VP for IT, and company executives, securing approval to proceed at each project milestone.",
+    ],
+    tags: ["Figma", "UX/QA Audit", "Website Redesign", "Competitor Benchmarking", "CMS Features", "Stakeholder Presentations"],
+    links: [
+      { label: "View on Figma", url: "https://www.figma.com/design/2W0XN3lrCmaYYlHZw5PwN1/New-San-Jose-Redesign?node-id=0-1&t=iiDL1wpJuxxxff1C-1" },
+    ],
+  },
 ];
 
 type Project = {
@@ -710,8 +732,8 @@ export default function App() {
           scrolled || menuOpen ? "bg-white border-b border-black" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between px-6 md:px-8 py-4">
-          <div style={{ fontFamily: "'Courier Prime', monospace" }} className="text-[10px] tracking-[0.3em] uppercase">
+        <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4">
+          <div style={{ fontFamily: "'Courier Prime', monospace" }} className="shrink-0 whitespace-nowrap text-[10px] tracking-[0.3em] uppercase">
             BJDP —{" "}
             <span style={{ textDecoration: "line-through", textDecorationThickness: "2px" }}>
               Portfolio
@@ -719,8 +741,8 @@ export default function App() {
           </div>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
-            {["About","Projects","Creative","Skills","Contact"].map((item) => (
+          <div className="hidden md:flex items-center gap-5 lg:gap-8">
+            {["About","Experience","Projects","Creative","Skills","Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -755,7 +777,7 @@ export default function App() {
         {/* Mobile drawer */}
         {menuOpen && (
           <div className="md:hidden border-t border-black bg-white px-6 py-4 flex flex-col gap-4">
-            {["About","Projects","Creative","Skills","Contact"].map((item) => (
+            {["About","Experience","Projects","Creative","Skills","Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -823,9 +845,40 @@ export default function App() {
           </div>
         </div>
 
-        <div className="relative z-10 mt-8 md:mt-12 md:ml-auto max-w-md md:text-right">
+        <div className="relative z-10 mt-8 md:mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div>
+            <p
+              className="text-2xl md:text-4xl font-black uppercase leading-tight tracking-tight"
+              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+            >
+              Web Designer & Developer
+            </p>
+            <p
+              className="mt-2 text-base md:text-lg leading-snug max-w-xl"
+              style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+            >
+              Computer Science student at PUP Manila, based in Marikina City. Open to web design and development roles.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                className="inline-flex items-center min-h-[44px] border border-black bg-black text-white px-6 text-[11px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-colors"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                View projects →
+              </a>
+              <a
+                href={CV_FILE}
+                download="Dela-Paz-Resume.pdf"
+                className="inline-flex items-center min-h-[44px] border border-black px-6 text-[11px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-colors"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                Download CV ↓
+              </a>
+            </div>
+          </div>
           <p
-            className="text-sm md:text-lg leading-tight"
+            className="max-w-sm text-sm md:text-lg leading-tight md:text-right"
             style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
           >
             "Digging through the static of the system to find the soul of the interface."
@@ -848,16 +901,16 @@ export default function App() {
               className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight mb-8"
               style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
             >
-              Computer<br />
+              Designer<br />
               <span style={{ fontFamily: "'EB Garamond', Georgia, serif", fontWeight: 400, fontStyle: "italic" }}>
-                Scientist.
+                who codes.
               </span>
             </h2>
             <p
               className="text-base md:text-lg leading-relaxed max-w-xl"
               style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
             >
-              Innovative Computer Science student with a strong foundation in UI/UX design, database development, and cybersecurity. Experienced in building decentralized applications, AI-driven recommendation systems, and secure network architectures. Passionate about creating functional, user-centric systems.
+              Web designer and developer studying Computer Science, with a strong foundation in UI/UX design, front-end development with React and Tailwind, databases and cybersecurity. Experienced in building decentralized applications, AI-driven recommendation systems and secure network architectures. A background in photography and video shapes how I design: functional, user-centric systems that look as good as they work.
             </p>
             <div className="mt-12 flex flex-col gap-1" style={{ fontFamily: "'Courier Prime', monospace" }}>
               <div className="flex gap-4 text-[11px] tracking-widest uppercase">
@@ -868,25 +921,6 @@ export default function App() {
                 <span className="text-black/40 shrink-0 w-20">Status</span>
                 <span>BSCS 4-1N — Class President</span>
               </div>
-            </div>
-
-            <div className="mt-10">
-              <a
-                href="https://drive.google.com/file/d/1OeK4X57PS-5mnKD6tcEifWfNucasMUvw/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 border border-black px-6 py-3 text-[10px] tracking-[0.35em] uppercase hover:bg-black hover:text-white transition-all"
-                style={{ fontFamily: "'Courier Prime', monospace" }}
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <polyline points="10 9 9 9 8 9" />
-                </svg>
-                See CV
-              </a>
             </div>
           </div>
 
@@ -915,13 +949,92 @@ export default function App() {
         </div>
       </section>
 
+      {/* EXPERIENCE */}
+      <section id="experience" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
+        <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">02</span>
+          <div className="flex-1 h-px bg-black/20" />
+          <span className="text-[10px] tracking-[0.4em] uppercase">Experience</span>
+        </div>
+
+        {EXPERIENCE.map((job) => (
+          <article key={job.company} className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-6 md:gap-16">
+            <div>
+              <p
+                className="text-5xl md:text-6xl font-black leading-none tracking-tight"
+                style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+              >
+                {job.year}
+              </p>
+              <p
+                className="mt-3 text-[11px] tracking-[0.3em] uppercase"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                Internship
+              </p>
+            </div>
+
+            <div className="min-w-0">
+              <h3
+                className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight tracking-tight break-words"
+                style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+              >
+                {job.role}
+              </h3>
+              <p
+                className="mt-2 text-lg md:text-xl text-black/60"
+                style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
+              >
+                {job.company} ({job.companyNote})
+              </p>
+
+              <ul
+                className="mt-6 max-w-3xl flex flex-col gap-3 text-base md:text-lg leading-relaxed list-disc pl-5 marker:text-black/40"
+                style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+              >
+                {job.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+
+              <div className="mt-8 flex flex-wrap gap-1.5 mb-6">
+                {job.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[11px] tracking-[0.15em] uppercase px-3 py-1 border border-black/30 text-black/60"
+                    style={{ fontFamily: "'Courier Prime', monospace" }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {job.links.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 border border-black px-4 py-2 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-colors"
+                    style={{ fontFamily: "'Courier Prime', monospace" }}
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </section>
+
       {/* PROJECTS */}
       <section id="projects" className="border-b border-black">
         <div
           className="px-6 md:px-16 py-8 flex items-center gap-4"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">02</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">03</span>
           <div className="flex-1 min-w-4 h-px bg-black/20" />
           <span className="text-[10px] tracking-[0.2em] sm:tracking-[0.4em] uppercase text-right">Lookbook — Selected Works</span>
         </div>
@@ -952,7 +1065,7 @@ export default function App() {
         className="relative px-6 md:px-16 pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
       >
         <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">03</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">04</span>
           <div className="flex-1 h-px bg-white/20" />
           <span className="text-[10px] tracking-[0.4em] uppercase text-white">Behind the Camera</span>
         </div>
@@ -1001,7 +1114,7 @@ export default function App() {
       {/* SKILLS */}
       <section id="skills" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">04</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">05</span>
           <div className="flex-1 h-px bg-black/20" />
           <span className="text-[10px] tracking-[0.4em] uppercase">Competencies</span>
         </div>
@@ -1057,7 +1170,7 @@ export default function App() {
       {/* EDUCATION & CERTIFICATIONS */}
       <section id="education" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">05</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-black/40">06</span>
           <div className="flex-1 h-px bg-black/20" />
           <span className="text-[10px] tracking-[0.4em] uppercase">Education & Credentials</span>
         </div>
@@ -1133,11 +1246,11 @@ export default function App() {
           className="absolute top-8 right-6 md:right-8 text-white/5 text-[72px] md:text-[120px] font-black leading-none select-none pointer-events-none"
           style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
         >
-          06
+          07
         </div>
 
         <div className="mb-16 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">06</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">07</span>
           <div className="flex-1 h-px bg-white/20" />
           <span className="text-[10px] tracking-[0.4em] uppercase text-white">Contact</span>
         </div>
