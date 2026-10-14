@@ -61,14 +61,14 @@ function VideoCard({ video, featured = false }: { video: Video; featured?: boole
               className="w-full h-full object-contain group-hover:opacity-80 transition-opacity"
             />
             <span className="absolute inset-0 flex items-center justify-center">
-              <span className="w-14 h-14 flex items-center justify-center bg-white text-[#000] group-hover:scale-110 transition-transform">
+              <span className="w-14 h-14 flex items-center justify-center bg-[#fff] text-[#000] group-hover:scale-110 transition-transform">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="6 4 20 12 6 20 6 4" />
                 </svg>
               </span>
             </span>
             <span
-              className="absolute top-3 right-3 text-[8px] tracking-[0.3em] uppercase text-white bg-black/70 px-2 py-0.5"
+              className="absolute top-3 right-3 text-[8px] tracking-[0.3em] uppercase text-[#fff] bg-[#000]/70 px-2 py-0.5"
               style={{ fontFamily: "'Courier Prime', monospace" }}
             >
               {video.role}

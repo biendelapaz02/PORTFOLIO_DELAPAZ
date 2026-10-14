@@ -92,27 +92,8 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    id: "chefmai",
-    index: "01",
-    name: "Chef MAI",
-    github: "https://github.com/aesrch/chefMAI",
-    subtitle: "AI-Driven Recipe Matching Web Application",
-    note: null,
-    description:
-      "Designed and built the user interface for an AI-driven recipe matching web application using Figma and VS Code, establishing interactive user flows that track ingredient cataloging via text inputs and camera-based image capture. Furthermore, designed clean interface layouts displaying recipe outputs, constraints, difficulties, and dynamic substitutes.",
-    tags: ["Figma","Interactive User Flows","AI Recommendation","VS Code","Web UI"],
-    images: [
-      { url: chefHome,    caption: "Landing — 01/05" },
-      { url: chefDiscover,caption: "Discover — 02/05" },
-      { url: chefKitchen, caption: "Kitchen — 03/05" },
-      { url: chefPopup,   caption: "Recipe Detail — 04/05" },
-      { url: chefCook,    caption: "Cooking Mode — 05/05" },
-    ],
-    flip: false,
-  },
-  {
     id: "camarinasnorte",
-    index: "02",
+    index: "01",
     name: "Camarines Norte Tourism Portal",
     github: "https://github.com/ethanidk04/CamarinesNorteWebsite",
     subtitle: "Comprehensive UI Layouts & Custom Trip Planning",
@@ -127,11 +108,11 @@ const PROJECTS: Project[] = [
       { url: camPlanTrip, caption: "Plan Your Trip — 04/05" },
       { url: camContact,  caption: "Contact — 05/05" },
     ],
-    flip: true,
+    flip: false,
   },
   {
     id: "sentinet",
-    index: "03",
+    index: "02",
     name: "SentiNet",
     github: "https://github.com/andreistvn/senti",
     subtitle: "Decentralized Intrusion Detection & Prevention System",
@@ -145,6 +126,25 @@ const PROJECTS: Project[] = [
       { url: sentiAgentDashboard, caption: "Agent Dashboard — 03/05" },
       { url: sentiAgentRegister,  caption: "Agent Registration — 04/05" },
       { url: sentiAdmin,          caption: "Admin Login — 05/05" },
+    ],
+    flip: true,
+  },
+  {
+    id: "chefmai",
+    index: "03",
+    name: "Chef MAI",
+    github: "https://github.com/aesrch/chefMAI",
+    subtitle: "AI-Driven Recipe Matching Web Application",
+    note: null,
+    description:
+      "Designed and built the user interface for an AI-driven recipe matching web application using Figma and VS Code, establishing interactive user flows that track ingredient cataloging via text inputs and camera-based image capture. Furthermore, designed clean interface layouts displaying recipe outputs, constraints, difficulties, and dynamic substitutes.",
+    tags: ["Figma","Interactive User Flows","AI Recommendation","VS Code","Web UI"],
+    images: [
+      { url: chefHome,    caption: "Landing — 01/05" },
+      { url: chefDiscover,caption: "Discover — 02/05" },
+      { url: chefKitchen, caption: "Kitchen — 03/05" },
+      { url: chefPopup,   caption: "Recipe Detail — 04/05" },
+      { url: chefCook,    caption: "Cooking Mode — 05/05" },
     ],
     flip: false,
   },
