@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "test": "playwright test --project=desktop --project=mobile",
+    "test:live": "playwright test --project=live-desktop --project=live-mobile"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
@@ -67,6 +69,7 @@
     "vaul": "1.1.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/vite": "4.1.12",
     "@types/react": "18.3.31",
     "@types/react-dom": "18.3.7",

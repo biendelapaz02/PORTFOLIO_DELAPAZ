@@ -20,3 +20,8 @@ Thumbs.db
 
 # pnpm
 .pnpm-store/
+
+# Playwright
+test-results/
+playwright-report/
+.playwright-cli/
