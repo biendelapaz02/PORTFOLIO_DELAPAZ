@@ -308,7 +308,7 @@ export default function Creative() {
 
       {/* PHOTOGRAPHY */}
       <section id="photography" className="scroll-mt-16 px-6 md:px-16 py-16 md:py-24 border-b border-black">
-        <PartHeading title="Photography" note="Shot by me · Teknolohista ng Bayan merch campaign for ASCII, PUP Manila" />
+        <PartHeading title="Photography" note="Shot and edited in Adobe Photoshop · Teknolohista ng Bayan merch campaign for ASCII, PUP Manila" />
         <SourceLinks links={PHOTOGRAPHY_LINKS} />
         <PhotoWall photos={PHOTOGRAPHY} />
       </section>
@@ -338,7 +338,7 @@ export default function Creative() {
         className="px-6 md:px-16 py-12 md:py-16 bg-black text-white flex flex-wrap items-end justify-between gap-6"
       >
         <a
-          href="/#camera"
+          href="/#creative"
           className="text-4xl md:text-6xl font-black uppercase leading-tight tracking-tight hover:text-white/60 transition-colors"
           style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
         >

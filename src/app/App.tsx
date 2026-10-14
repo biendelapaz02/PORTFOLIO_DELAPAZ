@@ -691,7 +691,7 @@ export default function App() {
     document.documentElement.classList.toggle("dark", isDark);
   }, [isDark]);
 
-  // Coming back from the lookbook page (/#camera): jump to that section once it has rendered
+  // Coming back from the creative page (/#creative): jump to that section once it has rendered
   useEffect(() => {
     if (window.location.hash) document.querySelector(window.location.hash)?.scrollIntoView();
   }, []);
@@ -720,7 +720,7 @@ export default function App() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
-            {["About","Projects","Camera","Skills","Contact"].map((item) => (
+            {["About","Projects","Creative","Skills","Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -755,7 +755,7 @@ export default function App() {
         {/* Mobile drawer */}
         {menuOpen && (
           <div className="md:hidden border-t border-black bg-white px-6 py-4 flex flex-col gap-4">
-            {["About","Projects","Camera","Skills","Contact"].map((item) => (
+            {["About","Projects","Creative","Skills","Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -947,7 +947,7 @@ export default function App() {
 
       {/* BEHIND THE CAMERA — a preview; the full work lives on the /creative page */}
       <section
-        id="camera"
+        id="creative"
         data-keep-dark=""
         className="relative px-6 md:px-16 pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
       >
