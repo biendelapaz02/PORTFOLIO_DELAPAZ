@@ -47,7 +47,6 @@ const MARGIELA_NUMBERS = [
   "18","19","20","21","22","23",
 ];
 
-const HERO_ROLES = ["UI/UX", "Database", "Cybersecurity", "Web3"];
 
 // Served from public/; the download attribute saves it instead of opening a new tab
 const CV_FILE = "/Dela-Paz-Resume.pdf";
@@ -812,38 +811,18 @@ export default function App() {
           >
             BIEN
           </span>
-          <div className="flex items-end gap-6">
-            <span
-              className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase"
-              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-            >
-              JERIC
-            </span>
-            {/* Desktop roles — beside the name */}
-            <div
-              className="hidden md:flex mb-2 lg:mb-4 flex-col gap-[2px] text-[12px] tracking-[0.25em] uppercase"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              {HERO_ROLES.map((role) => (
-                <span key={role}>{role}</span>
-              ))}
-            </div>
-          </div>
+          <span
+            className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase"
+            style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+          >
+            JERIC
+          </span>
           <span
             className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase whitespace-nowrap"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
           >
             DELA PAZ
           </span>
-          {/* Mobile roles — below the name so they don't push the lines apart */}
-          <div
-            className="md:hidden mt-5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] tracking-[0.15em] uppercase"
-            style={{ fontFamily: "'Courier Prime', monospace" }}
-          >
-            {HERO_ROLES.map((role) => (
-              <span key={role}>{role}</span>
-            ))}
-          </div>
         </div>
 
         <div className="relative z-10 mt-8 md:mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
