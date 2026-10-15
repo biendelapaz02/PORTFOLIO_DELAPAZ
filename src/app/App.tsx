@@ -257,8 +257,6 @@ type StaticProject = {
   links?: { label: string; url: string }[];
   points: string[];
   tags: string[];
-  image: string | null;
-  flip: boolean;
 };
 
 const STATIC_PROJECTS: StaticProject[] = [
@@ -279,8 +277,6 @@ const STATIC_PROJECTS: StaticProject[] = [
       "Authored the comprehensive HCI report documenting the research, design decisions, and usability evaluation.",
     ],
     tags: ["Figma","UI/UX Architecture","HCI Report","Wireframing","Prototyping","Feedforward Mechanisms","Mobile UX"],
-    image: null,
-    flip: false,
   },
   {
     index: "08",
@@ -295,8 +291,6 @@ const STATIC_PROJECTS: StaticProject[] = [
       "Worked against a Python and Flask backend so each screen matches the data the optimizer returns.",
     ],
     tags: ["Figma","UI/UX Architecture","Dijkstra's Algorithm","0/1 Knapsack","Python Flask","Dashboard Design"],
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&h=800&fit=crop&auto=format",
-    flip: false,
   },
   {
     index: "09",
@@ -311,8 +305,6 @@ const STATIC_PROJECTS: StaticProject[] = [
       "Designed a color-coded emergency dispatch dashboard so responders can see the most critical situations first.",
     ],
     tags: ["Offline Architecture","Distributed Wi-Fi Nodes","AI Triage Engine","NLP","Emergency UX","Marikina City"],
-    image: "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=1200&h=800&fit=crop&auto=format",
-    flip: true,
   },
   {
     index: "10",
@@ -327,8 +319,6 @@ const STATIC_PROJECTS: StaticProject[] = [
       "Defined a custom double-percent (%%) comment tokenization standard for the compiler.",
     ],
     tags: ["Language Design","Lexical Specification","Context-Free Grammar","Compiler Tokenization","C","Java"],
-    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&h=800&fit=crop&auto=format",
-    flip: false,
   },
 ];
 
@@ -364,7 +354,7 @@ function FilmStrip() {
   });
 
   return (
-    <div className="filmstrip -mx-6 md:-mx-16 min-[1728px]:mx-[calc(800px_-_50vw)] overflow-hidden bg-[#111]">
+    <div className="filmstrip overflow-hidden bg-[#111]">
       {/* The frames run twice in a row so the loop is seamless; the copy is hidden from screen readers */}
       <div className="filmstrip-track flex w-max gap-2 pr-2 py-5">
         {[...frames, ...frames].map((frame, i) => {
@@ -417,65 +407,42 @@ function FilmStrip() {
   );
 }
 
-function StaticProjectModule({ project }: { project: StaticProject }) {
+// Compact card for the projects without screenshots: the bullets stay one tap away
+function StaticProjectCard({ project }: { project: StaticProject }) {
   return (
-    // Wide screens: index | title + bullets | skills + links, so the row fills the width
-    <div className="border-b border-black/30 gutter py-8 md:py-10 grid grid-cols-1 md:grid-cols-[80px_minmax(0,1fr)] lg:grid-cols-[80px_minmax(0,1fr)_minmax(0,22rem)] xl:grid-cols-[80px_minmax(0,1fr)_minmax(0,26rem)] gap-3 md:gap-x-6 md:gap-y-5 lg:gap-x-12">
-      {/* Index */}
-      <div
-        className="text-[11px] tracking-[0.4em] uppercase text-black/30 pt-1"
+    <article className="min-w-0 border-t border-black/20 md:odd:border-r md:odd:border-r-black p-6 md:p-8 lg:p-12">
+      <span
+        className="block text-[11px] tracking-[0.4em] uppercase text-black/40 mb-3"
         style={{ fontFamily: "'Courier Prime', monospace" }}
       >
         {project.index}
+      </span>
+      <h3
+        className="text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight break-words"
+        style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+      >
+        {project.name}
+      </h3>
+      <p
+        className="mt-1 text-lg leading-snug text-black/60"
+        style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
+      >
+        {project.subtitle}
+      </p>
+
+      <div className="mt-5 flex flex-wrap gap-1.5">
+        {project.tags.map((tag) => (
+          <span
+            key={tag}
+            className="text-[11px] tracking-[0.15em] uppercase px-3 py-1 border border-black/30 text-black/60"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
+          >
+            {tag}
+          </span>
+        ))}
       </div>
 
-      {/* Content */}
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-          <h3
-            className="text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight"
-            style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-          >
-            {project.name}
-          </h3>
-          <p
-            className="text-base text-black/50"
-            style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-          >
-            {project.subtitle}
-          </p>
-        </div>
-
-        <ul
-          className="max-w-3xl flex flex-col gap-2 text-base leading-relaxed text-black/80 list-disc pl-5 marker:text-[#888]"
-          style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
-        >
-          {project.points.map((point) => (
-            <li key={point}>{point}</li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Skills and links: under the bullets on tablets, a right-hand column on wide screens */}
-      <div className="min-w-0 md:col-start-2 lg:col-start-3 lg:pt-1">
-        <div
-          className="hidden lg:block text-[11px] tracking-[0.4em] uppercase text-black/40 mb-2"
-          style={{ fontFamily: "'Courier Prime', monospace" }}
-        >
-          Competencies
-        </div>
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-[11px] tracking-[0.15em] uppercase px-3 py-1 border border-black/25 text-black/50"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
+      <div className="mt-6">
         <div className="flex flex-wrap gap-3">
           {project.github && (
             <a
@@ -510,7 +477,25 @@ function StaticProjectModule({ project }: { project: StaticProject }) {
           ))}
         </div>
       </div>
-    </div>
+
+      <details className="group mt-5">
+        <summary
+          className="w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden py-1 text-[11px] tracking-[0.3em] uppercase hover:line-through"
+          style={{ fontFamily: "'Courier Prime', monospace" }}
+        >
+          <span className="group-open:hidden">Details +</span>
+          <span className="hidden group-open:inline">Hide details −</span>
+        </summary>
+        <ul
+          className="mt-3 flex flex-col gap-2 text-base leading-relaxed list-disc pl-5 marker:text-[#888]"
+          style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+        >
+          {project.points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      </details>
+    </article>
   );
 }
 
@@ -782,7 +767,7 @@ export default function App() {
           scrolled || menuOpen ? "bg-white border-b border-black" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4 min-[1728px]:px-[calc((100%_-_1600px)/2)]">
+        <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4 min-[1728px]:px-[max(2rem,calc((100%_-_1600px)/2))]">
           <div style={{ fontFamily: "'Courier Prime', monospace" }} className="shrink-0 whitespace-nowrap text-[12px] tracking-[0.3em] uppercase">
             BJDP —{" "}
             <span style={{ textDecoration: "line-through", textDecorationThickness: "2px" }}>
@@ -846,8 +831,8 @@ export default function App() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen supports-[min-height:100svh]:min-h-[100svh] flex flex-col justify-end gutter pb-12 md:pb-16 pt-32 overflow-hidden">
-        <div className="hidden md:block absolute top-24 right-16 min-[1728px]:right-[calc((100%_-_1600px)/2)]">
+      <section className="relative min-h-[calc(100vh/var(--zoom))] supports-[min-height:100svh]:min-h-[calc(100svh/var(--zoom))] flex flex-col justify-end gutter pb-12 md:pb-16 pt-32 overflow-hidden">
+        <div className="hidden md:block absolute top-24 right-16 min-[1728px]:right-[max(4rem,calc((100%_-_1600px)/2))]">
           <MargieleNumbers />
         </div>
         <div className="relative z-10">
@@ -1079,58 +1064,73 @@ export default function App() {
           <ProjectModule key={project.id} project={project} />
         ))}
 
-        {STATIC_PROJECTS.map((project) => (
-          <StaticProjectModule key={project.index} project={project} />
-        ))}
+        {/* More projects: compact cards in the same two columns as the spreads above */}
+        <div
+          className="gutter py-3 flex items-center gap-4"
+          style={{ fontFamily: "'Courier Prime', monospace" }}
+        >
+          <span className="text-[11px] tracking-[0.4em] uppercase text-black/40">
+            {STATIC_PROJECTS[0].index}–{STATIC_PROJECTS[STATIC_PROJECTS.length - 1].index}
+          </span>
+          <span className="text-[11px] tracking-[0.4em] uppercase">More Projects</span>
+        </div>
+        <div className="gutter-wide grid grid-cols-1 md:grid-cols-2">
+          {STATIC_PROJECTS.map((project) => (
+            <StaticProjectCard key={project.index} project={project} />
+          ))}
+        </div>
       </section>
 
       {/* BEHIND THE CAMERA — a preview; the full work lives on the /creative page */}
       <section
         id="creative"
         data-keep-dark=""
-        className="relative gutter pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
+        className="relative pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
       >
-        <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-          <span className="text-[12px] tracking-[0.4em] uppercase text-white/30">04</span>
-          <div className="flex-1 h-px bg-white/20" />
-          <span className="text-[12px] tracking-[0.4em] uppercase text-white">Creative</span>
-        </div>
-
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-12 mb-10 md:mb-12">
-          <div className="max-w-2xl">
-            <h2
-              className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
-              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-            >
-              Behind &{" "}<br className="sm:hidden" />In Front <span className="sm:hidden">of<br /></span><br className="hidden sm:inline" /><span className="hidden sm:inline">of </span>the Camera
-            </h2>
-            <p
-              className="mt-2 text-lg md:text-xl text-white/60"
-              style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-            >
-              {PHOTOGRAPHY.length} photos · {VIDEOS.length} videos · {LOOKBOOK.length} modeling shots
-            </p>
-            <p
-              className="mt-4 text-base md:text-lg leading-relaxed text-white/80"
-              style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
-            >
-              Photography taught me composition and light, video taught me pacing, and modeling taught me how a
-              brand presents itself. I bring that same eye to every interface I design.
-            </p>
+        {/* Only the text sits in the gutter; the film strip runs edge to edge */}
+        <div className="gutter">
+          <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
+            <span className="text-[12px] tracking-[0.4em] uppercase text-white/30">04</span>
+            <div className="flex-1 h-px bg-white/20" />
+            <span className="text-[12px] tracking-[0.4em] uppercase text-white">Creative</span>
           </div>
-          <a
-            href="/creative"
-            className="shrink-0 self-start md:self-auto inline-flex items-center gap-3 border border-white px-6 py-3 text-[12px] tracking-[0.35em] uppercase hover:bg-[#fff] hover:text-[#000] transition-colors"
-            style={{ fontFamily: "'Courier Prime', monospace" }}
-          >
-            View all creative work →
-          </a>
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-12 mb-10 md:mb-12">
+            <div className="max-w-2xl">
+              <h2
+                className="text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
+                style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+              >
+                Behind &{" "}<br className="sm:hidden" />In Front <span className="sm:hidden">of<br /></span><br className="hidden sm:inline" /><span className="hidden sm:inline">of </span>the Camera
+              </h2>
+              <p
+                className="mt-2 text-lg md:text-xl text-white/60"
+                style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
+              >
+                {PHOTOGRAPHY.length} photos · {VIDEOS.length} videos · {LOOKBOOK.length} modeling shots
+              </p>
+              <p
+                className="mt-4 text-base md:text-lg leading-relaxed text-white/80"
+                style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+              >
+                Photography taught me composition and light, video taught me pacing, and modeling taught me how a
+                brand presents itself. I bring that same eye to every interface I design.
+              </p>
+            </div>
+            <a
+              href="/creative"
+              className="shrink-0 self-start md:self-auto inline-flex items-center gap-3 border border-white px-6 py-3 text-[12px] tracking-[0.35em] uppercase hover:bg-[#fff] hover:text-[#000] transition-colors"
+              style={{ fontFamily: "'Courier Prime', monospace" }}
+            >
+              View all creative work →
+            </a>
+          </div>
         </div>
 
         <FilmStrip />
 
         <p
-          className="mt-4 text-[11px] tracking-[0.3em] uppercase text-white/40"
+          className="gutter mt-4 text-[11px] tracking-[0.3em] uppercase text-white/40"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           Tap a frame to open it
@@ -1287,7 +1287,7 @@ export default function App() {
         <div className="mb-12 overflow-hidden flex flex-col gap-2">
           <a
             href="mailto:bienjericdelapaz9@gmail.com"
-            className="block text-[4.4vw] sm:text-[3vw] md:text-[2.2vw] font-black uppercase leading-tight tracking-tight hover:text-white/60 transition-colors break-all"
+            className="block text-[4.4vw] sm:text-[3vw] md:text-[min(2.2vw,38px)] font-black uppercase leading-tight tracking-tight hover:text-white/60 transition-colors break-all"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
           >
             bienjericdelapaz9@gmail.com

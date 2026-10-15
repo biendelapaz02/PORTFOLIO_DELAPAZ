@@ -193,7 +193,7 @@ function LookbookSpread() {
                   <img
                     src={photoUrl(name, "sm")}
                     srcSet={`${photoUrl(name, "sm")} 720w, ${photoUrl(name, "full")} 1800w`}
-                    sizes={photo.w > photo.h ? "(min-width: 1728px) 1060px, (min-width: 768px) 62vw, 100vw" : "(min-width: 1728px) 530px, (min-width: 768px) 31vw, 100vw"}
+                    sizes={photo.w > photo.h ? "(min-width: 1728px) 1060px, (min-width: 768px) 62vw, 100vw" : "(min-width: 2560px) 1000px, (min-width: 1728px) 530px, (min-width: 768px) 31vw, 100vw"}
                     alt={photo.alt}
                     width={photo.w}
                     height={photo.h}
@@ -257,7 +257,7 @@ export default function Creative() {
       {/* The ::before backing fills any gap above the bar so photos never show through while scrolling */}
       <nav className="sticky top-0 z-50 bg-white border-b border-black before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit">
         {/* Phones: logo and toggle on top, the three links in a row below */}
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4 min-[1728px]:px-[calc((100%_-_1600px)/2)]">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4 min-[1728px]:px-[max(2rem,calc((100%_-_1600px)/2))]">
           <a href="/" className="py-2 -my-2 text-[12px] tracking-[0.3em] uppercase whitespace-nowrap" style={{ fontFamily: "'Courier Prime', monospace" }}>
             ← BJDP
           </a>
