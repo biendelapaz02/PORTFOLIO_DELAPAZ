@@ -255,9 +255,9 @@ export default function Creative() {
 
       {/* NAV */}
       {/* The ::before backing fills any gap above the bar so photos never show through while scrolling */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-black before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit">
+      <nav className="nav-unzoom sticky top-0 z-50 bg-white border-b border-black before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit">
         {/* Phones: logo and toggle on top, the three links in a row below */}
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4 min-[1728px]:px-[max(2rem,calc((100%_-_1600px)/2))]">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4 wide:px-[max(calc(4rem*var(--zoom)),calc((100%_-_1600px*var(--zoom))/2))]">
           <a href="/" className="py-2 -my-2 text-[12px] tracking-[0.3em] uppercase whitespace-nowrap" style={{ fontFamily: "'Courier Prime', monospace" }}>
             ← BJDP
           </a>

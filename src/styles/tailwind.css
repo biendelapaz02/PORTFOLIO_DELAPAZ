@@ -3,6 +3,11 @@
 
 @import 'tw-animate-css';
 
+/* "wide:" = 1728px, where the content reaches its 1600px cap (named so it sorts after md/lg/xl) */
+@theme {
+  --breakpoint-wide: 108rem;
+}
+
 /* Side padding for page content. Past 1728px wide the content stops growing at 1600px and stays centered,
    so big monitors get calm margins instead of stretched lines and giant images. */
 @utility gutter {
@@ -22,16 +27,21 @@
   }
 }
 
-/* Big monitors: the whole page scales up in steps, so text, pictures and spacing grow together.
+/* Big monitors: the page content scales up in steps, so text, pictures and spacing grow together.
    Zoom also scales vw/vh units, so anything sized to the screen divides by --zoom to stay put. */
 :root {
   --zoom: 1;
 }
-@media (width >= 1920px) { :root { --zoom: 1.15; } }
-@media (width >= 2240px) { :root { --zoom: 1.25; } }
-@media (width >= 2560px) { :root { --zoom: 1.35; } }
-@media (width >= 3200px) { :root { --zoom: 1.6; } }
-@media (width >= 3840px) { :root { --zoom: 1.8; } }
+@media (width >= 1920px) { :root { --zoom: 1.27; } }
+@media (width >= 2240px) { :root { --zoom: 1.38; } }
+@media (width >= 2560px) { :root { --zoom: 1.49; } }
+@media (width >= 3200px) { :root { --zoom: 1.76; } }
+@media (width >= 3840px) { :root { --zoom: 1.98; } }
 html {
   zoom: var(--zoom);
+}
+
+/* The nav bars undo the zoom so they keep their normal size */
+@utility nav-unzoom {
+  zoom: calc(1 / var(--zoom));
 }

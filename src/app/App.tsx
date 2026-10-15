@@ -763,11 +763,11 @@ export default function App() {
 
       {/* NAV */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit ${
+        className={`nav-unzoom fixed top-0 left-0 right-0 z-50 transition-all duration-300 before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit ${
           scrolled || menuOpen ? "bg-white border-b border-black" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4 min-[1728px]:px-[max(2rem,calc((100%_-_1600px)/2))]">
+        <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4 wide:px-[max(calc(4rem*var(--zoom)),calc((100%_-_1600px*var(--zoom))/2))]">
           <div style={{ fontFamily: "'Courier Prime', monospace" }} className="shrink-0 whitespace-nowrap text-[12px] tracking-[0.3em] uppercase">
             BJDP —{" "}
             <span style={{ textDecoration: "line-through", textDecorationThickness: "2px" }}>
@@ -832,7 +832,7 @@ export default function App() {
 
       {/* HERO */}
       <section className="relative min-h-[calc(100vh/var(--zoom))] supports-[min-height:100svh]:min-h-[calc(100svh/var(--zoom))] flex flex-col justify-end gutter pb-12 md:pb-16 pt-32 overflow-hidden">
-        <div className="hidden md:block absolute top-24 right-16 min-[1728px]:right-[max(4rem,calc((100%_-_1600px)/2))]">
+        <div className="hidden md:block absolute top-24 right-16 wide:right-[max(4rem,calc((100%_-_1600px)/2))]">
           <MargieleNumbers />
         </div>
         <div className="relative z-10">
