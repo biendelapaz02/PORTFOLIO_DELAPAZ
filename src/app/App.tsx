@@ -106,7 +106,7 @@ type Project = {
   subtitle: string;
   note: string | null;
   github: string | null;
-  description: string;
+  points: string[];
   tags: string[];
   images: { url: string; caption: string }[];
   flip: boolean;
@@ -120,8 +120,12 @@ const PROJECTS: Project[] = [
     github: "https://github.com/ethanidk04/CamarinesNorteWebsite",
     subtitle: "Comprehensive UI Layouts & Custom Trip Planning",
     note: null,
-    description:
-      "Designed comprehensive user interface layouts, wireframes, and responsive screen mockups in Figma, including structured, visual component cards highlighting regional food heritage, annual festivals, and tourist spots. Also designed clear user navigational flows for registration, custom trip planning, and mock booking forms.",
+    points: [
+      "Designed comprehensive user interface layouts, wireframes, and responsive screen mockups in Figma for a provincial tourism guide and booking portal.",
+      "Designed structured, visual component cards highlighting regional food heritage, annual festivals, and tourist spots.",
+      "Designed clear user navigational flows for registration, custom trip planning, and mock booking forms.",
+      "Kept one consistent visual system of type, color, and photography across the Home, Destinations, Festivals, Plan Your Trip, and Contact pages.",
+    ],
     tags: ["UI Layouts","Visual Component Cards","Trip Planning Flows","Tourism UX"],
     images: [
       { url: camHome,     caption: "Home — 01/05" },
@@ -139,8 +143,12 @@ const PROJECTS: Project[] = [
     github: "https://github.com/andreistvn/senti",
     subtitle: "Decentralized Intrusion Detection & Prevention System",
     note: null,
-    description:
-      "Designed a decentralized, endpoint-based IDPS architecture to actively defend against public Wi-Fi security threats, building a multi-tiered defense pipeline incorporating behavioral machine learning and a permissioned blockchain layer. Additionally, designed and implemented responsive administrative and agent web dashboards using React and Tailwind CSS, and built a payload-blind packet monitoring framework strictly complying with the Data Privacy Act of 2012.",
+    points: [
+      "Designed a decentralized, endpoint-based IDPS architecture to actively defend against public Wi-Fi security threats.",
+      "Built a multi-tiered defense pipeline incorporating behavioral machine learning and a permissioned blockchain layer.",
+      "Designed and implemented responsive administrative and agent web dashboards using React and Tailwind CSS.",
+      "Built a payload-blind packet monitoring framework strictly complying with the Data Privacy Act of 2012.",
+    ],
     tags: ["IDPS Architecture","Behavioral ML","Permissioned Blockchain","React","Tailwind","Scapy"],
     images: [
       { url: sentiAdminDashboard, caption: "Admin Dashboard — 01/05" },
@@ -158,8 +166,12 @@ const PROJECTS: Project[] = [
     github: "https://github.com/aesrch/chefMAI",
     subtitle: "AI-Driven Recipe Matching Web Application",
     note: null,
-    description:
-      "Designed and built the user interface for an AI-driven recipe matching web application using Figma and VS Code, establishing interactive user flows that track ingredient cataloging via text inputs and camera-based image capture. Furthermore, designed clean interface layouts displaying recipe outputs, constraints, difficulties, and dynamic substitutes.",
+    points: [
+      "Designed and built the user interface for an AI-driven recipe matching web application using Figma and VS Code.",
+      "Built interactive user flows tracking ingredient cataloging via text inputs and camera-based image capture.",
+      "Designed clean interface layouts displaying recipe outputs, constraints, difficulties, and dynamic substitutes.",
+      "Mapped the full journey from discovering recipes to a step-by-step cooking mode, with recipe detail pop-ups in between.",
+    ],
     tags: ["Figma","Interactive User Flows","AI Recommendation","VS Code","Web UI"],
     images: [
       { url: chefHome,    caption: "Landing — 01/05" },
@@ -177,8 +189,12 @@ const PROJECTS: Project[] = [
     github: "https://github.com/Sky1sBloo/cash-catalysts",
     subtitle: "Gamified Finance Tracker",
     note: "2nd Place — Mini Hackathon",
-    description:
-      "Designed UI screen layouts, prototypes, and structured graphical assets inside Figma for an intuitive user experience, and built the native graphic interface using JavaFX Scene Builder to guarantee smooth runtime deployment.",
+    points: [
+      "Designed UI screen layouts, prototypes, and structured graphical assets inside Figma for an intuitive user experience.",
+      "Built the native graphic interface using JavaFX Scene Builder to guarantee smooth runtime deployment.",
+      "Turned expense tracking into a game loop, with a game world, a transaction log, and trade chests that reward users for logging their spending.",
+      "Won 2nd place at a mini hackathon with a working JavaFX prototype.",
+    ],
     tags: ["UI Screen Layouts","JavaFX Scene Builder","Gamification","Finance UX"],
     images: [
       { url: cashCatalyst1, caption: "Game World — 01/03" },
@@ -194,8 +210,12 @@ const PROJECTS: Project[] = [
     github: "https://github.com/Oumazshin/LumenID",
     subtitle: "Decentralized Identity & Verifiable Credential Platform",
     note: "Polkadot Solidity Hackathon",
-    description:
-      "Designed the UI/UX architecture, wallet interfaces, and dashboard layouts for a decentralized identity network, and built accessible frontend disclosure interaction loops utilizing secure, time-bounded QR codes and links.",
+    points: [
+      "Designed the UI/UX architecture, wallet interfaces, and dashboard layouts for a decentralized identity network.",
+      "Built accessible frontend disclosure interaction loops utilizing secure, time-bounded QR codes and links.",
+      "Designed separate experiences for holders and issuers: a user dashboard and credential vault, and an admin panel for issuing credentials.",
+      "Designed the verification and profile setup screens so a credential can be checked and shared in a few clear steps, built for the Polkadot Solidity Hackathon.",
+    ],
     tags: ["UI/UX Architecture","Wallet Interfaces","Accessible Frontend","Polkadot","Solidity"],
     images: [
       { url: lumenHome,        caption: "Landing — 01/06" },
@@ -214,8 +234,12 @@ const PROJECTS: Project[] = [
     github: "https://github.com/controlbackspace/Auto-Loan-Team-5",
     subtitle: "BPI Auto Loan-Inspired UI & MySQL Database Integration",
     note: null,
-    description:
-      "BPI Auto Loan-inspired interface design for a vehicle financing platform. Mapped complex amortization logic and MySQL relational schemas onto clean application screens — loan calculator flows, repayment dashboards, and approval status trackers built for clarity under financial complexity.",
+    points: [
+      "Designed a BPI Auto Loan-inspired interface for a vehicle financing platform.",
+      "Mapped complex amortization logic onto clean screens: loan calculator flows, repayment dashboards, and approval status trackers.",
+      "Modeled the MySQL relational schema behind loan applications and repayments, applying ERD and normalization.",
+      "Connected the interface to the MySQL database so every screen reflects live loan and payment records.",
+    ],
     tags: ["BPI Auto Loan UI","MySQL Integration","Loan Calculator","Database Design","Finance"],
     images: [
       { url: bpiHome, caption: "Landing Page — 01/01" },
@@ -231,7 +255,7 @@ type StaticProject = {
   note: string | null;
   github: string | null;
   links?: { label: string; url: string }[];
-  description: string;
+  points: string[];
   tags: string[];
   image: string | null;
   flip: boolean;
@@ -248,8 +272,12 @@ const STATIC_PROJECTS: StaticProject[] = [
       { label: "View on Figma", url: "https://www.figma.com/design/OQX6tLKkxcBdmbQRte5aCR/HCI-PROJECT?node-id=0-1&p=f&t=vMkUUFMmeOaraqPY-0" },
       { label: "View Wireframe", url: "https://www.figma.com/design/I0s83eIU29rztBdFRgV8zx/WIREFRAME?node-id=0-1&p=f&t=D11yGi84yP6RHaLB-0" },
     ],
-    description:
-      "Designed the UI/UX architecture and interactive prototypes in Figma for a decision-support mobile application assisting students with managing fixed daily allowances. The interface employs a \"Transport First\" design logic and background optimization algorithms to reduce cognitive load and decision fatigue during budget allocation. Authored the comprehensive HCI report and developed low-fidelity to high-fidelity wireframes featuring real-time feedforward mechanisms, satisfaction slider interactions, and strict error prevention controls.",
+    points: [
+      "Designed the UI/UX architecture and interactive prototypes in Figma for a mobile app that helps students manage fixed daily allowances.",
+      "Applied a \"Transport First\" design logic with background optimization to reduce cognitive load and decision fatigue during budget allocation.",
+      "Developed low-fidelity to high-fidelity wireframes with real-time feedforward, satisfaction slider interactions, and strict error prevention controls.",
+      "Authored the comprehensive HCI report documenting the research, design decisions, and usability evaluation.",
+    ],
     tags: ["Figma","UI/UX Architecture","HCI Report","Wireframing","Prototyping","Feedforward Mechanisms","Mobile UX"],
     image: null,
     flip: false,
@@ -260,8 +288,12 @@ const STATIC_PROJECTS: StaticProject[] = [
     subtitle: "Household Energy Optimization",
     note: null,
     github: "https://github.com/Shwarmanism/Appliances-Scheduler",
-    description:
-      "Designed the UI/UX architecture in Figma for a web-based application built to help users monitor appliance usage, estimate monthly bills, and receive tailored energy-saving tips. The system integrates Dijkstra's Algorithm to generate efficient appliance usage schedules under Peak/Off-Peak conditions, the 0/1 Knapsack Algorithm to select optimal appliance combinations within a daily energy limit, and Insertion Sort to rank appliances by electricity consumption. Structured the visual user flows for the optimization dashboard, consumption calculator, and smart scheduling modules powered by a Python and Flask backend.",
+    points: [
+      "Designed the UI/UX architecture in Figma for a web app that helps households monitor appliance usage, estimate monthly bills, and get energy-saving tips.",
+      "Structured the visual user flows for the optimization dashboard, consumption calculator, and smart scheduling modules.",
+      "Presented algorithm results in plain screens: Dijkstra's Algorithm for Peak/Off-Peak schedules, 0/1 Knapsack for appliance combinations within a daily limit, and Insertion Sort for ranking by consumption.",
+      "Worked against a Python and Flask backend so each screen matches the data the optimizer returns.",
+    ],
     tags: ["Figma","UI/UX Architecture","Dijkstra's Algorithm","0/1 Knapsack","Python Flask","Dashboard Design"],
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&h=800&fit=crop&auto=format",
     flip: false,
@@ -272,8 +304,12 @@ const STATIC_PROJECTS: StaticProject[] = [
     subtitle: "Hyper-Localized Disaster Reporting & Response Application",
     note: null,
     github: "https://github.com/controlbackspace/MarikinAlert",
-    description:
-      "Developed a hyper-localized, internet-independent disaster reporting and response application designed exclusively for Marikina City to combat telecom infrastructure collapse during high-intensity crises. Built an offline reporting architecture that utilizes a distributed network of local Wi-Fi nodes to mirror data across admin nodes in real time, establishing a resilient \"city-wide intranet\". Features an AI-driven triage engine capable of parsing natural language and unstructured \"Taglish\" keywords to automatically categorize and prioritize critical life-threatening situations on a color-coded emergency dispatch dashboard.",
+    points: [
+      "Developed an internet-independent disaster reporting and response app for Marikina City, built for when telecom infrastructure collapses during a crisis.",
+      "Built an offline reporting architecture on a distributed network of local Wi-Fi nodes that mirrors data across admin nodes in real time, forming a city-wide intranet.",
+      "Built an AI-driven triage engine that parses natural language and unstructured \"Taglish\" keywords to categorize and prioritize life-threatening reports.",
+      "Designed a color-coded emergency dispatch dashboard so responders can see the most critical situations first.",
+    ],
     tags: ["Offline Architecture","Distributed Wi-Fi Nodes","AI Triage Engine","NLP","Emergency UX","Marikina City"],
     image: "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=1200&h=800&fit=crop&auto=format",
     flip: true,
@@ -284,8 +320,12 @@ const STATIC_PROJECTS: StaticProject[] = [
     subtitle: "Custom Programming Language Architecture",
     note: null,
     github: "https://github.com/kenz4nity/LEX-C_Programming_Language",
-    description:
-      "Designed and specified a free-field programming language architecture that fuses the robust, type-safe foundations of C and Java with expressive, modern syntactic conveniences designed to lower developer cognitive load and prevent syntax errors. Authored the full lexical specification and context-free grammar parsing rules, replacing dense traditional bracing symbols with descriptive keywords like \"what if\", \"then do\", and \"continue until\", alongside a custom double-percent compiler comment tokenization standard.",
+    points: [
+      "Designed and specified a free-field programming language that fuses the type-safe foundations of C and Java with modern syntactic conveniences.",
+      "Authored the full lexical specification and context-free grammar parsing rules.",
+      "Replaced dense bracing symbols with descriptive keywords like \"what if\", \"then do\", and \"continue until\" to lower cognitive load and prevent syntax errors.",
+      "Defined a custom double-percent (%%) comment tokenization standard for the compiler.",
+    ],
     tags: ["Language Design","Lexical Specification","Context-Free Grammar","Compiler Tokenization","C","Java"],
     image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&h=800&fit=crop&auto=format",
     flip: false,
@@ -324,7 +364,7 @@ function FilmStrip() {
   });
 
   return (
-    <div className="filmstrip -mx-6 md:-mx-16 overflow-hidden bg-[#111]">
+    <div className="filmstrip -mx-6 md:-mx-16 min-[1728px]:mx-[calc(800px_-_50vw)] overflow-hidden bg-[#111]">
       {/* The frames run twice in a row so the loop is seamless; the copy is hidden from screen readers */}
       <div className="filmstrip-track flex w-max gap-2 pr-2 py-5">
         {[...frames, ...frames].map((frame, i) => {
@@ -379,7 +419,8 @@ function FilmStrip() {
 
 function StaticProjectModule({ project }: { project: StaticProject }) {
   return (
-    <div className="border-b border-black/30 px-6 md:px-16 py-8 md:py-10 grid grid-cols-1 md:grid-cols-[80px_1fr] gap-3 md:gap-6">
+    // Wide screens: index | title + bullets | skills + links, so the row fills the width
+    <div className="border-b border-black/30 gutter py-8 md:py-10 grid grid-cols-1 md:grid-cols-[80px_minmax(0,1fr)] lg:grid-cols-[80px_minmax(0,1fr)_minmax(0,22rem)] xl:grid-cols-[80px_minmax(0,1fr)_minmax(0,26rem)] gap-3 md:gap-x-6 md:gap-y-5 lg:gap-x-12">
       {/* Index */}
       <div
         className="text-[11px] tracking-[0.4em] uppercase text-black/30 pt-1"
@@ -389,8 +430,8 @@ function StaticProjectModule({ project }: { project: StaticProject }) {
       </div>
 
       {/* Content */}
-      <div>
-        <div className="flex flex-wrap items-baseline gap-3 mb-2">
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
           <h3
             className="text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
@@ -405,13 +446,24 @@ function StaticProjectModule({ project }: { project: StaticProject }) {
           </p>
         </div>
 
-        <p
-          className="text-base leading-relaxed text-black/80 max-w-3xl mb-5"
+        <ul
+          className="max-w-3xl flex flex-col gap-2 text-base leading-relaxed text-black/80 list-disc pl-5 marker:text-[#888]"
           style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
         >
-          {project.description}
-        </p>
+          {project.points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      </div>
 
+      {/* Skills and links: under the bullets on tablets, a right-hand column on wide screens */}
+      <div className="min-w-0 md:col-start-2 lg:col-start-3 lg:pt-1">
+        <div
+          className="hidden lg:block text-[11px] tracking-[0.4em] uppercase text-black/40 mb-2"
+          style={{ fontFamily: "'Courier Prime', monospace" }}
+        >
+          Competencies
+        </div>
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tags.map((tag) => (
             <span
@@ -612,7 +664,7 @@ function ProjectModule({ project }: { project: Project }) {
     <div className="border-b border-black">
       {/* Project index label */}
       <div
-        className="border-b border-black/20 px-6 md:px-16 py-3 flex flex-wrap items-center gap-x-4 gap-y-2"
+        className="border-b border-black/20 gutter py-3 flex flex-wrap items-center gap-x-4 gap-y-2"
         style={{ fontFamily: "'Courier Prime', monospace" }}
       >
         <span className="text-[11px] tracking-[0.4em] uppercase text-black/40">{project.index}</span>
@@ -629,7 +681,7 @@ function ProjectModule({ project }: { project: Project }) {
 
       {/* Editorial spread */}
       <div
-        className={`grid grid-cols-1 md:grid-cols-2 ${project.flip ? "md:[&>*:first-child]:order-last" : ""}`}
+        className={`gutter-wide grid grid-cols-1 md:grid-cols-2 ${project.flip ? "md:[&>*:first-child]:order-last" : ""}`}
       >
         {/* Carousel side */}
         <div className={`min-w-0 p-6 md:p-8 lg:p-10 ${project.flip ? "md:border-l border-black" : "md:border-r border-black"} border-b md:border-b-0`}>
@@ -651,12 +703,14 @@ function ProjectModule({ project }: { project: Project }) {
             >
               {project.subtitle}
             </p>
-            <p
-              className="text-base leading-relaxed"
+            <ul
+              className="flex flex-col gap-2 text-base leading-relaxed list-disc pl-5 marker:text-[#888]"
               style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
             >
-              {project.description}
-            </p>
+              {project.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
           </div>
 
           <div className="mt-8">
@@ -728,7 +782,7 @@ export default function App() {
           scrolled || menuOpen ? "bg-white border-b border-black" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4">
+        <div className="flex items-center justify-between gap-6 px-6 md:px-8 py-4 min-[1728px]:px-[calc((100%_-_1600px)/2)]">
           <div style={{ fontFamily: "'Courier Prime', monospace" }} className="shrink-0 whitespace-nowrap text-[12px] tracking-[0.3em] uppercase">
             BJDP —{" "}
             <span style={{ textDecoration: "line-through", textDecorationThickness: "2px" }}>
@@ -792,25 +846,25 @@ export default function App() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen supports-[min-height:100svh]:min-h-[100svh] flex flex-col justify-end px-6 md:px-16 pb-12 md:pb-16 pt-32 overflow-hidden">
-        <div className="hidden md:block absolute top-24 right-16">
+      <section className="relative min-h-screen supports-[min-height:100svh]:min-h-[100svh] flex flex-col justify-end gutter pb-12 md:pb-16 pt-32 overflow-hidden">
+        <div className="hidden md:block absolute top-24 right-16 min-[1728px]:right-[calc((100%_-_1600px)/2)]">
           <MargieleNumbers />
         </div>
         <div className="relative z-10">
           <span
-            className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase"
+            className="block text-[14vw] md:text-[min(12vw,207px)] font-black leading-[0.88] tracking-[-0.04em] uppercase"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
           >
             BIEN
           </span>
           <span
-            className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase"
+            className="block text-[14vw] md:text-[min(12vw,207px)] font-black leading-[0.88] tracking-[-0.04em] uppercase"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
           >
             JERIC
           </span>
           <span
-            className="block text-[14vw] md:text-[12vw] font-black leading-[0.88] tracking-[-0.04em] uppercase whitespace-nowrap"
+            className="block text-[14vw] md:text-[min(12vw,207px)] font-black leading-[0.88] tracking-[-0.04em] uppercase whitespace-nowrap"
             style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
           >
             DELA PAZ
@@ -860,7 +914,7 @@ export default function App() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="about" className="relative gutter py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
           <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">01</span>
           <div className="flex-1 h-px bg-black/20" />
@@ -922,7 +976,7 @@ export default function App() {
       </section>
 
       {/* EXPERIENCE */}
-      <section id="experience" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="experience" className="relative gutter py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
           <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">02</span>
           <div className="flex-1 h-px bg-black/20" />
@@ -1003,7 +1057,7 @@ export default function App() {
       {/* PROJECTS */}
       <section id="projects" className="border-b border-black">
         <div
-          className="px-6 md:px-16 py-8 flex items-center gap-4"
+          className="gutter py-8 flex items-center gap-4"
           style={{ fontFamily: "'Courier Prime', monospace" }}
         >
           <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">03</span>
@@ -1012,7 +1066,7 @@ export default function App() {
         </div>
 
         {/* Editorial label strip */}
-        <div className="border-t border-b border-black px-6 md:px-16 py-2 bg-black">
+        <div className="border-t border-b border-black gutter py-2 bg-black">
           <p
             className="text-[9px] tracking-[0.3em] sm:tracking-[0.5em] leading-relaxed uppercase text-white"
             style={{ fontFamily: "'Courier Prime', monospace" }}
@@ -1034,7 +1088,7 @@ export default function App() {
       <section
         id="creative"
         data-keep-dark=""
-        className="relative px-6 md:px-16 pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
+        className="relative gutter pt-16 md:pt-20 pb-10 md:pb-14 bg-black text-white overflow-hidden"
       >
         <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
           <span className="text-[12px] tracking-[0.4em] uppercase text-white/30">04</span>
@@ -1084,7 +1138,7 @@ export default function App() {
       </section>
 
       {/* SKILLS */}
-      <section id="skills" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="skills" className="relative gutter py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
           <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">05</span>
           <div className="flex-1 h-px bg-black/20" />
@@ -1142,7 +1196,7 @@ export default function App() {
       </section>
 
       {/* EDUCATION & CERTIFICATIONS */}
-      <section id="education" className="relative px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="education" className="relative gutter py-16 md:py-24 border-b border-black">
         <div className="mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
           <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">06</span>
           <div className="flex-1 h-px bg-black/20" />
@@ -1214,7 +1268,7 @@ export default function App() {
       <section
         id="contact"
         data-keep-dark=""
-        className="relative px-6 md:px-16 pt-16 md:pt-24 pb-12 md:pb-16 bg-black text-white overflow-hidden"
+        className="relative gutter pt-16 md:pt-24 pb-12 md:pb-16 bg-black text-white overflow-hidden"
       >
         <div
           className="absolute top-8 right-6 md:right-8 text-white/5 text-[72px] md:text-[120px] font-black leading-none select-none pointer-events-none"

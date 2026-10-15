@@ -2,3 +2,22 @@
 @source '../**/*.{js,ts,jsx,tsx}';
 
 @import 'tw-animate-css';
+
+/* Side padding for page content. Past 1728px wide the content stops growing at 1600px and stays centered,
+   so big monitors get calm margins instead of stretched lines and giant images. */
+@utility gutter {
+  padding-inline: 1.5rem;
+  @media (width >= 48rem) {
+    padding-inline: 4rem;
+  }
+  @media (width >= 1728px) {
+    padding-inline: calc((100% - 1600px) / 2);
+  }
+}
+
+/* Same cap for the project spreads: their cells add 40px of padding, so the content lines up with the gutter */
+@utility gutter-wide {
+  @media (width >= 1728px) {
+    padding-inline: calc((100% - 1680px) / 2);
+  }
+}

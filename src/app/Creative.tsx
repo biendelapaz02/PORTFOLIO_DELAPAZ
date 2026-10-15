@@ -193,7 +193,7 @@ function LookbookSpread() {
                   <img
                     src={photoUrl(name, "sm")}
                     srcSet={`${photoUrl(name, "sm")} 720w, ${photoUrl(name, "full")} 1800w`}
-                    sizes={photo.w > photo.h ? "(min-width: 768px) 62vw, 100vw" : "(min-width: 768px) 31vw, 100vw"}
+                    sizes={photo.w > photo.h ? "(min-width: 1728px) 1060px, (min-width: 768px) 62vw, 100vw" : "(min-width: 1728px) 530px, (min-width: 768px) 31vw, 100vw"}
                     alt={photo.alt}
                     width={photo.w}
                     height={photo.h}
@@ -257,7 +257,7 @@ export default function Creative() {
       {/* The ::before backing fills any gap above the bar so photos never show through while scrolling */}
       <nav className="sticky top-0 z-50 bg-white border-b border-black before:content-[''] before:absolute before:inset-x-0 before:bottom-full before:h-screen before:bg-inherit">
         {/* Phones: logo and toggle on top, the three links in a row below */}
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 md:px-8 py-3 md:py-4 min-[1728px]:px-[calc((100%_-_1600px)/2)]">
           <a href="/" className="py-2 -my-2 text-[12px] tracking-[0.3em] uppercase whitespace-nowrap" style={{ fontFamily: "'Courier Prime', monospace" }}>
             ← BJDP
           </a>
@@ -286,14 +286,14 @@ export default function Creative() {
       </nav>
 
       {/* HEADER */}
-      <header className="px-6 md:px-16 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-black">
+      <header className="gutter pt-16 md:pt-24 pb-16 md:pb-24 border-b border-black">
         <div className="mb-10 md:mb-12 flex items-center gap-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
           <span className="text-[12px] tracking-[0.4em] uppercase text-black/40">04</span>
           <div className="flex-1 h-px bg-black/20" />
           <span className="text-[12px] tracking-[0.4em] uppercase">Creative</span>
         </div>
         <h1
-          className="text-[11vw] md:text-[8vw] font-black leading-[0.9] tracking-[-0.04em] uppercase"
+          className="text-[11vw] md:text-[min(8vw,138px)] font-black leading-[0.9] tracking-[-0.04em] uppercase"
           style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
         >
           Behind &<br className="md:hidden" /> In Front{" "}
@@ -309,14 +309,14 @@ export default function Creative() {
       </header>
 
       {/* PHOTOGRAPHY */}
-      <section id="photography" className="scroll-mt-28 md:scroll-mt-16 px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="photography" className="scroll-mt-28 md:scroll-mt-16 gutter py-16 md:py-24 border-b border-black">
         <PartHeading title="Photography" note="Shot and edited in Adobe Photoshop · Teknolohista ng Bayan merch campaign for ASCII, PUP Manila" />
         <SourceLinks links={PHOTOGRAPHY_LINKS} />
         <PhotoWall photos={PHOTOGRAPHY} />
       </section>
 
       {/* VIDEO */}
-      <section id="video" className="scroll-mt-28 md:scroll-mt-16 px-6 md:px-16 py-16 md:py-24 border-b border-black">
+      <section id="video" className="scroll-mt-28 md:scroll-mt-16 gutter py-16 md:py-24 border-b border-black">
         <div className="mb-6 md:mb-8">
           <PartHeading title="Video & Film" note="Sony Handycam and Samsung digicam work, shot and edited in Premiere Pro" />
         </div>
@@ -328,7 +328,7 @@ export default function Creative() {
       </section>
 
       {/* MODELING */}
-      <section id="modeling" className="scroll-mt-28 md:scroll-mt-16 px-6 md:px-16 py-16 md:py-24">
+      <section id="modeling" className="scroll-mt-28 md:scroll-mt-16 gutter py-16 md:py-24">
         <PartHeading title="Modeling" note="Modeled for SIPAT Merchandise by UP GEOP" />
         <SourceLinks links={LOOKBOOK_LINKS} />
         <LookbookSpread />
@@ -337,7 +337,7 @@ export default function Creative() {
       {/* FOOTER */}
       <footer
         data-keep-dark=""
-        className="px-6 md:px-16 py-12 md:py-16 bg-black text-white flex flex-wrap items-end justify-between gap-6"
+        className="gutter py-12 md:py-16 bg-black text-white flex flex-wrap items-end justify-between gap-6"
       >
         <a
           href="/#creative"
