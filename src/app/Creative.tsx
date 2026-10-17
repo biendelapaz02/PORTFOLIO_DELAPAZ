@@ -318,7 +318,7 @@ export default function Creative() {
       {/* VIDEO */}
       <section id="video" className="scroll-mt-28 md:scroll-mt-16 gutter py-16 md:py-24 border-b border-black">
         <div className="mb-6 md:mb-8">
-          <PartHeading title="Video & Film" note="Sony Handycam and Samsung digicam work, shot and edited in Premiere Pro" />
+          <PartHeading title="Video & Film" note="Sony Handycam and Samsung digicam work, shot and edited in Premiere Pro and CapCut" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-14">
           {VIDEOS.map((video, i) => (
