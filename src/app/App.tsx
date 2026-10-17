@@ -71,25 +71,26 @@ const TICKER_ITEMS = [
 ];
 
 const SKILLS = [
-  { category: "DESIGN & FRONT-END", items: ["Figma","UI/UX Design","React","Tailwind CSS","HTML/CSS","JavaScript","TypeScript","Adobe Photoshop","Canva"] },
-  { category: "PROGRAMMING", items: ["Java","JavaFX","C","Python","PHP","SQL","JSON"] },
-  { category: "TOOLS", items: ["Git","GitHub"] },
+  { category: "DESIGN & FRONT-END", items: ["Figma","UI/UX Design","React","Vue","Tailwind CSS","HTML/CSS","JavaScript","TypeScript","Adobe Photoshop","Canva"] },
+  { category: "PROGRAMMING & TOOLS", items: ["Java","JavaFX","C","Python","PHP","SQL","JSON","Git","GitHub"] },
   { category: "DATABASE & BACKEND", items: ["MySQL","SQLite","Data Modeling","ERD","Normalization","Python Flask"] },
   { category: "CYBERSECURITY & NETWORKING", items: ["Intrusion Detection & Prevention Systems (IDPS)","Scapy Packet Analysis","Network Simulation (Cisco Packet Tracer)","Security Protocol Implementation","Data Privacy Compliance"] },
   { category: "AI & MACHINE LEARNING", items: ["Bayesian Learning","Naive Bayes Classification","Random Forest Classifier","Feature Engineering","Image Recognition Integration"] },
   { category: "WEB3 & BLOCKCHAIN", items: ["Decentralized Identity (DID)","Verifiable Credentials (VC)","IPFS","MultiChain","Smart Contract Integration"] },
-  { category: "SOFT SKILLS", items: ["Team Collaboration","Public Speaking","Problem-Solving"] },
 ];
 
+// Strongest skills, set in bold
+const TOP_SKILLS = new Set(["Figma", "UI/UX Design", "React", "Vue", "Tailwind CSS"]);
+
 const CERTS = [
-  "Fortinet Certified Associate — Cybersecurity",
-  "Machine Learning, AI, and Cybersecurity Badge",
-  "Science and Technology Track Certificate — US ASEAN & ASU",
-  "Networking Basics — Cisco",
-  "Introduction to Cybersecurity — Cisco",
-  "Introduction to Machine Learning — AWS",
-  "Introduction to Technical Support — IBM",
-  "Introduction to Microsoft Azure Cloud Services — Microsoft",
+  { name: "Fortinet Certified Associate — Cybersecurity", issuer: "Fortinet" },
+  { name: "Machine Learning, AI, and Cybersecurity Badge", issuer: "US ASEAN & ASU" },
+  { name: "Science and Technology Track Certificate", issuer: "US ASEAN & ASU" },
+  { name: "Networking Basics", issuer: "Cisco" },
+  { name: "Introduction to Cybersecurity", issuer: "Cisco" },
+  { name: "Introduction to Machine Learning", issuer: "AWS" },
+  { name: "Introduction to Technical Support", issuer: "IBM" },
+  { name: "Introduction to Microsoft Azure Cloud Services", issuer: "Microsoft" },
 ];
 
 const EXPERIENCE = [
@@ -1213,53 +1214,33 @@ export default function App() {
           <span className="text-[12px] tracking-[0.4em] uppercase">Competencies</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          <div className="min-w-0 border border-black p-6 md:p-8 lg:p-12" style={{ fontFamily: "'Courier Prime', monospace" }}>
-            <div className="text-[12px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
-              *** SKILLS ***
-            </div>
-            <div className="text-[12px] tracking-widest text-center mb-8 text-black/40">
-              {new Date().toISOString().split("T")[0]}
-            </div>
-            {SKILLS.map((skill, i) => (
-              <div key={skill.category} className="mb-6">
-                <div className="text-[12px] tracking-[0.3em] uppercase mb-2 border-b border-black/20 pb-1">
-                  {String(i).padStart(2, "0")} — {skill.category}
-                </div>
-                {skill.items.map((item) => (
-                  <div key={item} className="text-[13px] py-0.5 break-words">
-                    · {item}
-                  </div>
-                ))}
+        <div className="border-t border-black">
+          {SKILLS.map((skill, i) => (
+            <div
+              key={skill.category}
+              className="grid grid-cols-1 md:grid-cols-[280px_1fr] lg:grid-cols-[360px_1fr] gap-2 md:gap-8 py-5 md:py-6 border-b border-black/20"
+            >
+              <div
+                className="flex items-baseline gap-4 text-[12px] tracking-[0.3em] uppercase"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                <span className="text-black/40">{String(i).padStart(2, "0")}</span>
+                <span>{skill.category}</span>
               </div>
-            ))}
-            <div className="border-t border-dashed border-black pt-4 text-center text-[11px] tracking-widest uppercase text-black/40">
-              COMPETENCY TOTAL: {SKILLS.reduce((acc, s) => acc + s.items.length, 0)} ITEMS
-            </div>
-          </div>
-
-          <div className="min-w-0 border border-black md:border-l-0 border-t-0 md:border-t p-6 md:p-8 lg:p-12" style={{ fontFamily: "'Courier Prime', monospace" }}>
-            {/* Stays in view while the longer skills list scrolls past */}
-            <div className="md:sticky md:top-24">
-              <div className="text-[12px] tracking-[0.4em] uppercase mb-6 text-center border-b border-dashed border-black pb-4">
-                *** CERTIFICATIONS ***
-              </div>
-              <div className="text-[12px] tracking-widest text-center mb-6 text-black/40">
-                {new Date().toISOString().split("T")[0]}
-              </div>
-              {CERTS.map((cert, i) => (
-                <div key={cert} className="flex items-start gap-3 border-b border-black/20 py-3">
-                  <span className="text-[11px] tracking-widest text-black/40 shrink-0 mt-0.5">
-                    {String(i + 1).padStart(2, "0")}
+              <p
+                className="min-w-0 text-lg md:text-xl leading-relaxed"
+                style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
+              >
+                {skill.items.map((item, j) => (
+                  <span key={item}>
+                    <span className={TOP_SKILLS.has(item) ? "font-bold" : undefined}>{item}</span>
+                    {/* Non-breaking space keeps the dot with its item; the space after it is the wrap point */}
+                    {j < skill.items.length - 1 && <>&nbsp;<span className="text-black/30 mx-1">·</span> </>}
                   </span>
-                  <p className="text-[13px] tracking-[0.1em] uppercase">{cert}</p>
-                </div>
-              ))}
-              <div className="border-t border-dashed border-black mt-4 pt-4 text-center text-[11px] tracking-widest uppercase text-black/40">
-                TOTAL: {CERTS.length} CREDENTIALS
-              </div>
+                ))}
+              </p>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -1329,6 +1310,37 @@ export default function App() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mt-16">
+          <div
+            className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-2 border-b border-black pb-3"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
+          >
+            Certifications
+          </div>
+          {CERTS.map((cert, i) => (
+            <div
+              key={cert.name}
+              className="grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] items-baseline gap-x-4 gap-y-1 border-b border-black/20 py-4"
+            >
+              <span
+                className="text-[11px] tracking-widest text-black/40"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="min-w-0 text-base font-bold uppercase tracking-wide leading-tight" style={{ fontFamily: "'Archivo', Arial, sans-serif" }}>
+                {cert.name}
+              </p>
+              <span
+                className="col-start-2 sm:col-start-auto text-[11px] tracking-[0.3em] uppercase text-black/50"
+                style={{ fontFamily: "'Courier Prime', monospace" }}
+              >
+                {cert.issuer}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 
