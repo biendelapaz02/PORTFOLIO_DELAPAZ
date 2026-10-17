@@ -4,6 +4,18 @@ import { DARK_CSS, DarkToggleIcon, LOOKBOOK, NoiseOverlay, PHOTOGRAPHY, photoUrl
 // — Portrait
 import portrait from "@/assets/2BY2PIC.webp";
 
+// — NSJBI internship screenshots
+import nsjbiHome          from "@/assets/nsjbi/user/home.webp";
+import nsjbiPopup         from "@/assets/nsjbi/user/40th-popup.webp";
+import nsjbiAbout         from "@/assets/nsjbi/user/about.webp";
+import nsjbiVideo         from "@/assets/nsjbi/user/video.webp";
+import nsjbiProperties    from "@/assets/nsjbi/user/properties.webp";
+import nsjbi4ph           from "@/assets/nsjbi/user/4ph.webp";
+import nsjbiAdminLogin    from "@/assets/nsjbi/admin/admin-login.webp";
+import nsjbiAdminOverview from "@/assets/nsjbi/admin/admin-overview.webp";
+import nsjbiAdminDash     from "@/assets/nsjbi/admin/admin-dashboard.webp";
+import nsjbiAdminProps    from "@/assets/nsjbi/admin/admin-property-list.webp";
+
 // — LumenID screenshots
 import lumenAdminIssuer from "@/assets/ADMIN_ISSUER.webp";
 import lumenHome        from "@/assets/lumenhome.webp";
@@ -95,6 +107,28 @@ const EXPERIENCE = [
     tags: ["Figma", "UX/QA Audit", "Website Redesign", "Competitor Benchmarking", "CMS Features", "Stakeholder Presentations"],
     links: [
       { label: "View on Figma", url: "https://www.figma.com/design/2W0XN3lrCmaYYlHZw5PwN1/New-San-Jose-Redesign?node-id=0-1&t=iiDL1wpJuxxxff1C-1" },
+    ],
+    galleries: [
+      {
+        label: "Website",
+        images: [
+          { url: nsjbiHome,       caption: "Home — 01/06" },
+          { url: nsjbiPopup,      caption: "40th Anniversary Pop-up — 02/06" },
+          { url: nsjbiAbout,      caption: "About — 03/06" },
+          { url: nsjbiVideo,      caption: "Video Showcase — 04/06" },
+          { url: nsjbiProperties, caption: "Properties — 05/06" },
+          { url: nsjbi4ph,        caption: "Property Detail — 06/06" },
+        ],
+      },
+      {
+        label: "Admin CMS",
+        images: [
+          { url: nsjbiAdminLogin,    caption: "Admin Login — 01/04" },
+          { url: nsjbiAdminOverview, caption: "Admin Overview — 02/04" },
+          { url: nsjbiAdminDash,     caption: "Admin Dashboard — 03/04" },
+          { url: nsjbiAdminProps,    caption: "Property List — 04/04" },
+        ],
+      },
     ],
   },
 ];
@@ -1032,6 +1066,20 @@ export default function App() {
                   >
                     {link.label} ↗
                   </a>
+                ))}
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {job.galleries.map((gallery) => (
+                  <div key={gallery.label} className="min-w-0">
+                    <div
+                      className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-2"
+                      style={{ fontFamily: "'Courier Prime', monospace" }}
+                    >
+                      {gallery.label}
+                    </div>
+                    <ProjectCarousel images={gallery.images} />
+                  </div>
                 ))}
               </div>
             </div>
