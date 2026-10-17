@@ -11,7 +11,7 @@ import nsjbiAbout         from "@/assets/nsjbi/user/about.webp";
 import nsjbiVideo         from "@/assets/nsjbi/user/video.webp";
 import nsjbiProperties    from "@/assets/nsjbi/user/properties.webp";
 import nsjbi4ph           from "@/assets/nsjbi/user/4ph.webp";
-import nsjbiAdminLogin    from "@/assets/nsjbi/admin/admin-login.webp";
+import nsjbiAdminVideo    from "@/assets/nsjbi/admin/admin-add-video.webp";
 import nsjbiAdminOverview from "@/assets/nsjbi/admin/admin-overview.webp";
 import nsjbiAdminDash     from "@/assets/nsjbi/admin/admin-dashboard.webp";
 import nsjbiAdminProps    from "@/assets/nsjbi/admin/admin-property-list.webp";
@@ -106,7 +106,7 @@ const EXPERIENCE = [
     ],
     tags: ["Figma", "UX/QA Audit", "Website Redesign", "Competitor Benchmarking", "CMS Features", "Stakeholder Presentations"],
     links: [
-      { label: "View on Figma", url: "https://www.figma.com/design/2W0XN3lrCmaYYlHZw5PwN1/New-San-Jose-Redesign?node-id=0-1&t=iiDL1wpJuxxxff1C-1" },
+      { label: "View Full Figma", url: "https://www.figma.com/design/2W0XN3lrCmaYYlHZw5PwN1/New-San-Jose-Redesign?node-id=0-1&t=iiDL1wpJuxxxff1C-1" },
     ],
     galleries: [
       {
@@ -123,10 +123,10 @@ const EXPERIENCE = [
       {
         label: "Admin CMS",
         images: [
-          { url: nsjbiAdminLogin,    caption: "Admin Login — 01/04" },
-          { url: nsjbiAdminOverview, caption: "Admin Overview — 02/04" },
-          { url: nsjbiAdminDash,     caption: "Admin Dashboard — 03/04" },
-          { url: nsjbiAdminProps,    caption: "Property List — 04/04" },
+          { url: nsjbiAdminOverview, caption: "Admin Overview — 01/04" },
+          { url: nsjbiAdminDash,     caption: "Admin Dashboard — 02/04" },
+          { url: nsjbiAdminProps,    caption: "Property List — 03/04" },
+          { url: nsjbiAdminVideo,    caption: "Add Video — 04/04" },
         ],
       },
     ],
@@ -565,7 +565,7 @@ function TickerBanner() {
   );
 }
 
-function ProjectCarousel({ images }: { images: Project["images"] }) {
+function ProjectCarousel({ images, aspect = "aspect-[4/3]" }: { images: Project["images"]; aspect?: string }) {
   const [current, setCurrent] = useState(0);
   const total = images.length;
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
@@ -591,7 +591,7 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
     <div className="flex flex-col gap-0 select-none">
       {/* Image box */}
       <div
-        className="relative overflow-hidden bg-neutral-200 aspect-[4/3] cursor-grab active:cursor-grabbing border border-black touch-pan-y"
+        className={`relative overflow-hidden bg-neutral-200 ${aspect} cursor-grab active:cursor-grabbing border border-black touch-pan-y`}
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         onPointerCancel={() => setDragging(false)}
@@ -674,6 +674,51 @@ function ProjectCarousel({ images }: { images: Project["images"] }) {
           to   { opacity: 1; transform: translateX(0); }
         }
       `}</style>
+    </div>
+  );
+}
+
+type ExperienceGalleryProps = {
+  galleries: { label: string; images: Project["images"] }[];
+  links: { label: string; url: string }[];
+};
+
+function ExperienceGallery({ galleries, links }: ExperienceGalleryProps) {
+  const [active, setActive] = useState(0);
+
+  return (
+    <div className="pt-8 border-t border-black/20">
+      <div
+        className="flex flex-wrap items-center justify-between gap-3 mb-3"
+        style={{ fontFamily: "'Courier Prime', monospace" }}
+      >
+        <div className="flex border border-black" role="tablist">
+          {galleries.map((gallery, i) => (
+            <button
+              key={gallery.label}
+              role="tab"
+              aria-selected={i === active}
+              onClick={() => setActive(i)}
+              className={`px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase transition-colors ${i > 0 ? "border-l border-black" : ""} ${i === active ? "bg-black text-white" : "hover:bg-black/5"}`}
+            >
+              {gallery.label}
+            </button>
+          ))}
+        </div>
+        {links.map((link) => (
+          <a
+            key={link.url}
+            href={link.url}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[12px] tracking-[0.3em] uppercase hover:line-through"
+          >
+            {link.label} ↗
+          </a>
+        ))}
+      </div>
+      {/* key resets the slide index when switching tabs */}
+      <ProjectCarousel key={active} images={galleries[active].images} aspect="aspect-video" />
     </div>
   );
 }
@@ -1042,7 +1087,7 @@ export default function App() {
                 ))}
               </ul>
 
-              <div className="mt-8 flex flex-wrap gap-1.5 mb-6">
+              <div className="mt-8 flex flex-wrap gap-1.5">
                 {job.tags.map((tag) => (
                   <span
                     key={tag}
@@ -1053,35 +1098,10 @@ export default function App() {
                   </span>
                 ))}
               </div>
+            </div>
 
-              <div className="flex flex-wrap gap-3">
-                {job.links.map((link) => (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 border border-black px-4 py-2 text-[12px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-colors"
-                    style={{ fontFamily: "'Courier Prime', monospace" }}
-                  >
-                    {link.label} ↗
-                  </a>
-                ))}
-              </div>
-
-              <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {job.galleries.map((gallery) => (
-                  <div key={gallery.label} className="min-w-0">
-                    <div
-                      className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-2"
-                      style={{ fontFamily: "'Courier Prime', monospace" }}
-                    >
-                      {gallery.label}
-                    </div>
-                    <ProjectCarousel images={gallery.images} />
-                  </div>
-                ))}
-              </div>
+            <div className="md:col-span-2 min-w-0">
+              <ExperienceGallery galleries={job.galleries} links={job.links} />
             </div>
           </article>
         ))}
