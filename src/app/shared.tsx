@@ -21,6 +21,7 @@ export const PHOTOGRAPHY: Photo[] = [
   { name: "photo-05", alt: "asciiSKOLAR shirt with a Teknolohista ng Bayan tote bag", w: 1080, h: 1350 },
   { name: "photo-12", alt: "Back of a navy \"ICT for the People!\" shirt", w: 1080, h: 1350 },
   { name: "photo-10", alt: "Two students at a computer, one in a Teknolohista shirt", w: 1440, h: 1080 },
+  { name: "photo-15", alt: "Back of a white \"ICT for the People!\" shirt with the motherboard print", w: 1080, h: 1350 },
   { name: "photo-04", alt: "Student at a desk with a clipboard and an ASCII-stickered laptop", w: 1080, h: 1440 },
   { name: "photo-06", alt: "Model in a Teknolohista shirt pointing to an ASCII sketchbook", w: 1080, h: 1350 },
   { name: "photo-14", alt: "Model stretching the collar of an asciiSKOLAR shirt", w: 1080, h: 1350 },
