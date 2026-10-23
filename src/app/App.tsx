@@ -1252,40 +1252,35 @@ export default function App() {
           <span className="text-[12px] tracking-[0.4em] uppercase">Education & Credentials</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 [&>*]:min-w-0">
-          <div>
-            <div
-              className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              Academic Record
-            </div>
-            <p
-              className="text-2xl font-black uppercase tracking-tight leading-tight"
-              style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
-            >
-              Bachelor of Science in Computer Science
-            </p>
-            <p
-              className="text-lg mt-2"
-              style={{ fontFamily: "'EB Garamond', Georgia, serif", fontStyle: "italic" }}
-            >
-              Polytechnic University of the Philippines, Manila
-            </p>
-            <div className="mt-6 border border-black p-4" style={{ fontFamily: "'Courier Prime', monospace" }}>
-              <div className="text-[11px] tracking-widest uppercase text-black/40 mb-1">GPA</div>
-              <div className="text-3xl font-black">1.29</div>
-              <div className="text-[11px] tracking-widest uppercase text-black/40 mt-1">Graduation Honors Track</div>
-            </div>
+        <div>
+          <div
+            className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
+          >
+            Academic Record
           </div>
+          <p
+            className="text-[12px] tracking-[0.3em] uppercase mb-3"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
+          >
+            Polytechnic University of the Philippines<span className="text-black/30 mx-2">·</span>Manila
+          </p>
+          <p
+            className="max-w-3xl text-3xl md:text-4xl font-black uppercase tracking-tight leading-[0.95]"
+            style={{ fontFamily: "'Archivo', Arial, sans-serif" }}
+          >
+            Bachelor of Science in Computer Science
+          </p>
+        </div>
 
-          <div>
-            <div
-              className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-6 border-b border-black pb-3"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              Organizations
-            </div>
+        <div className="mt-16">
+          <div
+            className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-2 border-b border-black pb-3"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
+          >
+            Organizations
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 [&>*]:min-w-0">
             {[
               { role: "Media Head", org: "JBECP PUP Manila" },
               { role: "Documentation & Secretariat", org: "ASCII" },

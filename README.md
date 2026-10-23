@@ -16,7 +16,7 @@ Personal portfolio of **Bien Jeric Dela Paz**, a web designer and developer stud
 | 03 | Projects | Camarines Norte Tourism Portal, Sentinet, Chef MAI, Cash Catalyst, LumenID, CarPayLater, plus four smaller projects |
 | 04 | Creative | Film strip preview of the photo, video and modeling work |
 | 05 | Skills | Skills list and certifications |
-| 06 | Education | Degree, GPA and organizations |
+| 06 | Education | Degree and organizations |
 | 07 | Contact | Email, phone, GitHub, LinkedIn and Credly |
 
 **Creative page (`/creative`)**: *Behind & In Front of the Camera*
