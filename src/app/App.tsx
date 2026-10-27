@@ -1369,22 +1369,7 @@ export default function App() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 border-t border-white/20 pt-8 md:pt-12 [&>*]:min-w-0 [&_a]:break-all">
-          <div>
-            <div
-              className="text-[11px] tracking-[0.4em] uppercase text-white/30 mb-2"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              Phone
-            </div>
-            <a
-              href="tel:+639663553982"
-              className="text-lg hover:text-white/60 transition-colors"
-              style={{ fontFamily: "'Courier Prime', monospace" }}
-            >
-              +63 966 355 3982
-            </a>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 border-t border-white/20 pt-8 md:pt-12 [&>*]:min-w-0 [&_a]:break-all">
           <div>
             <div
               className="text-[11px] tracking-[0.4em] uppercase text-white/30 mb-2"
