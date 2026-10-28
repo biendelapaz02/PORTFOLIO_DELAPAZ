@@ -212,8 +212,8 @@ const PROJECTS: Project[] = [
         label: "Agent",
         images: [
           { url: sentiAgentDashboard, caption: "Agent Dashboard — 01/03" },
-          { url: sentiTrayApp,        caption: "Tray App — 02/03" },
-          { url: sentiUserGuide,      caption: "User Guide — 03/03" },
+          { url: sentiUserGuide,      caption: "User Guide — 02/03" },
+          { url: sentiTrayApp,        caption: "Tray App — 03/03" },
         ],
       },
     ],
