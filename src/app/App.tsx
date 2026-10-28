@@ -25,21 +25,26 @@ import lumenUser        from "@/assets/USER.webp";
 import lumenVerify      from "@/assets/verify.webp";
 
 // — SentiNet screenshots
-import sentiAdminDashboard from "@/assets/admindashboard.webp";
-import sentiAgentDashboard from "@/assets/AGENT_DASHBOARD.webp";
-import sentiAgentRegister  from "@/assets/AGENTregister.webp";
-import sentiAnalytics      from "@/assets/analytics.webp";
-import sentiAdmin          from "@/assets/admin.webp";
+import sentiAdminDashboard from "@/assets/Sentinet/admin/SENTINET ADMIN DASHBOARD.PNG";
+import sentiAdminAnalytics from "@/assets/Sentinet/admin/SENTINET ADMIN ANALYTICS.PNG";
+import sentiAdminReports   from "@/assets/Sentinet/admin/SENTINET ADMIN REPORTS.PNG";
+import sentiAdminSop       from "@/assets/Sentinet/admin/SENTINET ADMIN SOP.PNG";
+import sentiAgentDashboard from "@/assets/Sentinet/agent/SENTINET AGENT DASHBOARD.PNG";
+import sentiTrayApp        from "@/assets/Sentinet/agent/SENTINET TRAY APP.png";
+import sentiUserGuide      from "@/assets/Sentinet/agent/SENTINET USER GUIDE.PNG";
 
 // — CarPayLater screenshots
 import bpiHome from "@/assets/homebpi.webp";
 
 // — Camarines Norte screenshots
-import camHome    from "@/assets/HOMEE.webp";
-import camTop     from "@/assets/top.webp";
-import camFesti   from "@/assets/festi.webp";
-import camPlanTrip from "@/assets/plantrip.webp";
-import camContact  from "@/assets/contactkaya.webp";
+import camLanding  from "@/assets/Camnorte/LANDING PAGE.PNG";
+import camAbout    from "@/assets/Camnorte/ABOUT.PNG";
+import camBeaches  from "@/assets/Camnorte/EXPLORE BEACHES.PNG";
+import camFestival from "@/assets/Camnorte/EXPLORE FESTIVAL.PNG";
+import camFood     from "@/assets/Camnorte/EXPLORE FOOD.PNG";
+import camPlanTrip from "@/assets/Camnorte/PLAN TRIP.PNG";
+import camBookNow  from "@/assets/Camnorte/BOOK NOW.PNG";
+import camMyTrips  from "@/assets/Camnorte/MY TRIPS.PNG";
 
 // — Chef MAI screenshots
 import chefKitchen  from "@/assets/KITCHEN_MAIN_BUTTOM.webp";
@@ -163,11 +168,14 @@ const PROJECTS: Project[] = [
     ],
     tags: ["UI Layouts","Visual Component Cards","Trip Planning Flows","Tourism UX"],
     images: [
-      { url: camHome,     caption: "Home — 01/05" },
-      { url: camTop,      caption: "Top Destinations — 02/05" },
-      { url: camFesti,    caption: "Festivals — 03/05" },
-      { url: camPlanTrip, caption: "Plan Your Trip — 04/05" },
-      { url: camContact,  caption: "Contact — 05/05" },
+      { url: camLanding,  caption: "Landing Page — 01/08" },
+      { url: camAbout,    caption: "About — 02/08" },
+      { url: camBeaches,  caption: "Explore Beaches — 03/08" },
+      { url: camFestival, caption: "Explore Festivals — 04/08" },
+      { url: camFood,     caption: "Explore Food — 05/08" },
+      { url: camPlanTrip, caption: "Plan Your Trip — 06/08" },
+      { url: camBookNow,  caption: "Book Now — 07/08" },
+      { url: camMyTrips,  caption: "My Trips — 08/08" },
     ],
     flip: false,
   },
@@ -186,11 +194,13 @@ const PROJECTS: Project[] = [
     ],
     tags: ["IDPS Architecture","Behavioral ML","Permissioned Blockchain","React","Tailwind","Scapy"],
     images: [
-      { url: sentiAdminDashboard, caption: "Admin Dashboard — 01/05" },
-      { url: sentiAnalytics,      caption: "Analytics — 02/05" },
-      { url: sentiAgentDashboard, caption: "Agent Dashboard — 03/05" },
-      { url: sentiAgentRegister,  caption: "Agent Registration — 04/05" },
-      { url: sentiAdmin,          caption: "Admin Login — 05/05" },
+      { url: sentiAdminDashboard, caption: "Admin Dashboard — 01/07" },
+      { url: sentiAdminAnalytics, caption: "Admin Analytics — 02/07" },
+      { url: sentiAdminReports,   caption: "Admin Reports — 03/07" },
+      { url: sentiAdminSop,       caption: "Admin SOP — 04/07" },
+      { url: sentiAgentDashboard, caption: "Agent Dashboard — 05/07" },
+      { url: sentiTrayApp,        caption: "Agent Tray App — 06/07" },
+      { url: sentiUserGuide,      caption: "Agent User Guide — 07/07" },
     ],
     flip: true,
   },
