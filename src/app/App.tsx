@@ -25,26 +25,26 @@ import lumenUser        from "@/assets/USER.webp";
 import lumenVerify      from "@/assets/verify.webp";
 
 // — SentiNet screenshots
-import sentiAdminDashboard from "@/assets/Sentinet/admin/SENTINET ADMIN DASHBOARD.PNG";
-import sentiAdminAnalytics from "@/assets/Sentinet/admin/SENTINET ADMIN ANALYTICS.PNG";
-import sentiAdminReports   from "@/assets/Sentinet/admin/SENTINET ADMIN REPORTS.PNG";
-import sentiAdminSop       from "@/assets/Sentinet/admin/SENTINET ADMIN SOP.PNG";
-import sentiAgentDashboard from "@/assets/Sentinet/agent/SENTINET AGENT DASHBOARD.PNG";
-import sentiTrayApp        from "@/assets/Sentinet/agent/SENTINET TRAY APP.png";
-import sentiUserGuide      from "@/assets/Sentinet/agent/SENTINET USER GUIDE.PNG";
+import sentiAdminDashboard from "@/assets/Sentinet/admin/SENTINET ADMIN DASHBOARD.webp";
+import sentiAdminAnalytics from "@/assets/Sentinet/admin/SENTINET ADMIN ANALYTICS.webp";
+import sentiAdminReports   from "@/assets/Sentinet/admin/SENTINET ADMIN REPORTS.webp";
+import sentiAdminSop       from "@/assets/Sentinet/admin/SENTINET ADMIN SOP.webp";
+import sentiAgentDashboard from "@/assets/Sentinet/agent/SENTINET AGENT DASHBOARD.webp";
+import sentiTrayApp        from "@/assets/Sentinet/agent/SENTINET TRAY APP.webp";
+import sentiUserGuide      from "@/assets/Sentinet/agent/SENTINET USER GUIDE.webp";
 
 // — CarPayLater screenshots
 import bpiHome from "@/assets/homebpi.webp";
 
 // — Camarines Norte screenshots
-import camLanding  from "@/assets/Camnorte/LANDING PAGE.PNG";
-import camAbout    from "@/assets/Camnorte/ABOUT.PNG";
-import camBeaches  from "@/assets/Camnorte/EXPLORE BEACHES.PNG";
-import camFestival from "@/assets/Camnorte/EXPLORE FESTIVAL.PNG";
-import camFood     from "@/assets/Camnorte/EXPLORE FOOD.PNG";
-import camPlanTrip from "@/assets/Camnorte/PLAN TRIP.PNG";
-import camBookNow  from "@/assets/Camnorte/BOOK NOW.PNG";
-import camMyTrips  from "@/assets/Camnorte/MY TRIPS.PNG";
+import camLanding  from "@/assets/Camnorte/LANDING PAGE.webp";
+import camAbout    from "@/assets/Camnorte/ABOUT.webp";
+import camBeaches  from "@/assets/Camnorte/EXPLORE BEACHES.webp";
+import camFestival from "@/assets/Camnorte/EXPLORE FESTIVAL.webp";
+import camFood     from "@/assets/Camnorte/EXPLORE FOOD.webp";
+import camPlanTrip from "@/assets/Camnorte/PLAN TRIP.webp";
+import camBookNow  from "@/assets/Camnorte/BOOK NOW.webp";
+import camMyTrips  from "@/assets/Camnorte/MY TRIPS.webp";
 
 // — Chef MAI screenshots
 import chefKitchen  from "@/assets/KITCHEN_MAIN_BUTTOM.webp";
@@ -149,8 +149,12 @@ type Project = {
   points: string[];
   tags: string[];
   images: { url: string; caption: string }[];
+  // optional tabbed galleries; replaces `images` in the carousel when set
+  galleries?: Gallery[];
   flip: boolean;
 };
+
+type Gallery = { label: string; images: Project["images"] };
 
 const PROJECTS: Project[] = [
   {
@@ -193,14 +197,25 @@ const PROJECTS: Project[] = [
       "Built a payload-blind packet monitoring framework strictly complying with the Data Privacy Act of 2012.",
     ],
     tags: ["IDPS Architecture","Behavioral ML","Permissioned Blockchain","React","Tailwind","Scapy"],
-    images: [
-      { url: sentiAdminDashboard, caption: "Admin Dashboard — 01/07" },
-      { url: sentiAdminAnalytics, caption: "Admin Analytics — 02/07" },
-      { url: sentiAdminReports,   caption: "Admin Reports — 03/07" },
-      { url: sentiAdminSop,       caption: "Admin SOP — 04/07" },
-      { url: sentiAgentDashboard, caption: "Agent Dashboard — 05/07" },
-      { url: sentiTrayApp,        caption: "Agent Tray App — 06/07" },
-      { url: sentiUserGuide,      caption: "Agent User Guide — 07/07" },
+    images: [],
+    galleries: [
+      {
+        label: "Admin",
+        images: [
+          { url: sentiAdminDashboard, caption: "Admin Dashboard — 01/04" },
+          { url: sentiAdminAnalytics, caption: "Analytics — 02/04" },
+          { url: sentiAdminReports,   caption: "Reports — 03/04" },
+          { url: sentiAdminSop,       caption: "SOP — 04/04" },
+        ],
+      },
+      {
+        label: "Agent",
+        images: [
+          { url: sentiAgentDashboard, caption: "Agent Dashboard — 01/03" },
+          { url: sentiTrayApp,        caption: "Tray App — 02/03" },
+          { url: sentiUserGuide,      caption: "User Guide — 03/03" },
+        ],
+      },
     ],
     flip: true,
   },
@@ -689,8 +704,46 @@ function ProjectCarousel({ images, aspect = "aspect-[4/3]" }: { images: Project[
   );
 }
 
+type GalleryTabsProps = {
+  galleries: Gallery[];
+  active: number;
+  onSelect: (i: number) => void;
+};
+
+function GalleryTabs({ galleries, active, onSelect }: GalleryTabsProps) {
+  return (
+    <div className="flex border border-black" role="tablist" style={{ fontFamily: "'Courier Prime', monospace" }}>
+      {galleries.map((gallery, i) => (
+        <button
+          key={gallery.label}
+          role="tab"
+          aria-selected={i === active}
+          onClick={() => onSelect(i)}
+          className={`px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase transition-colors ${i > 0 ? "border-l border-black" : ""} ${i === active ? "bg-black text-white" : "hover:bg-black/5"}`}
+        >
+          {gallery.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function ProjectGallery({ galleries }: { galleries: Gallery[] }) {
+  const [active, setActive] = useState(0);
+
+  return (
+    <div>
+      <div className="mb-3">
+        <GalleryTabs galleries={galleries} active={active} onSelect={setActive} />
+      </div>
+      {/* key resets the slide index when switching tabs */}
+      <ProjectCarousel key={active} images={galleries[active].images} />
+    </div>
+  );
+}
+
 type ExperienceGalleryProps = {
-  galleries: { label: string; images: Project["images"] }[];
+  galleries: Gallery[];
   links: { label: string; url: string }[];
 };
 
@@ -703,19 +756,7 @@ function ExperienceGallery({ galleries, links }: ExperienceGalleryProps) {
         className="flex flex-wrap items-center justify-between gap-3 mb-3"
         style={{ fontFamily: "'Courier Prime', monospace" }}
       >
-        <div className="flex border border-black" role="tablist">
-          {galleries.map((gallery, i) => (
-            <button
-              key={gallery.label}
-              role="tab"
-              aria-selected={i === active}
-              onClick={() => setActive(i)}
-              className={`px-4 py-1.5 text-[12px] tracking-[0.3em] uppercase transition-colors ${i > 0 ? "border-l border-black" : ""} ${i === active ? "bg-black text-white" : "hover:bg-black/5"}`}
-            >
-              {gallery.label}
-            </button>
-          ))}
-        </div>
+        <GalleryTabs galleries={galleries} active={active} onSelect={setActive} />
         {links.map((link) => (
           <a
             key={link.url}
@@ -760,7 +801,9 @@ function ProjectModule({ project }: { project: Project }) {
       >
         {/* Carousel side */}
         <div className={`min-w-0 p-6 md:p-8 lg:p-10 ${project.flip ? "md:border-l border-black" : "md:border-r border-black"} border-b md:border-b-0`}>
-          <ProjectCarousel images={project.images} />
+          {project.galleries
+            ? <ProjectGallery galleries={project.galleries} />
+            : <ProjectCarousel images={project.images} />}
         </div>
 
         {/* Text side */}
