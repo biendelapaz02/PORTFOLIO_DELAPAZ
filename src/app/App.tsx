@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { DARK_CSS, DarkToggleIcon, LOOKBOOK, NoiseOverlay, PHOTOGRAPHY, photoUrl, useDarkMode, VIDEOS } from "./shared";
+import { DARK_CSS, DarkToggleIcon, Lightbox, LOOKBOOK, NoiseOverlay, PHOTOGRAPHY, photoUrl, useDarkMode, VIDEOS } from "./shared";
 
 // — Portrait
 import portrait from "@/assets/2BY2PIC.webp";
@@ -611,13 +611,34 @@ function ProjectCarousel({ images, aspect = "aspect-[4/3]" }: { images: Project[
     const delta = e.clientX - dragStart.current;
     if (delta < -40) next();
     else if (delta > 40) prev();
+    // A tap (no real drag) opens the full-screen viewer
+    else if (Math.abs(delta) < 5) setViewing(true);
   };
+
+  // Full-screen viewer; paging there moves the carousel too
+  const [viewing, setViewing] = useState(false);
+  const photos = images.map((img) => ({
+    name: img.url,
+    src: img.url,
+    alt: img.caption.replace(/\s*—\s*\d+\/\d+$/, ""),
+    w: 0,
+    h: 0,
+  }));
 
   return (
     <div className="flex flex-col gap-0 select-none">
       {/* Image box */}
       <div
-        className={`relative overflow-hidden bg-neutral-200 ${aspect} cursor-grab active:cursor-grabbing border border-black touch-pan-y`}
+        className={`relative overflow-hidden bg-neutral-200 ${aspect} cursor-zoom-in active:cursor-grabbing border border-black touch-pan-y`}
+        role="button"
+        tabIndex={0}
+        aria-label={`Open screenshot: ${images[current].caption}`}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setViewing(true);
+          }
+        }}
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         onPointerCancel={() => setDragging(false)}
@@ -693,6 +714,10 @@ function ProjectCarousel({ images, aspect = "aspect-[4/3]" }: { images: Project[
           NEXT →
         </button>
       </div>
+
+      {viewing && (
+        <Lightbox photos={photos} index={current} onClose={() => setViewing(false)} onChange={setCurrent} />
+      )}
 
       <style>{`
         @keyframes fadeSlide {

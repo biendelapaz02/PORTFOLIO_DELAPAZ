@@ -11,7 +11,8 @@ export const photoUrl = (name: string, size: "full" | "sm") => {
   return PHOTO_FILES[`../assets/${folder}/web/${name}${size === "sm" ? "-sm" : ""}.webp`];
 };
 
-export type Photo = { name: string; alt: string; w: number; h: number };
+// `src` overrides the shoot-photo lookup, for images that live elsewhere (project screenshots)
+export type Photo = { name: string; alt: string; w: number; h: number; src?: string };
 
 export const PHOTOGRAPHY: Photo[] = [
   { name: "photo-03", alt: "Model in a navy Teknolohista shirt adjusting her glasses", w: 1080, h: 1350 },
@@ -174,7 +175,7 @@ export function Lightbox({
       <div className="relative flex-1 min-h-0 px-4 md:px-20">
         <img
           key={photo.name}
-          src={photoUrl(photo.name, "full")}
+          src={photo.src ?? photoUrl(photo.name, "full")}
           alt={photo.alt}
           className="w-full h-full object-contain"
           style={{ animation: "fadeSlide 0.3s ease forwards" }}
