@@ -20,7 +20,19 @@ import sentiTrayApp        from "@/assets/Sentinet/agent/SENTINET TRAY APP.webp"
 import sentiUserGuide      from "@/assets/Sentinet/agent/SENTINET USER GUIDE.webp";
 
 // — CarPayLater screenshots
-import bpiHome from "@/assets/homebpi.webp";
+import carLanding from "@/assets/CarPaylater/landing-hero.jpg";
+import carLogin   from "@/assets/CarPaylater/login.jpg";
+import carLoan    from "@/assets/CarPaylater/loan-form.jpg";
+import carAdmin   from "@/assets/CarPaylater/admin-dashboard.jpg";
+
+// — MarikinAlert screenshots
+import marikinResForm    from "@/assets/MarikinAlert/Resident/resident-form.png";
+import marikinResConfirm from "@/assets/MarikinAlert/Resident/resident-confirmation.png";
+import marikinResStatus  from "@/assets/MarikinAlert/Resident/resident-status.png";
+import marikinDisDash    from "@/assets/MarikinAlert/Dispatcher/dashboard.png";
+import marikinDisReport  from "@/assets/MarikinAlert/Dispatcher/new-report.png";
+import marikinDisRelay   from "@/assets/MarikinAlert/Dispatcher/relay-dialog.png";
+import marikinDisTeams   from "@/assets/MarikinAlert/Dispatcher/teams.png";
 
 // — Camarines Norte screenshots
 import camLanding  from "@/assets/Camnorte/LANDING PAGE.webp";
@@ -207,9 +219,48 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["BPI Auto Loan UI","MySQL Integration","Loan Calculator","Database Design","Finance"],
     images: [
-      { url: bpiHome, caption: "Landing Page — 01/01" },
+      { url: carLanding, caption: "Landing Page — 01/04" },
+      { url: carLogin,   caption: "Login — 02/04" },
+      { url: carLoan,    caption: "Loan Application — 03/04" },
+      { url: carAdmin,   caption: "Admin Dashboard — 04/04" },
     ],
     flip: true,
+  },
+  {
+    id: "marikinalert",
+    index: "07",
+    name: "MarikinAlert",
+    github: "https://github.com/controlbackspace/MarikinAlert",
+    subtitle: "Hyper-Localized Disaster Reporting & Response Application",
+    note: null,
+    points: [
+      "Developed an internet-independent disaster reporting and response app for Marikina City, built for when telecom infrastructure collapses during a crisis.",
+      "Built an offline reporting architecture on a distributed network of local Wi-Fi nodes that mirrors data across admin nodes in real time, forming a city-wide intranet.",
+      "Built an AI-driven triage engine that parses natural language and unstructured \"Taglish\" keywords to categorize and prioritize life-threatening reports.",
+      "Designed a color-coded emergency dispatch dashboard so responders can see the most critical situations first.",
+    ],
+    tags: ["Offline Architecture","Distributed Wi-Fi Nodes","AI Triage Engine","NLP","Emergency UX","Marikina City"],
+    images: [],
+    galleries: [
+      {
+        label: "Resident",
+        images: [
+          { url: marikinResForm,    caption: "Report Form — 01/03" },
+          { url: marikinResConfirm, caption: "Confirmation — 02/03" },
+          { url: marikinResStatus,  caption: "Report Status — 03/03" },
+        ],
+      },
+      {
+        label: "Dispatcher",
+        images: [
+          { url: marikinDisDash,   caption: "Dispatch Dashboard — 01/04" },
+          { url: marikinDisReport, caption: "New Report — 02/04" },
+          { url: marikinDisRelay,  caption: "Relay Dialog — 03/04" },
+          { url: marikinDisTeams,  caption: "Response Teams — 04/04" },
+        ],
+      },
+    ],
+    flip: false,
   },
 ];
 
@@ -226,7 +277,7 @@ type StaticProject = {
 
 export const STATIC_PROJECTS: StaticProject[] = [
   {
-    index: "07",
+    index: "08",
     name: "Salapeace",
     subtitle: "Decision-Support Mobile Application for Student Budget Management",
     note: null,
@@ -244,7 +295,7 @@ export const STATIC_PROJECTS: StaticProject[] = [
     tags: ["Figma","UI/UX Architecture","HCI Report","Wireframing","Prototyping","Feedforward Mechanisms","Mobile UX"],
   },
   {
-    index: "08",
+    index: "09",
     name: "WattWise",
     subtitle: "Household Energy Optimization",
     note: null,
@@ -256,20 +307,6 @@ export const STATIC_PROJECTS: StaticProject[] = [
       "Worked against a Python and Flask backend so each screen matches the data the optimizer returns.",
     ],
     tags: ["Figma","UI/UX Architecture","Dijkstra's Algorithm","0/1 Knapsack","Python Flask","Dashboard Design"],
-  },
-  {
-    index: "09",
-    name: "MarikinAlert",
-    subtitle: "Hyper-Localized Disaster Reporting & Response Application",
-    note: null,
-    github: "https://github.com/controlbackspace/MarikinAlert",
-    points: [
-      "Developed an internet-independent disaster reporting and response app for Marikina City, built for when telecom infrastructure collapses during a crisis.",
-      "Built an offline reporting architecture on a distributed network of local Wi-Fi nodes that mirrors data across admin nodes in real time, forming a city-wide intranet.",
-      "Built an AI-driven triage engine that parses natural language and unstructured \"Taglish\" keywords to categorize and prioritize life-threatening reports.",
-      "Designed a color-coded emergency dispatch dashboard so responders can see the most critical situations first.",
-    ],
-    tags: ["Offline Architecture","Distributed Wi-Fi Nodes","AI Triage Engine","NLP","Emergency UX","Marikina City"],
   },
   {
     index: "10",
