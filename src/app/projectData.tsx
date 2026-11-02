@@ -44,6 +44,18 @@ import camPlanTrip from "@/assets/Camnorte/PLAN TRIP.webp";
 import camBookNow  from "@/assets/Camnorte/BOOK NOW.webp";
 import camMyTrips  from "@/assets/Camnorte/MY TRIPS.webp";
 
+// — Volt Vortex screenshots
+import voltLogin            from "@/assets/Volt Vortex/Desktop/login.png";
+import voltDashboard        from "@/assets/Volt Vortex/Desktop/dashboard.png";
+import voltAppliances       from "@/assets/Volt Vortex/Desktop/appliances.png";
+import voltApplianceEdit    from "@/assets/Volt Vortex/Desktop/appliance-edit.png";
+import voltOptimization     from "@/assets/Volt Vortex/Desktop/optimization.png";
+import voltScheduling       from "@/assets/Volt Vortex/Desktop/scheduling.png";
+import voltAnalytics        from "@/assets/Volt Vortex/Desktop/analytics.png";
+import voltSettings         from "@/assets/Volt Vortex/Desktop/settings.png";
+import voltMobileDashboard  from "@/assets/Volt Vortex/Mobile/mobile-dashboard.png";
+import voltMobileScheduling from "@/assets/Volt Vortex/Mobile/mobile-scheduling.png";
+
 // — Chef MAI screenshots
 import chefKitchen  from "@/assets/KITCHEN_MAIN_BUTTOM.webp";
 import chefHome     from "@/assets/CHEFMAIMAI.webp";
@@ -262,6 +274,45 @@ export const PROJECTS: Project[] = [
     ],
     flip: false,
   },
+  {
+    id: "voltvortex",
+    index: "08",
+    name: "Volt Vortex",
+    github: "https://github.com/Shwarmanism/Appliances-Scheduler",
+    subtitle: "Household Energy Optimization",
+    note: null,
+    points: [
+      "Designed the UI/UX architecture in Figma for a web app that helps households monitor appliance usage, estimate monthly bills, and get energy-saving tips.",
+      "Structured the visual user flows for the optimization dashboard, consumption calculator, and smart scheduling modules.",
+      "Presented algorithm results in plain screens: Dijkstra's Algorithm for Peak/Off-Peak schedules, 0/1 Knapsack for appliance combinations within a daily limit, and Insertion Sort for ranking by consumption.",
+      "Worked against a Python and Flask backend so each screen matches the data the optimizer returns.",
+    ],
+    tags: ["Figma","UI/UX Architecture","Dijkstra's Algorithm","0/1 Knapsack","Python Flask","Dashboard Design"],
+    images: [],
+    galleries: [
+      {
+        label: "Desktop",
+        images: [
+          { url: voltLogin,         caption: "Login — 01/08" },
+          { url: voltDashboard,     caption: "Dashboard — 02/08" },
+          { url: voltAppliances,    caption: "Appliances — 03/08" },
+          { url: voltApplianceEdit, caption: "Edit Appliance — 04/08" },
+          { url: voltOptimization,  caption: "Optimization — 05/08" },
+          { url: voltScheduling,    caption: "Scheduling — 06/08" },
+          { url: voltAnalytics,     caption: "Analytics — 07/08" },
+          { url: voltSettings,      caption: "Settings — 08/08" },
+        ],
+      },
+      {
+        label: "Mobile",
+        images: [
+          { url: voltMobileDashboard,  caption: "Mobile Dashboard — 01/02" },
+          { url: voltMobileScheduling, caption: "Mobile Scheduling — 02/02" },
+        ],
+      },
+    ],
+    flip: true,
+  },
 ];
 
 type StaticProject = {
@@ -277,7 +328,7 @@ type StaticProject = {
 
 export const STATIC_PROJECTS: StaticProject[] = [
   {
-    index: "08",
+    index: "09",
     name: "Salapeace",
     subtitle: "Decision-Support Mobile Application for Student Budget Management",
     note: null,
@@ -293,20 +344,6 @@ export const STATIC_PROJECTS: StaticProject[] = [
       "Authored the comprehensive HCI report documenting the research, design decisions, and usability evaluation.",
     ],
     tags: ["Figma","UI/UX Architecture","HCI Report","Wireframing","Prototyping","Feedforward Mechanisms","Mobile UX"],
-  },
-  {
-    index: "09",
-    name: "WattWise",
-    subtitle: "Household Energy Optimization",
-    note: null,
-    github: "https://github.com/Shwarmanism/Appliances-Scheduler",
-    points: [
-      "Designed the UI/UX architecture in Figma for a web app that helps households monitor appliance usage, estimate monthly bills, and get energy-saving tips.",
-      "Structured the visual user flows for the optimization dashboard, consumption calculator, and smart scheduling modules.",
-      "Presented algorithm results in plain screens: Dijkstra's Algorithm for Peak/Off-Peak schedules, 0/1 Knapsack for appliance combinations within a daily limit, and Insertion Sort for ranking by consumption.",
-      "Worked against a Python and Flask backend so each screen matches the data the optimizer returns.",
-    ],
-    tags: ["Figma","UI/UX Architecture","Dijkstra's Algorithm","0/1 Knapsack","Python Flask","Dashboard Design"],
   },
   {
     index: "10",
