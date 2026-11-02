@@ -45,16 +45,16 @@ import camBookNow  from "@/assets/Camnorte/BOOK NOW.webp";
 import camMyTrips  from "@/assets/Camnorte/MY TRIPS.webp";
 
 // — Volt Vortex screenshots
-import voltLogin            from "@/assets/Volt Vortex/Desktop/login.png";
-import voltDashboard        from "@/assets/Volt Vortex/Desktop/dashboard.png";
-import voltAppliances       from "@/assets/Volt Vortex/Desktop/appliances.png";
-import voltApplianceEdit    from "@/assets/Volt Vortex/Desktop/appliance-edit.png";
-import voltOptimization     from "@/assets/Volt Vortex/Desktop/optimization.png";
-import voltScheduling       from "@/assets/Volt Vortex/Desktop/scheduling.png";
-import voltAnalytics        from "@/assets/Volt Vortex/Desktop/analytics.png";
-import voltSettings         from "@/assets/Volt Vortex/Desktop/settings.png";
-import voltMobileDashboard  from "@/assets/Volt Vortex/Mobile/mobile-dashboard.png";
-import voltMobileScheduling from "@/assets/Volt Vortex/Mobile/mobile-scheduling.png";
+import voltLogin            from "@/assets/Volt Vortex/Desktop/login.webp";
+import voltDashboard        from "@/assets/Volt Vortex/Desktop/dashboard.webp";
+import voltAppliances       from "@/assets/Volt Vortex/Desktop/appliances.webp";
+import voltApplianceEdit    from "@/assets/Volt Vortex/Desktop/appliance-edit.webp";
+import voltOptimization     from "@/assets/Volt Vortex/Desktop/optimization.webp";
+import voltScheduling       from "@/assets/Volt Vortex/Desktop/scheduling.webp";
+import voltAnalytics        from "@/assets/Volt Vortex/Desktop/analytics.webp";
+import voltSettings         from "@/assets/Volt Vortex/Desktop/settings.webp";
+import voltMobileDashboard  from "@/assets/Volt Vortex/Mobile/mobile-dashboard.webp";
+import voltMobileScheduling from "@/assets/Volt Vortex/Mobile/mobile-scheduling.webp";
 
 // — Chef MAI screenshots
 import chefKitchen  from "@/assets/KITCHEN_MAIN_BUTTOM.webp";
